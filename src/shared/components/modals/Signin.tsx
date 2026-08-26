@@ -83,7 +83,7 @@ export default function Signin() {
                     <Link href={`/`}>
                       <Image
                         alt="Ecommerce Logo Images"
-                        src="/assets/images/logo/logo.webp"
+                        src="/assets/images/logo/logo.svg"
                         width={1487}
                         height={334}
                       />

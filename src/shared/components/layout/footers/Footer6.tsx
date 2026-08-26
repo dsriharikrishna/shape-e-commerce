@@ -18,7 +18,7 @@ export default function Footer6() {
             <div className="row">
               <div className="col-12">
                 <div className="rbt-watermark-text rbt-watermark-lg">
-                  <span>Buy@Unimart</span>
+                  <span>Buy@TryShape</span>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function Footer6() {
                   <h5 className="ft-title">Make Money with Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart</Link>
+                      <Link href={`/shop`}>Sell on TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/shop`}>Sell Your Services</Link>
@@ -214,16 +214,16 @@ export default function Footer6() {
                   <h5 className="ft-title">Get to Know Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/about`}>Careers for Unimart</Link>
+                      <Link href={`/about`}>Careers for TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>About Unimart</Link>
+                      <Link href={`/about`}>About TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/about`}>Investor Relations</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>Unimart Devices</Link>
+                      <Link href={`/about`}>TryShape Devices</Link>
                     </li>
                     <li>
                       <Link href={`/about`}>Customer reviews</Link>
@@ -332,7 +332,7 @@ export default function Footer6() {
               <div className="col-md-6 col-12 mt--24 d-flex justify-content-center justify-content-md-start">
                 <p className="rbt-link-hover text-center text-lg-start">
                   Copyright 2026 ®
-                  <a href="https://rainbowthemes.net/">Unimart</a> Nextjs
+                  <a href="https://rainbowthemes.net/">TryShape</a> Nextjs
                   Template.
                 </p>
               </div>

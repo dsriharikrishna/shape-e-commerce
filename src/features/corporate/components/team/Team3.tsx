@@ -133,8 +133,8 @@ export default function Team3() {
                           </span>
                         </div>
                         <p className="mb--16">
-                          You can run Unimart easily. Any School, University,
-                          College can be use this unimart E-commerce template
+                          You can run TryShape easily. Any School, University,
+                          College can be use this tryshape E-commerce template
                           for their Commercial purpose. A university can be
                           success you.
                         </p>

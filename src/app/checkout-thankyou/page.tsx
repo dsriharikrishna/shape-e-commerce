@@ -3,8 +3,8 @@ import Breadcrumb from "@/shared/components/common/Breadcrumb";
 import SimilerProducts from "@/features/products/components/others/SimilerProducts";
 
 export const metadata = {
-  title: "Order Confirmed | Unimart Fashion",
-  description: "Thank you for your order at Unimart Fashion.",
+  title: "Order Confirmed | TryShape Fashion",
+  description: "Thank you for your order at TryShape Fashion.",
 };
 
 export default function page() {

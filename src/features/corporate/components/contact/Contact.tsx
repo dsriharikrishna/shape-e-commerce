@@ -50,7 +50,7 @@ export default function Contact() {
               </a>
               {/* Call via WhatsApp */}
               <a
-                href="mailto:unimartabc@mail.com"
+                href="mailto:support@tryshape.com"
                 className="rbt-trns-modern-btn tooltips"
                 data-tooltip="Call via WhatsApp"
                 data-tooltip-position="top"
@@ -89,7 +89,7 @@ export default function Contact() {
                     </defs>
                   </svg>
                 </span>
-                unimartabc@mail.com
+                support@tryshape.com
               </a>
               {/* Call via Telegram */}
               <a
@@ -192,10 +192,10 @@ export default function Contact() {
                       <li>
                         <span>Email : </span>
                         <a
-                          href="mailto:unimartabc@mail.com"
+                          href="mailto:support@tryshape.com"
                           className="rbt-contact-info-single color-primary"
                         >
-                          unimartabc@mail.com
+                          support@tryshape.com
                         </a>
                       </li>
                     </ul>
@@ -227,10 +227,10 @@ export default function Contact() {
                       <li>
                         <span>Email : </span>
                         <a
-                          href="mailto:unimartabc@mail.com"
+                          href="mailto:support@tryshape.com"
                           className="rbt-contact-info-single color-primary"
                         >
-                          unimartabc@mail.com
+                          support@tryshape.com
                         </a>
                       </li>
                     </ul>
@@ -262,10 +262,10 @@ export default function Contact() {
                       <li>
                         <span>Email : </span>
                         <a
-                          href="mailto:unimartabc@mail.com"
+                          href="mailto:support@tryshape.com"
                           className="rbt-contact-info-single color-primary"
                         >
-                          unimartabc@mail.com
+                          support@tryshape.com
                         </a>
                       </li>
                     </ul>
@@ -297,10 +297,10 @@ export default function Contact() {
                       <li>
                         <span>Email : </span>
                         <a
-                          href="mailto:unimartabc@mail.com"
+                          href="mailto:support@tryshape.com"
                           className="rbt-contact-info-single color-primary"
                         >
-                          unimartabc@mail.com
+                          support@tryshape.com
                         </a>
                       </li>
                     </ul>

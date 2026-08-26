@@ -89,7 +89,7 @@ export default function SocialShare() {
                   <input
                     className="rbt-copy-value-field w-100"
                     type="text"
-                    defaultValue="https://unimart.template/wishlist"
+                    defaultValue="https://tryshape.template/wishlist"
                     readOnly
                   />
                   <button

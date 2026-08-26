@@ -87,7 +87,7 @@ export default function CheckoutPage() {
             Order Placed Successfully!
           </h1>
           <p className="text-gray-500 max-w-md mx-auto mb-8">
-            Thank you for shopping with Unimart. Your order has been received
+            Thank you for shopping with TryShape. Your order has been received
             and is now being processed. We've sent a confirmation email with
             your order details.
           </p>

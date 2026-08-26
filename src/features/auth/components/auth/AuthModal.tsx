@@ -113,7 +113,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           <div className="bg-gray-50 pt-6 px-6">
             <DialogHeader className="mb-6">
               <DialogTitle className="text-2xl font-bold text-center">
-                Welcome to Unimart
+                Welcome to TryShape
               </DialogTitle>
               <DialogDescription className="text-center">
                 Sign in to your account or create a new one.

@@ -73,7 +73,7 @@ export default function () {
                     </div>
                     <div className="rbt-card-content">
                       <h5 className="rbt-card-title">
-                        <a href="#">Beats Brand is now on Unimart Platform</a>
+                        <a href="#">Beats Brand is now on TryShape Platform</a>
                       </h5>
                       <p className="b4 desc rbt-text-medium">
                         Shop Beats Headphones &amp; Earbuds

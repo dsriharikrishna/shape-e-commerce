@@ -12,47 +12,47 @@ export default function TextSlider({
                 <div className="rbt-category-list">
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                   <a href="#">
                     <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                    UNIMART - 10% OFF ON YOUR FIRST ORDER
+                    TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                   </a>
                 </div>
               </div>

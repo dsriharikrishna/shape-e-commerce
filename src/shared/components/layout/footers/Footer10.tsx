@@ -8,7 +8,7 @@ export default function Footer10() {
           <div className="row">
             <div className="col-12">
               <div className="rbt-watermark-text rbt-watermark-color-var-1 text-center">
-                <span>Follow Us@Unimart</span>
+                <span>Follow Us@TryShape</span>
               </div>
             </div>
           </div>
@@ -23,8 +23,8 @@ export default function Footer10() {
                 <div className="logo">
                   <Link href={`/`}>
                     <Image
-                      alt="Unimart Logo"
-                      src="/assets/images/logo/logo.webp"
+                      alt="TryShape Logo"
+                      src="/assets/images/logo/logo.svg"
                       width={1487}
                       height={334}
                     />
@@ -143,7 +143,7 @@ export default function Footer10() {
                     <h5 className="ft-title">Make Money with Us</h5>
                     <ul className="ft-link">
                       <li>
-                        <Link href={`/shop`}>Sell on Unimart</Link>
+                        <Link href={`/shop`}>Sell on TryShape</Link>
                       </li>
                       <li>
                         <Link href={`/shop`}>Sell Your Services</Link>
@@ -168,16 +168,16 @@ export default function Footer10() {
                     <h5 className="ft-title">Get to Know Us</h5>
                     <ul className="ft-link">
                       <li>
-                        <Link href={`/about`}>Careers for Unimart</Link>
+                        <Link href={`/about`}>Careers for TryShape</Link>
                       </li>
                       <li>
-                        <Link href={`/about`}>About Unimart</Link>
+                        <Link href={`/about`}>About TryShape</Link>
                       </li>
                       <li>
                         <Link href={`/about`}>Investor Relations</Link>
                       </li>
                       <li>
-                        <Link href={`/about`}>Unimart Devices</Link>
+                        <Link href={`/about`}>TryShape Devices</Link>
                       </li>
                       <li>
                         <Link href={`/about`}>Customer reviews</Link>
@@ -249,7 +249,7 @@ export default function Footer10() {
                     <h5 className="ft-title">Make Money with Us</h5>
                     <ul className="ft-link">
                       <li>
-                        <Link href={`/shop`}>Sell on Unimart</Link>
+                        <Link href={`/shop`}>Sell on TryShape</Link>
                       </li>
                       <li>
                         <Link href={`/shop`}>Sell Your Services</Link>
@@ -274,16 +274,16 @@ export default function Footer10() {
                     <h5 className="ft-title">Get to Know Us</h5>
                     <ul className="ft-link">
                       <li>
-                        <Link href={`/about`}>Careers for Unimart</Link>
+                        <Link href={`/about`}>Careers for TryShape</Link>
                       </li>
                       <li>
-                        <Link href={`/about`}>About Unimart</Link>
+                        <Link href={`/about`}>About TryShape</Link>
                       </li>
                       <li>
                         <Link href={`/about`}>Investor Relations</Link>
                       </li>
                       <li>
-                        <Link href={`/about`}>Unimart Devices</Link>
+                        <Link href={`/about`}>TryShape Devices</Link>
                       </li>
                       <li>
                         <Link href={`/about`}>Customer reviews</Link>
@@ -380,7 +380,7 @@ export default function Footer10() {
                   href="https://rainbowthemes.net/"
                   className="rbt-text-bold rbt-text-color-heading"
                 >
-                  Unimart
+                  TryShape
                 </a>
                 Nextjs Template.
               </p>

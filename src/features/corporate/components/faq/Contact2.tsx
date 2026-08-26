@@ -113,11 +113,11 @@ export default function Contact2() {
                         </a>
                       </li>
                       <li>
-                        <a href="mailto:unimartabc@mail.com">
+                        <a href="mailto:support@tryshape.com">
                           <span className="icon email">
                             <i className="fa-sharp fa-solid fa-envelope" />
                           </span>
-                          <span>unimartabc@mail.com</span>
+                          <span>support@tryshape.com</span>
                         </a>
                       </li>
                       <li>

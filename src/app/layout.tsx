@@ -32,9 +32,9 @@ const caprasimo = Caprasimo({
 });
 
 export const metadata: Metadata = {
-  title: "Unimart Fashion - Premium Fashion E-Commerce",
+  title: "TryShape - Modern E-Commerce",
   description:
-    "Shop the latest fashion trends. Premium clothing, footwear, and accessories at Unimart Fashion.",
+    "Shop the latest fashion, electronics, and lifestyle trends with TryShape.",
 };
 
 export default function RootLayout({

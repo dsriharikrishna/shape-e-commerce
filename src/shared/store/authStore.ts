@@ -30,7 +30,7 @@ export const useAuthStore = create<AuthState>()(
       isLoggedIn: () => get().token !== null,
     }),
     {
-      name: "unimart-auth",
+      name: "tryshape-auth",
     }
   )
 );

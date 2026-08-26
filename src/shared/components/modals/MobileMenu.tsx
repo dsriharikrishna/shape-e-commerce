@@ -88,8 +88,8 @@ export default function MobileMenu() {
               <div className="logo">
                 <Link href={`/`}>
                   <Image
-                    alt="Unimart Logo Images"
-                    src="/assets/images/logo/logo.webp"
+                    alt="TryShape Logo Images"
+                    src="/assets/images/logo/logo.svg"
                     width={1487}
                     height={334}
                   />
@@ -105,7 +105,7 @@ export default function MobileMenu() {
               </div>
             </div>
             <p className="description">
-              Unimart is a E-commerce Template. Worldwide electronics store
+              TryShape is a E-commerce Template. Worldwide electronics store
               since 1978.
             </p>
             <div className="rbt-inner-search-field style-one rbt-search-field-rounded rbt-search-field-sm-width">

@@ -105,47 +105,47 @@ export default function Footer4() {
                   <div className="rbt-category-list">
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                     <a href="#">
                       <span className="rbt-catagory-icon rbt-offer-icon-circle" />
-                      UNIMART - 10% OFF ON YOUR FIRST ORDER
+                      TRYSHAPE - 10% OFF ON YOUR FIRST ORDER
                     </a>
                   </div>
                 </div>
@@ -165,8 +165,8 @@ export default function Footer4() {
                   <div className="logo">
                     <Link href={`/`}>
                       <Image
-                        alt="Unimart Logo"
-                        src="/assets/images/logo/logo.webp"
+                        alt="TryShape Logo"
+                        src="/assets/images/logo/logo.svg"
                         width={1487}
                         height={334}
                       />
@@ -246,7 +246,7 @@ export default function Footer4() {
                   <h5 className="ft-title">Make Money with Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart</Link>
+                      <Link href={`/shop`}>Sell on TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/shop`}>Sell Your Services</Link>
@@ -271,16 +271,16 @@ export default function Footer4() {
                   <h5 className="ft-title">Get to Know Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/about`}>Careers for Unimart</Link>
+                      <Link href={`/about`}>Careers for TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>About Unimart</Link>
+                      <Link href={`/about`}>About TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/about`}>Investor Relations</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>Unimart Devices</Link>
+                      <Link href={`/about`}>TryShape Devices</Link>
                     </li>
                     <li>
                       <Link href={`/about`}>Customer reviews</Link>
@@ -353,7 +353,7 @@ export default function Footer4() {
                     href="https://rainbowthemes.net/"
                     className="rbt-text-semi-bold"
                   >
-                    Unimart
+                    TryShape
                   </a>
                   Nextjs Template.
                 </p>

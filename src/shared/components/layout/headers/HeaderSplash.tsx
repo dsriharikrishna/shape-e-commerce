@@ -42,7 +42,7 @@ export default function HeaderSplash({ sticky = false }) {
                     <Link href={`/`}>
                       <Image
                         alt="Ecommerce Logo Images"
-                        src="/assets/images/logo/logo-blackbg.webp"
+                        src="/assets/images/logo/logo-blackbg.svg"
                         width={1487}
                         height={334}
                       />
@@ -78,7 +78,7 @@ export default function HeaderSplash({ sticky = false }) {
                       <i className="fa-regular fa-cart-shopping mr--4" />
                     </span>
                     <span className="d-none d-lg-inline-block">
-                      Explore Unimart
+                      Explore TryShape
                     </span>
                     <span className="icon-right">
                       <i className="fa-sharp fa-regular fa-arrow-right ml--4" />
@@ -118,7 +118,7 @@ export default function HeaderSplash({ sticky = false }) {
                     <Link href={`/`}>
                       <Image
                         alt="Ecommerce Logo Images"
-                        src="/assets/images/logo/logo.webp"
+                        src="/assets/images/logo/logo.svg"
                         width={1487}
                         height={334}
                       />
@@ -139,7 +139,7 @@ export default function HeaderSplash({ sticky = false }) {
                 <Link href={`/`}>
                   <Image
                     alt="Ecommerce Logo Images"
-                    src="/assets/images/logo/logo.webp"
+                    src="/assets/images/logo/logo.svg"
                     width={1487}
                     height={334}
                   />
@@ -163,7 +163,7 @@ export default function HeaderSplash({ sticky = false }) {
                 <span className="icon-left">
                   <i className="fa-regular fa-cart-shopping mr--4" />
                 </span>
-                <span className="text">Buy Unimart</span>
+                <span className="text">Buy TryShape</span>
                 <span className="icon-right">
                   <i className="fa-sharp fa-regular fa-arrow-right ml--4" />
                 </span>

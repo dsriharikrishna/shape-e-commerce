@@ -11,15 +11,15 @@ export default function Footer11() {
                 <div className="logo">
                   <Link href={`/`}>
                     <Image
-                      alt="Unimart Logo"
-                      src="/assets/images/logo/logo.webp"
+                      alt="TryShape Logo"
+                      src="/assets/images/logo/logo.svg"
                       width={1487}
                       height={334}
                     />
                   </Link>
                 </div>
                 <p className="description mt--24 pr--52 pr_sm--0">
-                  Unimart is your one‑stop marketplace for curated electronics,
+                  TryShape is your one‑stop marketplace for curated electronics,
                   everyday essentials, and lifestyle products—delivered fast
                   with trusted service and great prices.
                 </p>
@@ -156,16 +156,16 @@ export default function Footer11() {
                 <h5 className="ft-title">Make Money with Us</h5>
                 <ul className="ft-link">
                   <li>
-                    <Link href={`/shop`}>Sell on Unimart</Link>
+                    <Link href={`/shop`}>Sell on TryShape</Link>
                   </li>
                   <li>
-                    <Link href={`/shop`}>Sell Your Services on Unimart</Link>
+                    <Link href={`/shop`}>Sell Your Services on TryShape</Link>
                   </li>
                   <li>
-                    <Link href={`/shop`}>Sell on Unimart Business</Link>
+                    <Link href={`/shop`}>Sell on TryShape Business</Link>
                   </li>
                   <li>
-                    <Link href={`/shop`}>Sell Your Apps on Unimart</Link>
+                    <Link href={`/shop`}>Sell Your Apps on TryShape</Link>
                   </li>
                   <li>
                     <Link href={`/shop`}>Become an Affiliate</Link>
@@ -210,7 +210,7 @@ export default function Footer11() {
                   href="https://rainbowthemes.net/"
                   className="rbt-text-bold rbt-text-color-heading"
                 >
-                  Unimart
+                  TryShape
                 </a>
                 Nextjs Template.
               </p>

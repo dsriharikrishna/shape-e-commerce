@@ -505,13 +505,13 @@ export const banners3: HeroSlide[] = [
 export const yogaBanners: HeroSlide[] = [
   {
     subtitle: "Exclusive Offer Going",
-    titleBold: "Discover the unimart Drinkware",
+    titleBold: "Discover the tryshape Drinkware",
     titleRest: "collection of stainless-steel drinkware.",
     imgSrc: "/assets/images/product-banner/product-banner-yoga-a-01.webp",
   },
   {
     subtitle: "Exclusive Offer Going",
-    titleBold: "Discover the unimart Drinkware",
+    titleBold: "Discover the tryshape Drinkware",
     titleRest: "collection of stainless-steel drinkware.",
     imgSrc: "/assets/images/product-banner/product-banner-yoga-a-02.webp",
   },

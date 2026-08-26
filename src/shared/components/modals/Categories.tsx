@@ -26,8 +26,8 @@ export default function Categories() {
                   <div className="logo">
                     <Link href={`/`}>
                       <Image
-                        alt="Unimart Logo"
-                        src="/assets/images/logo/logo.webp"
+                        alt="TryShape Logo"
+                        src="/assets/images/logo/logo.svg"
                         width={1487}
                         height={334}
                       />

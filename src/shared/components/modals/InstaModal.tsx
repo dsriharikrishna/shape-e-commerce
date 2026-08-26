@@ -42,7 +42,7 @@ export default function InstaModal() {
                   <div className="col-lg-6 col-md-12 col-12">
                     <div className="rbt-single-insta-img">
                       <Image
-                        alt="Unimart instagram Single Post Image"
+                        alt="TryShape instagram Single Post Image"
                         src="/assets/images/insta-posts/insta-post-single-01.webp"
                         width={1408}
                         height={1400}

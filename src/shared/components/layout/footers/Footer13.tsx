@@ -144,16 +144,16 @@ export default function Footer13({
                   <h5 className="ft-title">Make Money with Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart</Link>
+                      <Link href={`/shop`}>Sell on TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell Your Services on Unimart</Link>
+                      <Link href={`/shop`}>Sell Your Services on TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart Business</Link>
+                      <Link href={`/shop`}>Sell on TryShape Business</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell Your Apps on Unimart</Link>
+                      <Link href={`/shop`}>Sell Your Apps on TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/shop`}>Become an Affiliate</Link>
@@ -184,7 +184,7 @@ export default function Footer13({
                       href="https://rainbowthemes.net/"
                       className="rbt-text-semi-bold"
                     >
-                      Unimart
+                      TryShape
                     </a>
                     Nextjs Template.
                   </p>

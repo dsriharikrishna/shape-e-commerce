@@ -148,7 +148,7 @@ export default function Footer3() {
             <div className="row">
               <div className="col-12">
                 <div className="rbt-watermark-text rbt-watermark-color-var-1">
-                  <span>Follow@Unimart</span>
+                  <span>Follow@TryShape</span>
                 </div>
               </div>
             </div>
@@ -232,16 +232,16 @@ export default function Footer3() {
                   <h5 className="ft-title">Make Money with Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart</Link>
+                      <Link href={`/shop`}>Sell on TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell Your Services on Unimart</Link>
+                      <Link href={`/shop`}>Sell Your Services on TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart Business</Link>
+                      <Link href={`/shop`}>Sell on TryShape Business</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell Your Apps on Unimart</Link>
+                      <Link href={`/shop`}>Sell Your Apps on TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/shop`}>Become an Affiliate</Link>
@@ -334,7 +334,7 @@ export default function Footer3() {
                     href="https://rainbowthemes.net/"
                     className="rbt-text-semi-bold"
                   >
-                    Unimart
+                    TryShape
                   </a>
                   Nextjs Template.
                 </p>

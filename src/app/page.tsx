@@ -13,9 +13,9 @@ import Footer3 from "@/shared/components/layout/footers/Footer3";
 // ... other components to be migrated ...
 
 export const metadata = {
-  title: "Unimart Fashion - Modern Fashion E-Commerce Store",
+  title: "TryShape Fashion - Modern Fashion E-Commerce Store",
   description:
-    "Discover the latest fashion trends. Shop premium clothing, accessories, and footwear at Unimart Fashion.",
+    "Discover the latest fashion trends. Shop premium clothing, accessories, and footwear at TryShape Fashion.",
 };
 
 export default function Home() {

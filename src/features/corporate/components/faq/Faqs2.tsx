@@ -9,7 +9,7 @@ export default function Faqs2() {
                 <span className="subtitle bg-pink-opacity">FAQ</span>
                 <h2 className="title">
                   Have a Question with <br />
-                  Unimart E-commerce Website?
+                  TryShape E-commerce Website?
                 </h2>
                 <p className="description has-medium-font-size mt--20 w-82">
                   <strong>Its an e-commerce platform</strong> Lorem Ipsum is
@@ -33,7 +33,7 @@ export default function Faqs2() {
                         aria-expanded="true"
                         aria-controls="collapseThree1"
                       >
-                        What is Unimart ? How does it work?
+                        What is TryShape ? How does it work?
                       </button>
                     </h2>
                     <div
@@ -43,11 +43,11 @@ export default function Faqs2() {
                       data-bs-parent="#accordionExamplec3"
                     >
                       <div className="accordion-body card-body">
-                        You can run Unimart easily. Any School, E-commerce
-                        Website, College can be use this Unimart Ecommerce
+                        You can run TryShape easily. Any School, E-commerce
+                        Website, College can be use this TryShape Ecommerce
                         template for their e-commerce purpose. A Ecommerce can
-                        be run their online leaning management system by Unimart
-                        Ecommerce template.
+                        be run their online leaning management system by
+                        TryShape Ecommerce template.
                       </div>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ export default function Faqs2() {
                       data-bs-parent="#accordionExamplec3"
                     >
                       <div className="accordion-body card-body">
-                        Yes, We will get update the Unimart. And you can get it
+                        Yes, We will get update the TryShape. And you can get it
                         any time. Next time we will comes with more feature. You
                         can be get update for unlimited times. Our dedicated
                         team works for update.

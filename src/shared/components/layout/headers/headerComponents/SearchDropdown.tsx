@@ -76,7 +76,7 @@ export default function SearchDropdown() {
                       <input
                         className="rbt-copy-value-field"
                         type="text"
-                        defaultValue="https://unimart.template/wishlist"
+                        defaultValue="https://tryshape.template/wishlist"
                         readOnly
                       />
                       <button

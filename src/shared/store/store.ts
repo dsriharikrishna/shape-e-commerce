@@ -150,7 +150,7 @@ export const useStore = create<StoreState>()(
       isAddedToCompareItem: (id) => get().compareItem.includes(id),
     }),
     {
-      name: "unimart-store",
+      name: "tryshape-store",
       partialize: (state) => ({
         cartProducts: state.cartProducts,
         wishList: state.wishList,

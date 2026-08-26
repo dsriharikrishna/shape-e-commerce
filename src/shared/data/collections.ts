@@ -489,7 +489,7 @@ export const jewelryBanners: Collection[] = [
 export const bannerData: Collection[] = [
   {
     subtitle: "Exclusive Offer Going",
-    titleMain: "Discover the unimart Fragrance",
+    titleMain: "Discover the tryshape Fragrance",
     titleSub: "floral & joyful accord of rose & cherry.",
     imageSrc: "/assets/images/product-banner/product-banner-purfume-lg-a1.webp",
   },
@@ -527,7 +527,7 @@ export const collections4: Collection[] = [
 export const collections5: Collection[] = [
   {
     subtitle: "Luxury Leather Bags",
-    title: "The Unimart Monogram",
+    title: "The TryShape Monogram",
     imgSrc: "/assets/images/product-banner/tech-access-a-01.webp",
     animationOrder: 1,
   },
@@ -539,7 +539,7 @@ export const collections5: Collection[] = [
   },
   {
     subtitle: "Handcrafted Goods",
-    title: "Craft of Unimart Silk",
+    title: "Craft of TryShape Silk",
     imgSrc: "/assets/images/product-banner/tech-access-a-03.webp",
     animationOrder: 3,
   },
@@ -703,7 +703,7 @@ export const cakeCards: Collection[] = [
 export const luxuryBagBanners: Collection[] = [
   {
     subtitle: "Luxury Leather Bags",
-    title: "The Unimart Monogram",
+    title: "The TryShape Monogram",
     image: "/assets/images/product-banner/ladies-bag-a-01.webp",
     animation: 1,
   },
@@ -715,7 +715,7 @@ export const luxuryBagBanners: Collection[] = [
   },
   {
     subtitle: "Handcrafted Goods",
-    title: "Craft of Unimart Silk",
+    title: "Craft of TryShape Silk",
     image: "/assets/images/product-banner/ladies-bag-a-03.webp",
     animation: 3,
   },
@@ -793,7 +793,7 @@ export const bannerItems: Collection[] = [
 export const fashionBanners: Collection[] = [
   {
     subtitle: "Luxury Leather Bags",
-    title: "The Unimart Monogram",
+    title: "The TryShape Monogram",
     imgSrc: "/assets/images/product-img/fashion/product-img-hat-md-01.webp",
     animationOrder: 1,
   },
@@ -805,7 +805,7 @@ export const fashionBanners: Collection[] = [
   },
   {
     subtitle: "Handcrafted Goods",
-    title: "Craft of Unimart Silk",
+    title: "Craft of TryShape Silk",
     imgSrc: "/assets/images/product-img/fashion/product-img-hat-md-03.webp",
     animationOrder: 3,
   },

@@ -59,8 +59,8 @@ export default function Footer2() {
                 <div className="logo mb--16">
                   <Link href={`/`}>
                     <Image
-                      alt="Unimart Logo"
-                      src="/assets/images/logo/logo-blackbg.webp"
+                      alt="TryShape Logo"
+                      src="/assets/images/logo/logo-blackbg.svg"
                       width={1487}
                       height={334}
                     />
@@ -180,16 +180,16 @@ export default function Footer2() {
                 <h5 className="ft-title">Make Money with Us</h5>
                 <ul className="ft-link">
                   <li>
-                    <Link href={`/shop`}>Sell on Unimart</Link>
+                    <Link href={`/shop`}>Sell on TryShape</Link>
                   </li>
                   <li>
-                    <Link href={`/shop`}>Sell Your Services on Unimart</Link>
+                    <Link href={`/shop`}>Sell Your Services on TryShape</Link>
                   </li>
                   <li>
-                    <Link href={`/shop`}>Sell on Unimart Business</Link>
+                    <Link href={`/shop`}>Sell on TryShape Business</Link>
                   </li>
                   <li>
-                    <Link href={`/shop`}>Sell Your Apps on Unimart</Link>
+                    <Link href={`/shop`}>Sell Your Apps on TryShape</Link>
                   </li>
                   <li>
                     <Link href={`/shop`}>Become an Affiliate</Link>
@@ -259,7 +259,7 @@ export default function Footer2() {
                   href="https://rainbowthemes.net/"
                   className="rbt-text-semi-bold"
                 >
-                  Unimart
+                  TryShape
                 </a>
                 Nextjs Template.
               </p>

@@ -14,8 +14,8 @@ export default function Footer1() {
                   <div className="logo">
                     <Link href={`/`}>
                       <Image
-                        alt="Unimart Logo"
-                        src="/assets/images/logo/logo.webp"
+                        alt="TryShape Logo"
+                        src="/assets/images/logo/logo.svg"
                         width={1487}
                         height={334}
                       />
@@ -98,16 +98,16 @@ export default function Footer1() {
                   <h5 className="ft-title">Make Money with Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart</Link>
+                      <Link href={`/shop`}>Sell on TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell Your Services on Unimart</Link>
+                      <Link href={`/shop`}>Sell Your Services on TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell on Unimart Business</Link>
+                      <Link href={`/shop`}>Sell on TryShape Business</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Sell Your Apps on Unimart</Link>
+                      <Link href={`/shop`}>Sell Your Apps on TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/shop`}>Become an Affiliate</Link>
@@ -119,10 +119,10 @@ export default function Footer1() {
                       <Link href={`/shop`}>Sell-Publish with Us</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Become an Unimart Vendor</Link>
+                      <Link href={`/shop`}>Become an TryShape Vendor</Link>
                     </li>
                     <li>
-                      <Link href={`/shop`}>Unimart Affiliation Program</Link>
+                      <Link href={`/shop`}>TryShape Affiliation Program</Link>
                     </li>
                   </ul>
                 </div>
@@ -132,16 +132,16 @@ export default function Footer1() {
                   <h5 className="ft-title">Get to Know Us</h5>
                   <ul className="ft-link">
                     <li>
-                      <Link href={`/about`}>Careers for Unimart</Link>
+                      <Link href={`/about`}>Careers for TryShape</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>About Unimart</Link>
+                      <Link href={`/about`}>About TryShape</Link>
                     </li>
                     <li>
                       <Link href={`/about`}>Investor Relations</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>Unimart Devices</Link>
+                      <Link href={`/about`}>TryShape Devices</Link>
                     </li>
                     <li>
                       <Link href={`/about`}>Customer reviews</Link>
@@ -153,10 +153,10 @@ export default function Footer1() {
                       <Link href={`/find-store`}>Store Locations</Link>
                     </li>
                     <li>
-                      <Link href={`/find-store`}>Unimart Near Me</Link>
+                      <Link href={`/find-store`}>TryShape Near Me</Link>
                     </li>
                     <li>
-                      <Link href={`/about`}>Unimart Dealership</Link>
+                      <Link href={`/about`}>TryShape Dealership</Link>
                     </li>
                   </ul>
                 </div>

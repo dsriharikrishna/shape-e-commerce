@@ -106,7 +106,7 @@ export default function Header7({ sticky = false }) {
                   <Link href={`/`}>
                     <Image
                       alt="Ecommerce Logo Images"
-                      src="/assets/images/logo/logo-white.webp"
+                      src="/assets/images/logo/logo-white.svg"
                       width={1487}
                       height={334}
                     />
@@ -457,7 +457,7 @@ export default function Header7({ sticky = false }) {
                     <Link href={`/`}>
                       <Image
                         alt="Ecommerce Logo Images"
-                        src="/assets/images/logo/logo.webp"
+                        src="/assets/images/logo/logo.svg"
                         width={1487}
                         height={334}
                       />
@@ -478,7 +478,7 @@ export default function Header7({ sticky = false }) {
                 <Link href={`/`}>
                   <Image
                     alt="Ecommerce Logo Images"
-                    src="/assets/images/logo/logo.webp"
+                    src="/assets/images/logo/logo.svg"
                     width={1487}
                     height={334}
                   />

@@ -61,7 +61,7 @@ export default function Header9Transparent({ sticky = false }) {
                           alt="Ecommerce Logo Images"
                           width={1487}
                           height={334}
-                          src="/assets/images/logo/logo-blackbg.webp"
+                          src="/assets/images/logo/logo-blackbg.svg"
                         />
                       </Link>
                     </div>
@@ -275,7 +275,7 @@ export default function Header9Transparent({ sticky = false }) {
                                                 </h5>
                                                 <p className="b3 desc">
                                                   Send your idea, appear
-                                                  Unimart.
+                                                  TryShape.
                                                 </p>
                                               </div>
                                               <Link
@@ -503,7 +503,7 @@ export default function Header9Transparent({ sticky = false }) {
                                                 </h5>
                                                 <p className="b3 desc rbt-text-color-gray-200">
                                                   Send your idea, appear
-                                                  Unimart.
+                                                  TryShape.
                                                 </p>
                                               </div>
                                               <a
@@ -724,7 +724,7 @@ export default function Header9Transparent({ sticky = false }) {
                                                 </h5>
                                                 <p className="b3 desc">
                                                   Send your idea, appear
-                                                  Unimart.
+                                                  TryShape.
                                                 </p>
                                               </div>
                                               <Link
@@ -903,7 +903,7 @@ export default function Header9Transparent({ sticky = false }) {
                         alt="Ecommerce Logo Images"
                         width={1487}
                         height={334}
-                        src="/assets/images/logo/logo.webp"
+                        src="/assets/images/logo/logo.svg"
                       />
                     </Link>
                   </div>
@@ -924,7 +924,7 @@ export default function Header9Transparent({ sticky = false }) {
                     alt="Ecommerce Logo Images"
                     width={1487}
                     height={334}
-                    src="/assets/images/logo/logo.webp"
+                    src="/assets/images/logo/logo.svg"
                   />
                 </Link>
               </div>

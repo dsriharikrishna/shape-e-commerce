@@ -6,9 +6,9 @@ export default function PrivacyPolicy() {
           <div className="col-lg-8">
             <div className="rbt-article-content-wrapper">
               <div className="content">
-                <h3>Welcome to Unimart Privacy Policy</h3>
+                <h3>Welcome to TryShape Privacy Policy</h3>
                 <p>
-                  Your privacy is very important to us at Unimart. This Privacy
+                  Your privacy is very important to us at TryShape. This Privacy
                   Policy explains how we collect, use, disclose, and protect
                   your personal information when you visit our website, make
                   purchases, or use our services. By accessing our website and
@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
                 </p>
                 <h5>5. Your Rights and Choices</h5>
                 <p>
-                  As a user of Unimart, you have the following rights regarding
+                  As a user of TryShape, you have the following rights regarding
                   your personal information:
                 </p>
                 <ul>
@@ -139,7 +139,7 @@ export default function PrivacyPolicy() {
                 </ul>
                 <h5>6. Children’s Privacy</h5>
                 <p>
-                  Unimart does not knowingly collect or solicit personal
+                  TryShape does not knowingly collect or solicit personal
                   information from anyone under the age of 13. If we learn that
                   we have inadvertently collected personal information from a
                   child under the age of 13, we will delete such information as
@@ -172,7 +172,7 @@ export default function PrivacyPolicy() {
                 </p>
                 <p className="mb--16">
                   Email:
-                  <a href="mailto:support@unimart.com">support@unimart.com</a>
+                  <a href="mailto:support@tryshape.com">support@tryshape.com</a>
                 </p>
                 <p className="mb--0">
                   Phone: <a href="tel:+11234567890">+1 123 456 7890</a>
