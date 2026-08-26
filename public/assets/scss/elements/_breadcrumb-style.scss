@@ -1,0 +1,121 @@
+@use "../default/variables" as *; // Importing all the variables
+@use "../default/extend" as *; // Importing all the extend
+@use "../default/mixins" as *; // Importing all the mixins
+
+/*----------------------------- 
+    Breadcrumb Styles
+-------------------------------*/
+.rbt-breadcrumb-inner {
+  .rbt-breadcrumb-title {
+    font-weight: 400;
+    span {
+      font-weight: 700;
+    }
+  }
+  .rbt-breadcrumb-page-list {
+    margin: 0;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    gap: 10px;
+    @media #{$sm-layout} {
+      flex-wrap: wrap;
+    }
+    li {
+      margin: 0;
+      font-size: var(--font-size-b3);
+      line-height: var(--line-height-b3);
+      font-weight: var(--f-medium);
+      color: var(--color-gray-400);
+    }
+  }
+}
+.rbt-breadcrumb-two {
+  padding: 24px 0;
+  @media #{$sm-layout} {
+    padding-bottom: 12px;
+  }
+  .rbt-breadcrumb-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+    @media #{$sm-layout} {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+}
+
+.rbt-breadcrumb-default {
+  &.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .rbt-breadcrumb-title {
+      color: var(--color-white);
+    }
+    .rbt-breadcrumb-page-list li,
+    .rbt-breadcrumb-page-list li a {
+      color: var(--color-gray-200);
+      &.active {
+        color: var(--color-white);
+      }
+    }
+
+    .rbt-breadcrumb-page-list li a {
+      color: var(--color-gray-200);
+      &.active {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &.rbt-breadcrumb-bg-1 {
+    background-image: url(/assets/images/breadcrumb-bg/breadcrumb-bg-01.webp);
+  }
+}
+
+.rbt-products-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  .rbt-dropdown {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    top: 100%;
+    left: 0;
+    transform: translateY(5px);
+    z-index: 2;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0, 0, 0.34, 0.54);
+    @media #{$sm-layout,$smlg-device,$laptop-device,$extra-device} {
+      right: 0;
+      left: unset;
+    }
+    &.rbt-dropdown-from-right {
+      right: 0;
+      left: unset;
+    }
+  }
+  .rbt-product-card {
+    max-width: 306px;
+    min-width: 306px;
+    padding: 12px;
+    background: var(--color-gray-light);
+    box-shadow: var(--shadow-2);
+    border-radius: var(--radius);
+  }
+  .rbt-event-hover {
+    position: relative;
+    &:hover {
+      .rbt-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
+}

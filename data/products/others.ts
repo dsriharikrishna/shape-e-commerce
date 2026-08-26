@@ -1,0 +1,33 @@
+import { Product } from "@/types/product";
+import { products as fashionData } from "./fashion";
+
+const fallback = fashionData.slice(0, 8);
+const fallback2 = fashionData.slice(4, 12);
+const fallback3 = fashionData.slice(8, 16);
+
+export const singleStyleProducts2: Product[] = fallback;
+export const suggestedProducts: Product[] = fallback;
+export const suggestedProducts2: Product[] = fallback2;
+export const similerAccessories: Product[] = fallback;
+export const recentViewProducts: Product[] = fallback;
+export const singlePageCompareproducts: Product[] = fallback.slice(0, 4);
+export const apparelCompareProducts: Product[] = fallback.slice(0, 4);
+export const stickyBottomProducts: Product[] = fallback;
+export const comboProducts: Product[] = fallback.slice(0, 4);
+export const comboProducts2: Product[] = fallback2.slice(0, 4);
+export const fashionComboProducts: Product[] = fallback.slice(0, 4);
+export const bundleProducts: Product[] = fallback.slice(0, 3);
+export const alternativeProducts: Product[] = fallback2;
+export const navroducts: Product[] = fallback.slice(0, 6);
+export const fashionProducts: Product[] = fallback;
+export const sportsComboProducts: Product[] = fallback.slice(0, 4);
+export const recentlyViewed: Product[] = fallback3;
+export const recommandedProducts: Product[] = fallback2;
+export const recentlyViewed2: Product[] = fallback3;
+export const recommandedProducts2: Product[] = fallback2;
+export const recentlyViewed3: Product[] = fallback3;
+export const recommandedProducts3: Product[] = fallback2;
+export const recentlyViewed4: Product[] = fallback3;
+export const recommandedProducts4: Product[] = fallback2;
+export const recentlyViewed5: Product[] = fallback3;
+export const recommandedProducts5: Product[] = fallback2;
