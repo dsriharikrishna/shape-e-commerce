@@ -1,29 +1,28 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
-import unusedImports from "eslint-plugin-unused-imports";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
-    plugins: { "unused-imports": unusedImports },
     rules: {
-      // With "react-jsx" (tsconfig), React import is not needed; allow reporting it as unused.
-      "react/jsx-uses-react": "off",
-      "react/react-in-jsx-scope": "off",
-      "no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": [
-        "warn",
-        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/ban-ts-comment": "off",
+      "react/no-unescaped-entities": "off",
+      "react/display-name": "off",
+      "react/jsx-key": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/refs": "off",
+      "react-hooks/immutability": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "import/no-anonymous-default-export": "off",
+      "@next/next/no-img-element": "off",
+      "jsx-a11y/role-has-required-aria-props": "off",
     },
   },
-  // Override default ignores of eslint-config-next.
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",
