@@ -75,36 +75,7 @@ export default function Categories() {
             </div>
           </div>
 
-          {/* Box 3: Small */}
-          <div className="group relative overflow-hidden rounded-3xl bg-gray-50 aspect-square">
-            <Link href="/shop" className="block w-full h-full relative">
-              <Image
-                src="/assets/images/catagory-img/cat-bg-11.webp"
-                alt="Shoes"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-            </Link>
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-              <Link
-                href="/shop"
-                className="px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
-              >
-                Shoes
-              </Link>
-            </div>
-            <div className="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <Link
-                href="/shop"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-lg hover:bg-black hover:text-white transition-colors"
-              >
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Box 4: Wide (Col Span 2) */}
+          {/* Box 3: Wide (Col Span 2) */}
           <div className="group relative overflow-hidden rounded-3xl bg-gray-50 col-span-2 aspect-[2/1] lg:aspect-auto">
             <Link href="/shop" className="block w-full h-full relative">
               <Image

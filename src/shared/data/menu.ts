@@ -109,17 +109,6 @@ export const categoryMegamenus: CategoryMegamenu[] = [
           { href: "/shop", label: "Activewear" },
         ],
       },
-      {
-        title: "Accessories",
-        items: [
-          { href: "/shop", label: "Bags & Purses" },
-          { href: "/shop", label: "Belts" },
-          { href: "/shop", label: "Hats" },
-          { href: "/shop", label: "Scarves" },
-          { href: "/shop", label: "Jewelry" },
-          { href: "/shop", label: "Sunglasses" },
-        ],
-      },
     ],
     banner: {
       title: "New Collection",
@@ -148,17 +137,6 @@ export const categoryMegamenus: CategoryMegamenu[] = [
           { href: "/shop", label: "Activewear" },
         ],
       },
-      {
-        title: "Accessories",
-        items: [
-          { href: "/shop", label: "Watches" },
-          { href: "/shop", label: "Belts" },
-          { href: "/shop", label: "Wallets" },
-          { href: "/shop", label: "Ties & Bowties" },
-          { href: "/shop", label: "Backpacks" },
-          { href: "/shop", label: "Sneakers" },
-        ],
-      },
     ],
     banner: {
       title: "Urban Style",
@@ -169,45 +147,6 @@ export const categoryMegamenus: CategoryMegamenu[] = [
       imgWidth: 520,
       imgHeight: 408,
       bannerCardClass: "rbt-bg-style-box rbt-bg-two",
-    },
-  },
-  {
-    label: "Footwear",
-    icon: "fa-regular fa-shoe-prints",
-    href: "/shop",
-    sections: [
-      {
-        title: "Shoes",
-        items: [
-          { href: "/shop", label: "Sneakers" },
-          { href: "/shop", label: "Boots" },
-          { href: "/shop", label: "Formal Shoes" },
-          { href: "/shop", label: "Sandals" },
-          { href: "/shop", label: "Running Shoes" },
-          { href: "/shop", label: "Loafers" },
-        ],
-      },
-      {
-        title: "By Brand",
-        items: [
-          { href: "/shop", label: "StepCraft" },
-          { href: "/shop", label: "FlexMove" },
-          { href: "/shop", label: "DenimCraft" },
-          { href: "/shop", label: "TailorMade" },
-          { href: "/shop", label: "StreetEdge" },
-          { href: "/shop", label: "RetroVibe" },
-        ],
-      },
-    ],
-    banner: {
-      title: "Step in Style",
-      desc: "Premium footwear for every occasion.",
-      btnHref: "/shop",
-      btnText: "Shop Now",
-      imgSrc: "/assets/images/product-img/fashion/product-new-10-a-1.webp",
-      imgWidth: 520,
-      imgHeight: 424,
-      bannerCardClass: "rbt-bg-color-brand-50 rbt-rounded--12",
     },
   },
 ];
@@ -226,11 +165,6 @@ export const categorySimpleLinks: {
     href: "/shop",
     label: "Casual Wear",
     icon: "fa-regular fa-vest",
-  },
-  {
-    href: "/shop",
-    label: "Footwear",
-    icon: "fa-regular fa-shoe-prints",
   },
   {
     href: "/shop",
