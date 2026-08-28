@@ -7,8 +7,6 @@ const TOASTER_DURATION_MS = 3000;
 interface UiState {
   cartSidebarOpen: boolean;
   comparePanelOpen: boolean;
-  categorySidebarOpen: boolean;
-  categorySidebarRightActive: boolean;
   commonSearchOpen: boolean;
   searchOpen: boolean;
   mobileMenuOpen: boolean;
@@ -20,9 +18,6 @@ interface UiState {
   closeCartSidebar: () => void;
   openComparePanel: () => void;
   closeComparePanel: () => void;
-  openCategorySidebar: () => void;
-  closeCategorySidebar: () => void;
-  setCategorySidebarRightActive: (active: boolean) => void;
   toggleCommonSearch: () => void;
   closeCommonSearch: () => void;
   toggleSearch: () => void;
@@ -35,8 +30,6 @@ interface UiState {
 export const useUiStore = create<UiState>((set, _get) => ({
   cartSidebarOpen: false,
   comparePanelOpen: false,
-  categorySidebarOpen: false,
-  categorySidebarRightActive: false,
   commonSearchOpen: false,
   searchOpen: false,
   mobileMenuOpen: false,
@@ -50,16 +43,6 @@ export const useUiStore = create<UiState>((set, _get) => ({
 
   openComparePanel: () => set({ comparePanelOpen: true }),
   closeComparePanel: () => set({ comparePanelOpen: false }),
-
-  openCategorySidebar: () =>
-    set({ categorySidebarOpen: true, categorySidebarRightActive: false }),
-  closeCategorySidebar: () =>
-    set({
-      categorySidebarOpen: false,
-      categorySidebarRightActive: false,
-    }),
-  setCategorySidebarRightActive: (active) =>
-    set({ categorySidebarRightActive: active }),
 
   toggleCommonSearch: () =>
     set((s) => ({ commonSearchOpen: !s.commonSearchOpen })),
@@ -87,8 +70,6 @@ export const useUiStore = create<UiState>((set, _get) => ({
     set({
       cartSidebarOpen: false,
       comparePanelOpen: false,
-      categorySidebarOpen: false,
-      categorySidebarRightActive: false,
       commonSearchOpen: false,
       searchOpen: false,
       mobileMenuOpen: false,
@@ -99,8 +80,6 @@ function getUiSnapshot(state: UiState) {
   return {
     cartSidebarOpen: state.cartSidebarOpen,
     comparePanelOpen: state.comparePanelOpen,
-    categorySidebarOpen: state.categorySidebarOpen,
-    categorySidebarRightActive: state.categorySidebarRightActive,
     commonSearchOpen: state.commonSearchOpen,
     searchOpen: state.searchOpen,
     mobileMenuOpen: state.mobileMenuOpen,
@@ -111,9 +90,6 @@ function getUiSnapshot(state: UiState) {
     closeCartSidebar: state.closeCartSidebar,
     openComparePanel: state.openComparePanel,
     closeComparePanel: state.closeComparePanel,
-    openCategorySidebar: state.openCategorySidebar,
-    closeCategorySidebar: state.closeCategorySidebar,
-    setCategorySidebarRightActive: state.setCategorySidebarRightActive,
     toggleCommonSearch: state.toggleCommonSearch,
     closeCommonSearch: state.closeCommonSearch,
     toggleSearch: state.toggleSearch,

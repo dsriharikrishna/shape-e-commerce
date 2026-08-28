@@ -77,7 +77,10 @@ export default function Categories() {
 
           {/* Box 3: Wide (Col Span 2) */}
           <div className="group relative overflow-hidden rounded-3xl bg-gray-50 col-span-2 aspect-[2/1] lg:aspect-auto">
-            <Link href="/shop" className="block w-full h-full relative">
+            <Link
+              href="/shop?collection=new-arrivals"
+              className="block w-full h-full relative"
+            >
               <Image
                 src="/assets/images/catagory-img/cat-bg-lg-01.webp"
                 alt="Stylish & Trending"
@@ -100,7 +103,7 @@ export default function Categories() {
               </div>
               <div>
                 <Link
-                  href="/shop"
+                  href="/shop?collection=new-arrivals"
                   className="pointer-events-auto inline-block px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors"
                 >
                   See Collection
@@ -109,7 +112,7 @@ export default function Categories() {
             </div>
             <div className="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <Link
-                href="/shop"
+                href="/shop?collection=new-arrivals"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-lg hover:bg-black hover:text-white transition-colors"
               >
                 <ArrowUpRight className="h-4 w-4" />

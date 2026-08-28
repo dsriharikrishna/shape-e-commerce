@@ -53,10 +53,6 @@ const Toasters = dynamic(
   () => import("@/shared/components/modals/Toasters").then((m) => m.default),
   { ssr: false }
 );
-const Categories = dynamic(
-  () => import("@/shared/components/modals/Categories").then((m) => m.default),
-  { ssr: false }
-);
 const Overlay = dynamic(
   () => import("@/shared/components/modals/Overlay").then((m) => m.default),
   { ssr: false }
@@ -102,7 +98,6 @@ export default function LayoutModals() {
       <CartModal />
       <Compare />
       <QuickView />
-      <Categories />
       <QuickView2 />
       <CompareView />
       <WishList />

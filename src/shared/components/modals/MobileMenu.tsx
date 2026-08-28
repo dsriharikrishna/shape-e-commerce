@@ -256,7 +256,7 @@ export default function MobileMenu() {
 
                     {/* New Arrivals */}
                     <li>
-                      <Link href="/shop" onClick={closeMenu}>
+                      <Link href="/shop?collection=new-arrivals" onClick={closeMenu}>
                         New Arrivals
                         <div className="rbt-product-badge rbt-product-badge-bg-danger border-rounded ml--8">
                           New

@@ -7,7 +7,6 @@ import CompareItemLength from "@/shared/components/common/CompareItemLength";
 import WishlistLength from "@/shared/components/common/WishlistLength";
 import CartItemsLength from "@/shared/components/common/CartItemsLength";
 import CartItemsTotal from "@/shared/components/common/CartItemsTotal";
-import CategorySidebarToggler from "./headerComponents/CategorySidebarToggler";
 import SearchDropdownCommon from "./headerComponents/SearchDropdownCommon";
 import SearchWithCategory from "./headerComponents/SearchWithCategory";
 import TopbarSwiper from "./headerComponents/TopbarSwiper";
@@ -77,7 +76,6 @@ export default function Header5({ sticky = false }) {
                       </div>
                     </div>
                     <div className="header-info p-0 d-none d-xl-block">
-                      <CategorySidebarToggler />
                     </div>
                   </div>
                 </div>
@@ -177,7 +175,6 @@ export default function Header5({ sticky = false }) {
             <div className="header-left">
               <div className="rbt-header-content d-flex">
                 <div className="header-info p-0 d-none d-xxl-flex mr--24">
-                  <CategorySidebarToggler />
                 </div>
                 <div className="header-info d-xl-block d-none">
                   <div className="logo rbt-logo-height-sm">

@@ -2,6 +2,10 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+.rbt-sidebar .collapse {
+  visibility: visible;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

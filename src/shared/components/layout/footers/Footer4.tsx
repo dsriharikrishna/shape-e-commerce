@@ -2,22 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import LanguageSelect from "@/shared/components/common/LanguageSelect";
 import CurrencySelect from "@/shared/components/common/CurrencySelect";
-import InfoSection2 from "./footerSections/InfoSection2";
 export default function Footer4() {
   return (
     <>
-      <div className="rbt-component-area rbt-collapsible-content-section rbt-bg-color-white">
-        <div className="container">
-          <div className="row row--12">
-            <div className="col-md-12">
-              <div className="rbt-collapsible-content-box rbt-bg-color-gray-light">
-                <InfoSection2 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Component Area */}
       <div className="rbt-separator-mid">
         <div className="wrapper">
           <hr className="rbt-separator m-0 rbt-separator-gray100" />

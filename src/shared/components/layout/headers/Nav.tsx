@@ -88,7 +88,7 @@ export default function Nav() {
 
       {/* New Arrivals — direct link */}
       <li>
-        <Link href="/shop">
+        <Link href="/shop?collection=new-arrivals">
           New Arrivals
           <div className="rbt-product-badge rbt-product-badge-bg-danger border-rounded ml--8">
             New

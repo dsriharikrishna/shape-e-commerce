@@ -210,5 +210,5 @@ export default function ShopListSidebar({ rightSidebar = false }) {
         </div>
       </div>
     </div>
-  );
+  );          
 }

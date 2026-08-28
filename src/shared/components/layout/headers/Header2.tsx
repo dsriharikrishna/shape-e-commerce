@@ -8,7 +8,6 @@ import CompareItemLength from "@/shared/components/common/CompareItemLength";
 import CartItemsLength from "@/shared/components/common/CartItemsLength";
 import WishlistLength from "@/shared/components/common/WishlistLength";
 import CartItemsTotal from "@/shared/components/common/CartItemsTotal";
-import CategorySidebarToggler from "./headerComponents/CategorySidebarToggler";
 import SearchDropdownCommon from "./headerComponents/SearchDropdownCommon";
 import SearchWithCategory from "./headerComponents/SearchWithCategory";
 import TopbarSwiper from "./headerComponents/TopbarSwiper";
@@ -56,12 +55,6 @@ export default function Header2({ sticky = false }) {
                             Track Your Order
                           </a>
                         </div>
-                        <div className="header-info">
-                          <CurrencySelect />
-                        </div>
-                        <div className="header-info">
-                          <LanguageSelect />
-                        </div>
                       </li>
                     </ul>
                   </div>
@@ -98,7 +91,6 @@ export default function Header2({ sticky = false }) {
                     </div>
                   </div>
                   <div className="header-info p-0 d-none d-xl-block ml--28">
-                    <CategorySidebarToggler parentClass="rbt-offcanvas-trigger-btn rbt-offcanvas-trigger-transparent-btn rbt-cat-offcanvas-activation rbt-burger-menu-bar" />
                   </div>
                 </div>
               </div>
@@ -227,7 +219,6 @@ export default function Header2({ sticky = false }) {
             <div className="header-left">
               <div className="rbt-header-content d-flex">
                 <div className="header-info p-0 d-none d-xxl-flex mr--24">
-                  <CategorySidebarToggler />
                 </div>
                 <div className="header-info d-xl-block d-none">
                   <div className="logo rbt-logo-height-sm">

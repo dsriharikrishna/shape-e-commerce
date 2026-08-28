@@ -1,29 +1,11 @@
 "use client";
 
-import { Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import InfoSection from "./footerSections/InfoSection";
 import Image from "next/image";
 import Link from "next/link";
-const instaPosts = [
-  "/assets/images/insta-posts/insta-post-a-07.webp",
-  "/assets/images/insta-posts/insta-post-a-08.webp",
-  "/assets/images/insta-posts/insta-post-a-09.webp",
-  "/assets/images/insta-posts/insta-post-a-10.webp",
-  "/assets/images/insta-posts/insta-post-a-11.webp",
-  "/assets/images/insta-posts/insta-post-a-12.webp",
-  "/assets/images/insta-posts/insta-post-a-07.webp",
-  "/assets/images/insta-posts/insta-post-a-08.webp",
-  "/assets/images/insta-posts/insta-post-a-09.webp",
-  "/assets/images/insta-posts/insta-post-a-10.webp",
-  "/assets/images/insta-posts/insta-post-a-11.webp",
-  "/assets/images/insta-posts/insta-post-a-12.webp",
-];
 
 export default function Footer3() {
   return (
     <>
-      <InfoSection />
       <footer className="rbt-footer rbt-footer-style-three rbt-bg-color-gray-light pt--48">
         <div className="p-0 rbt-footer-top">
           <div className="container">
@@ -93,57 +75,6 @@ export default function Footer3() {
                 </div>
               </div>
             </div>
-            {/* Start Instagram Posts Area */}
-            <div className="row row--12 mb--32 mb_sm--24">
-              <div className="col-12">
-                <Swiper
-                  className="swiper rbt-insta-slider-activation"
-                  {...{
-                    slidesPerView: "auto",
-                    grabCursor: true,
-                    spaceBetween: 15,
-                    loop: true,
-                    speed: 1000,
-                    autoplay: {
-                      delay: 1500,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                    },
-                  }}
-                  modules={[Autoplay]}
-                >
-                  {instaPosts.map((src, index) => (
-                    <SwiperSlide className="swiper-slide" key={index}>
-                      <div className="rbt-instapost text-center rbt-instapost-style-one">
-                        <a
-                          href="#!"
-                          data-bs-toggle="modal"
-                          data-bs-target="#instaModal"
-                        >
-                          <div className="instapost-img">
-                            <Image
-                              alt="Ecommerce Instagram Posts Image"
-                              src={src}
-                              width={400}
-                              height={400}
-                            />
-                          </div>
-                          <div className="instapost-content rbt-gap--4">
-                            <span className="insta-icon insta-icon-sm">
-                              <i className="fa-brands fa-instagram" />
-                            </span>
-                            <span className="rbt-btn-link b4">
-                              View Product
-                            </span>
-                          </div>
-                        </a>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-            </div>
-            {/* End Instagram Posts Area */}
             {/* Start WaterMark */}
             <div className="row">
               <div className="col-12">
@@ -159,40 +90,6 @@ export default function Footer3() {
               </div>
             </div>
             <div className="row row--12 pt--8 justify-content-between rbt-footer-nav-wrapper mt_dec--24">
-              <div className="col-12 col-sm-6 col-lg-2 mt--24">
-                <div className="footer-widget rbt-link-hover">
-                  <h5 className="ft-title">Let Us Help You</h5>
-                  <ul className="ft-link">
-                    <li>
-                      <Link href={`/account-info`}>Account Info</Link>
-                    </li>
-                    <li>
-                      <Link href={`/my-order-history`}>Your Orders</Link>
-                    </li>
-                    <li>
-                      <Link href={`/return-policy`}>
-                        Returns &amp; Replacements
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href={`/my-order-history`}>
-                        Shipping Rates &amp; Policies
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href={`/return-policy`}>
-                        Refund and Returns Policy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href={`/privacy-policy`}>Privacy Policy</Link>
-                    </li>
-                    <li>
-                      <Link href={`/terms-policy`}>Terms and Conditions</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <div className="col-12 col-sm-6 col-lg-2 mt--24">
                 <div className="footer-widget rbt-link-hover">
                   <h5 className="ft-title">Let Us Help You</h5>
@@ -251,31 +148,6 @@ export default function Footer3() {
                     </li>
                     <li>
                       <Link href={`/shop`}>Sell-Publish with Us</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-12 col-sm-6 col-lg-2 mt--24">
-                <div className="footer-widget rbt-link-hover">
-                  <h5 className="ft-title">Our Stores</h5>
-                  <ul className="ft-link">
-                    <li>
-                      <Link href={`/find-store`}>New York</Link>
-                    </li>
-                    <li>
-                      <Link href={`/find-store`}>London SF</Link>
-                    </li>
-                    <li>
-                      <Link href={`/find-store`}>Cockfosters BP</Link>
-                    </li>
-                    <li>
-                      <Link href={`/find-store`}>Los Angeles</Link>
-                    </li>
-                    <li>
-                      <Link href={`/find-store`}>Las Vegas</Link>
-                    </li>
-                    <li>
-                      <Link href={`/find-store`}>Our Sitemap</Link>
                     </li>
                   </ul>
                 </div>

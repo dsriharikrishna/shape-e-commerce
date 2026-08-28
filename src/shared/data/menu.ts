@@ -17,8 +17,6 @@ export const shopPages: MenuSection[] = [
         badge: "SHOP",
         badgeColor: "green",
       },
-      { href: "/shop-left-sidebar", label: "Shop with Filters" },
-      { href: "/categories-list", label: "Categories" },
       { href: "/compare-product", label: "Compare Products" },
     ],
   },

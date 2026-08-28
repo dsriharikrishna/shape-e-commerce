@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ChevronRight, Filter, SlidersHorizontal, Search } from "lucide-react";
 import { allProducts as products } from "@/features/products/data/products";
 import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
@@ -11,6 +12,9 @@ import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 
 export default function ShopPage() {
+  const searchParams = useSearchParams();
+  const collection = searchParams.get("collection");
+  const isNewArrivals = collection === "new-arrivals";
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<[number, number]>([
@@ -27,6 +31,10 @@ export default function ShopPage() {
 
   // Filter products
   const filteredProducts = products.filter((product) => {
+    const matchesCollection =
+      !isNewArrivals ||
+      ["NEW", "NEW ARRIVAL"].includes(product.badge?.text?.toUpperCase() ?? "");
+
     // Text search
     const matchesSearch = product.title
       .toLowerCase()
@@ -41,8 +49,10 @@ export default function ShopPage() {
     const matchesPrice =
       product.price >= selectedPrice[0] && product.price <= selectedPrice[1];
 
-    return matchesSearch && matchesCategory && matchesPrice;
+    return matchesCollection && matchesSearch && matchesCategory && matchesPrice;
   });
+
+  const pageTitle = isNewArrivals ? "New Arrivals" : "Shop";
 
   const toggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -60,13 +70,13 @@ export default function ShopPage() {
       <div className="bg-gray-50 py-8 border-b border-gray-200">
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <h1 className="text-4xl font-bold text-gray-900">Shop</h1>
+            <h1 className="text-4xl font-bold text-gray-900">{pageTitle}</h1>
             <div className="flex items-center space-x-2 text-sm text-gray-500">
               <Link href="/" className="hover:text-black transition-colors">
                 Home
               </Link>
               <ChevronRight className="h-4 w-4" />
-              <span className="text-black font-semibold">Shop</span>
+              <span className="text-black font-semibold">{pageTitle}</span>
             </div>
           </div>
         </div>

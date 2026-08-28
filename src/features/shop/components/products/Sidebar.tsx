@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch } from "react";
+import { Dispatch, useState } from "react";
 import {
   setPriceRange,
   toggleBrand,
@@ -25,6 +25,22 @@ export default function Sidebar({
   dispatch: Dispatch<FilterAction>;
   getFilterCount: (fn: (product: Product) => boolean) => number;
 }) {
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    "rbt-collapse-3": true,
+    "rbt-collapse-6": true,
+    "rbt-collapse-7": true,
+    "rbt-collapse-8": true,
+    "rbt-collapse-9": true,
+    "rbt-collapse-10": true,
+  });
+
+  const toggleSection = (sectionId: string) => {
+    setOpenSections((sections) => ({
+      ...sections,
+      [sectionId]: !sections[sectionId],
+    }));
+  };
+
   return (
     <div className="rbt-sidebar-bottom">
       {/* Start Widget Area  */}
@@ -32,11 +48,14 @@ export default function Sidebar({
         <div className="bt-single-widget-inner">
           <h4 className="rbt-widget-title rbt-widget-title-without-border">
             <a
-              data-bs-toggle="collapse"
               href="#rbt-collapse-3"
               role="button"
-              aria-expanded="false"
+              aria-expanded={openSections["rbt-collapse-3"]}
               aria-controls="rbt-collapse-3"
+              onClick={(event) => {
+                event.preventDefault();
+                toggleSection("rbt-collapse-3");
+              }}
             >
               Categories
               <span className="icon">
@@ -44,7 +63,10 @@ export default function Sidebar({
               </span>
             </a>
           </h4>
-          <div className="collapse show" id="rbt-collapse-3">
+          <div
+            className={`collapse ${openSections["rbt-collapse-3"] ? "show" : ""}`}
+            id="rbt-collapse-3"
+          >
             <ul className="rbt-sidebar-list-wrapper rbt-categories-list-check">
               <FilterByCategories
                 selectedItems={state.categories}
@@ -63,11 +85,14 @@ export default function Sidebar({
         <div className="bt-single-widget-inner">
           <h4 className="rbt-widget-title rbt-widget-title-without-border">
             <a
-              data-bs-toggle="collapse"
               href="#rbt-collapse-6"
               role="button"
-              aria-expanded="false"
+              aria-expanded={openSections["rbt-collapse-6"]}
               aria-controls="rbt-collapse-6"
+              onClick={(event) => {
+                event.preventDefault();
+                toggleSection("rbt-collapse-6");
+              }}
             >
               Customer Reviews
               <span className="icon">
@@ -75,7 +100,10 @@ export default function Sidebar({
               </span>
             </a>
           </h4>
-          <div className="collapse show" id="rbt-collapse-6">
+          <div
+            className={`collapse ${openSections["rbt-collapse-6"] ? "show" : ""}`}
+            id="rbt-collapse-6"
+          >
             <ul className="rbt-sidebar-list-wrapper rbt-categories-review-list">
               <FilterByReview
                 selectedItems={state.ratings}
@@ -93,11 +121,14 @@ export default function Sidebar({
         <div className="bt-single-widget-inner">
           <h4 className="rbt-widget-title rbt-widget-title-without-border">
             <a
-              data-bs-toggle="collapse"
               href="#rbt-collapse-7"
               role="button"
-              aria-expanded="false"
+              aria-expanded={openSections["rbt-collapse-7"]}
               aria-controls="rbt-collapse-7"
+              onClick={(event) => {
+                event.preventDefault();
+                toggleSection("rbt-collapse-7");
+              }}
             >
               Filter by price
               <span className="icon">
@@ -105,7 +136,10 @@ export default function Sidebar({
               </span>
             </a>
           </h4>
-          <div className="collapse show" id="rbt-collapse-7">
+          <div
+            className={`collapse ${openSections["rbt-collapse-7"] ? "show" : ""}`}
+            id="rbt-collapse-7"
+          >
             <FilterByPrice
               getFilterCount={getFilterCount}
               priceRange={state.price}
@@ -120,11 +154,14 @@ export default function Sidebar({
         <div className="bt-single-widget-inner">
           <h4 className="rbt-widget-title rbt-widget-title-without-border pb--0">
             <a
-              data-bs-toggle="collapse"
               href="#rbt-collapse-8"
               role="button"
-              aria-expanded="false"
+              aria-expanded={openSections["rbt-collapse-8"]}
               aria-controls="rbt-collapse-8"
+              onClick={(event) => {
+                event.preventDefault();
+                toggleSection("rbt-collapse-8");
+              }}
             >
               Filter by color
               <span className="icon">
@@ -144,7 +181,10 @@ export default function Sidebar({
               </span>
             </div>
           </div>
-          <div className="collapse show" id="rbt-collapse-8">
+          <div
+            className={`collapse ${openSections["rbt-collapse-8"] ? "show" : ""}`}
+            id="rbt-collapse-8"
+          >
             <FilterByColor
               getFilterCount={getFilterCount}
               selectedItems={state.colors}
@@ -159,11 +199,14 @@ export default function Sidebar({
         <div className="bt-single-widget-inner">
           <h4 className="rbt-widget-title rbt-widget-title-without-border">
             <a
-              data-bs-toggle="collapse"
               href="#rbt-collapse-9"
               role="button"
-              aria-expanded="false"
+              aria-expanded={openSections["rbt-collapse-9"]}
               aria-controls="rbt-collapse-9"
+              onClick={(event) => {
+                event.preventDefault();
+                toggleSection("rbt-collapse-9");
+              }}
             >
               Brand
               <span className="icon">
@@ -171,7 +214,10 @@ export default function Sidebar({
               </span>
             </a>
           </h4>
-          <div className="collapse show" id="rbt-collapse-9">
+          <div
+            className={`collapse ${openSections["rbt-collapse-9"] ? "show" : ""}`}
+            id="rbt-collapse-9"
+          >
             <ul className="rbt-sidebar-list-wrapper rbt-categories-list-check rbt-categories-brand-list-check">
               <FilterByBrand
                 getFilterCount={getFilterCount}
@@ -188,11 +234,14 @@ export default function Sidebar({
         <div className="bt-single-widget-inner">
           <h4 className="rbt-widget-title rbt-widget-title-without-border">
             <a
-              data-bs-toggle="collapse"
               href="#rbt-collapse-10"
               role="button"
-              aria-expanded="false"
+              aria-expanded={openSections["rbt-collapse-10"]}
               aria-controls="rbt-collapse-10"
+              onClick={(event) => {
+                event.preventDefault();
+                toggleSection("rbt-collapse-10");
+              }}
             >
               Promotion &amp; Services
               <span className="icon">
@@ -200,7 +249,10 @@ export default function Sidebar({
               </span>
             </a>
           </h4>
-          <div className="collapse show" id="rbt-collapse-10">
+          <div
+            className={`collapse ${openSections["rbt-collapse-10"] ? "show" : ""}`}
+            id="rbt-collapse-10"
+          >
             <div className="rbt-sidebar-list-wrapper rbt-tag-list justify-content-start pt--0">
               <FilterByService
                 selectedItems={state.services}
