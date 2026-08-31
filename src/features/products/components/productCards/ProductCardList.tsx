@@ -11,21 +11,22 @@ import { Product } from "@/shared/types";
 import AddtoCompare3 from "@/shared/components/common/AddtoCompare3";
 import { Button, buttonVariants } from "@/shared/components/ui/button";
 
+import { cn } from "@/lib/utils";
+
 export default function ProductCardList({ product }: { product: Product }) {
   return (
     <>
       <div
-        className={`rbt-card rbt-product-card has-hover-box-shadow ${
-          product.isStockOut ? "rbt-stock-out-product-card" : ""
-        }`}
+        className={cn(
+          "group relative flex flex-col md:flex-row bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden",
+          product.isStockOut ? "opacity-75" : ""
+        )}
       >
-        <div
-          className={`inner rbt-scroll-trigger fade_in animation-order-${product.animationOrder}`}
-        >
-          <div className="rbt-card-img rbt-has-hover-img rbt-bg-color-default">
-            <Link href={`/product-single-default/${product.id}`}>
+        <div className="flex flex-col md:flex-row w-full p-4 gap-6">
+          <div className="relative w-full md:w-1/3 aspect-[4/3] md:aspect-auto md:min-h-[250px] rounded-lg overflow-hidden bg-gray-50 group/image shrink-0">
+            <Link href={`/product-single-default/${product.id}`} className="block w-full h-full">
               <Image
-                className="rbt-prd-img"
+                className={cn("object-cover w-full h-full transition-all duration-500", product.hoverImgSrc ? "group-hover/image:opacity-0" : "group-hover/image:scale-105")}
                 alt="Card Image"
                 src={product.imgSrc}
                 width={1246}
@@ -33,7 +34,7 @@ export default function ProductCardList({ product }: { product: Product }) {
               />
               {product.hoverImgSrc && (
                 <Image
-                  className="rbt-hover-img"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 scale-105"
                   alt="Card Image"
                   src={product.hoverImgSrc}
                   width={1246}
@@ -42,11 +43,11 @@ export default function ProductCardList({ product }: { product: Product }) {
               )}
             </Link>
             {product.badges && product.badges.length > 0 && (
-              <div className="rbt-badge-wrapper rbt-content-top-left">
+              <div className="absolute top-3 left-3 flex flex-col gap-1">
                 {product.badges.map((badge, index) => (
                   <div
                     key={index}
-                    className={`rbt-product-badge ${badge.bg} border-rounded`}
+                    className={`text-xs font-semibold px-2 py-1 rounded ${badge.bg}`}
                   >
                     {badge.text}
                   </div>
@@ -55,22 +56,20 @@ export default function ProductCardList({ product }: { product: Product }) {
             )}
             {product.watchingTooltip && (
               <div
-                className="rbt-discount-badge right--corner-style tooltips"
+                className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-2 py-1 rounded shadow-sm tooltips"
                 data-tooltip={`👁️ ${product.watchingTooltip} People Are Watching This Item`}
                 data-tooltip-position="bottom"
               >
                 <span>
-                  <i className="fa-regular fa-eye" />
+                  <i className="fa-regular fa-eye mr-1" />
                   {product.watchingTooltip}
                 </span>
               </div>
             )}
-            <div className="rbt-quick-btn-grp has-mixup-midlayer bottom-right--position">
+            <div className="absolute bottom-4 right-4 flex flex-col gap-2 opacity-0 translate-y-4 group-hover/image:opacity-100 group-hover/image:translate-y-0 transition-all duration-300">
               <AddtoQuickview1
                 product={product}
-                className={`rbt-search-btn rbt-quick-btn tooltips ${
-                  product.id === 2 ? "rbt-quickview-sidenav-activation" : ""
-                }`}
+                className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors tooltips"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#quickViewModal"
@@ -79,80 +78,84 @@ export default function ProductCardList({ product }: { product: Product }) {
               >
                 <i className="fa-regular fa-magnifying-glass-plus" />
               </AddtoQuickview1>
-
-              <AddtoWishlist product={product} />
+              <AddtoWishlist product={product} className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors" />
             </div>
             {product.countdown && (
-              <div className="rbt-countdown-wrap rbt-content-bottom-center rbt-countdown-one bg-variation-black cd-border-style">
+              <div className="absolute bottom-0 left-0 w-full bg-black/80 text-white text-center py-2">
                 <Countdown />
               </div>
             )}
           </div>
-          <div className="rbt-card-body">
+          <div className="flex flex-col flex-grow">
             {product.category?.length && product.category.length > 0 && (
-              <div>
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
                 {product.category?.map((item, index) => (
                   <Link
                     key={index}
                     href={`/shop-by-categories`}
-                    className="rbt-card-subtitle rbt-card-catagories-text"
+                    className="text-xs text-gray-500 hover:text-primary transition-colors uppercase tracking-wider"
                   >
                     {item}
+                    {index < (product.category?.length || 0) - 1 ? "," : ""}
                   </Link>
                 ))}
               </div>
             )}
-            <h6 className="rbt-card-title">
-              <Link href={`/product-single-default/${product.id}`}>
+            <h6 className="font-semibold text-xl text-gray-900 mb-2 leading-tight">
+              <Link href={`/product-single-default/${product.id}`} className="hover:text-primary transition-colors">
                 {product.title}
               </Link>
             </h6>
-            <div className="rbt-card-rating">
-              <ul className="rbt-rating-icon-list">
+            <div className="flex items-center gap-2 mb-3">
+              <ul className="flex items-center gap-1 text-yellow-400 text-sm list-none p-0 m-0">
                 {[...Array(product.rating)].map((_, index) => (
                   <li key={index}>
-                    <i className="fa-solid fa-star rbt-rated-icon" />
+                    <i className="fa-solid fa-star" />
                   </li>
                 ))}
-                {[...Array(5 - (product.rating ?? 0))].map(() => (
-                  <></>
+                {[...Array(5 - (product.rating ?? 0))].map((_, index) => (
+                  <li key={`empty-${index}`}>
+                    <i className="fa-regular fa-star" />
+                  </li>
                 ))}
               </ul>
-              <p className="rating-digit">({product.reviewCount})</p>
+              <p className="text-xs text-gray-500 m-0">({product.reviewCount})</p>
               {product.extraInfo && product.extraInfo.length > 0 && <Facts />}
             </div>
-            <div className="pricing-part">
+            <div className="flex items-center flex-wrap gap-2 mb-4">
               {product.oldPrice && (
-                <del className="price-text">${product.oldPrice.toFixed(2)}</del>
+                <del className="text-sm text-gray-400 font-medium">${product.oldPrice.toFixed(2)}</del>
               )}
-              <span className="price-text">
+              <span className="text-lg font-bold text-gray-900">
                 {typeof product.price === "number"
                   ? `$${product.price.toFixed(2)}`
                   : product.price}
               </span>
 
-              <span className="rbt-offer-badge">-30%</span>
+              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-red-100 text-red-600">-30%</span>
 
               {product.pricingBadges &&
                 product.pricingBadges.map((badge, index) => (
-                  <div key={index} className={`rbt-badge ${badge.bg}`}>
+                  <div key={index} className={`text-xs font-semibold px-2 py-0.5 rounded ${badge.bg}`}>
                     {badge.text}
                   </div>
                 ))}
             </div>
-            <div className="prd-btn-grp">
+            <div className="flex items-center gap-2 mt-auto">
               {product.isStockOut ? (
                 <a
-                  className={buttonVariants({ variant: "outline", size: "sm", className: "rbt-square-btn d-block has-left-icon" })}
+                  className={buttonVariants({ variant: "outline", size: "sm", className: "w-full md:w-auto text-xs font-semibold" })}
                   href="#!"
                   data-bs-toggle="modal"
                   data-bs-target="#notifyModal"
                 >
-                  <i className="fa-regular fa-bell" /> Notify Me
+                  <i className="fa-regular fa-bell mr-2" /> Notify Me
                 </a>
               ) : (
                 <AddToCart
-                  parentClass="rbt-btn rbt-btn-border rbt-btn-sm rbt-square-btn d-block has-left-icon rbt-cart-sidenav-activation"
+                  variant="default"
+                  size="sm"
+                  className="w-full md:w-auto font-semibold"
                   product={product}
                 />
               )}
@@ -160,48 +163,50 @@ export default function ProductCardList({ product }: { product: Product }) {
             </div>
           </div>
         </div>
-        <div className="prd-details-area rbt-has-show-more">
-          <div className="wrapper rbt-has-show-more-inner-content">
-            <ul className="product-details-list">
+        <div className="w-full bg-gray-50 p-4 border-t border-gray-100">
+          <div className="w-full relative h-[100px] overflow-hidden">
+            <ul className="flex flex-col gap-2 mb-4 list-none p-0">
               {product.productDetails &&
                 product.productDetails.map((detail, index) => (
-                  <li key={index}>
-                    <span className="rbt-bold--text">{detail.label} :</span>
-                    {Array.isArray(detail.text) ? (
-                      detail.text.map((line, lineIndex) => (
-                        <span
-                          key={lineIndex}
-                          className={`text ${lineIndex > 0 ? "d-block" : ""}`}
-                        >
-                          {line}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text">{detail.text}</span>
-                    )}
+                  <li key={index} className="flex gap-2 text-sm">
+                    <span className="font-semibold text-gray-900 shrink-0">{detail.label} :</span>
+                    <div className="text-gray-600">
+                      {Array.isArray(detail.text) ? (
+                        detail.text.map((line, lineIndex) => (
+                          <span
+                            key={lineIndex}
+                            className={lineIndex > 0 ? "block mt-1" : ""}
+                          >
+                            {line}
+                          </span>
+                        ))
+                      ) : (
+                        <span>{detail.text}</span>
+                      )}
+                    </div>
                   </li>
                 ))}
             </ul>
-            <ul className="product-details-list shipment-details-list">
+            <ul className="flex flex-col gap-3 list-none p-0 m-0">
               {product.shipmentDetails &&
                 product.shipmentDetails.map((shipment, index) => (
-                  <li key={index}>
-                    <span className="icon">
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="text-primary mt-1">
                       <i className={shipment.icon} />
                     </span>
-                    <div className="right-content">
+                    <div className="flex flex-col text-sm">
                       {shipment.label && (
-                        <span className="rbt-bold--text">
+                        <span className="font-semibold text-gray-900">
                           {shipment.label} :
                         </span>
                       )}
                       {shipment.text && (
-                        <span className="text">{shipment.text}</span>
+                        <span className="text-gray-600">{shipment.text}</span>
                       )}
                       {shipment.link && (
                         <a
                           href={shipment.link.href}
-                          className={buttonVariants({ className: "shipment-quick-link rbt-btn-link" })}
+                          className="text-primary hover:underline font-medium text-xs mt-1"
                         >
                           {shipment.link.text}
                         </a>
@@ -211,8 +216,8 @@ export default function ProductCardList({ product }: { product: Product }) {
                 ))}
             </ul>
           </div>
-          <div className="rbt-show-more-btn-area">
-            <button className="rbt-show-more-btn">Show More</button>
+          <div className="w-full text-center mt-2 relative z-10 before:absolute before:bottom-full before:left-0 before:w-full before:h-12 before:bg-gradient-to-t before:from-gray-50 before:to-transparent">
+            <button className="text-xs font-semibold text-primary hover:text-primary-dark transition-colors bg-white px-4 py-1.5 rounded-full shadow-sm border border-gray-200">Show More</button>
           </div>
         </div>
       </div>

@@ -8,22 +8,22 @@ import AddtoCompare2 from "@/shared/components/common/AddtoCompare2";
 
 import { Product } from "@/shared/types";
 import AddToCart3 from "@/shared/components/common/AddToCart2";
+import { cn } from "@/lib/utils";
+
 export default function ProductCardVariant({
   product,
-  cardBodyClass = "rbt-card-body has-rbt-top-right-corner-portion rbt-card-body-top-bottom-space",
+  cardBodyClass = "p-5 flex flex-col flex-grow relative bg-white rounded-b-2xl",
 }: {
   product: Product;
   cardBodyClass?: string;
 }) {
   const [selectedVariant, setSelectedVariant] = useState(product.imgSrc);
   return (
-    <div
-      className={`rbt-card rbt-product-card rbt-product-card-style-2 rounded--16 rbt-scroll-trigger fade_in animation-order-${product.animationOrder}`}
-    >
-      <div className="rbt-card-img rounded--16">
-        <Link href={`/product-single-default/${product.id}`}>
+    <div className="group relative flex flex-col bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden h-full">
+      <div className="relative w-full aspect-[3/4] bg-gray-50 overflow-hidden group/image rounded-t-2xl">
+        <Link href={`/product-single-default/${product.id}`} className="block w-full h-full">
           <Image
-            className={`rbt-scroll-trigger fade_in animation-order-${product.animationOrder} rbt-prd-img`}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover/image:scale-105"
             alt="Card Image"
             src={selectedVariant}
             width={624}
@@ -31,71 +31,68 @@ export default function ProductCardVariant({
           />
         </Link>
         {product.badge && (
-          <div className="rbt-badge-wrapper rbt-content-top-left">
-            <div
-              className={`rbt-product-badge rbt-product-badge-${product.badge.bg}`}
-            >
+          <div className="absolute top-4 left-4 z-10">
+            <span className={cn("text-xs font-semibold px-2 py-1 rounded", product.badge.bg)}>
               {product.badge.text}
-            </div>
+            </span>
           </div>
         )}
-        <AddtoWishlist2 product={product} />
+        <div className="absolute top-4 right-4 z-10 opacity-0 translate-x-4 group-hover/image:opacity-100 group-hover/image:translate-x-0 transition-all duration-300">
+          <AddtoWishlist2
+            parentClass="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors tooltips"
+            product={product}
+          />
+        </div>
       </div>
       <div className={cardBodyClass}>
-        <div className="rbt-curved-radius-bottom-corner" />
         {product.hotSell && (
-          <div className="rbt-scroll-animation-wrapper rbt-no-overlay">
-            <div className="rbt-scroll-animation rbt-scroll-right-left">
-              <div className="rbt-single-column-100">
-                <div className="rbt-category-list-dis rbt-category-list">
-                  {[...Array(7)].map((_, i) => (
-                    <a href="#!" key={i}>
-                      <span className="rbt-catagory-icon">
-                        <Image
-                          alt="icon"
-                          src="/assets/images/icons/scroll-icon-01.svg"
-                          width={16}
-                          height={16}
-                        />
-                      </span>
-                      Hot Sell 50% Off
-                    </a>
-                  ))}
-                </div>
-              </div>
+          <div className="w-full overflow-hidden bg-primary/10 text-primary py-1.5 px-3 -mx-5 -mt-5 mb-4 border-b border-primary/20">
+            <div className="flex whitespace-nowrap animate-[marquee_10s_linear_infinite] gap-8">
+              {[...Array(7)].map((_, i) => (
+                <a href="#!" key={i} className="flex items-center gap-2 text-xs font-semibold hover:text-primary-dark">
+                  <span>
+                    <Image
+                      alt="icon"
+                      src="/assets/images/icons/scroll-icon-01.svg"
+                      width={16}
+                      height={16}
+                    />
+                  </span>
+                  Hot Sell 50% Off
+                </a>
+              ))}
             </div>
           </div>
         )}
-        <div className="rbt-right-corner-portion bottom--position">
-          <div className="rbt-corner-portion-wrapper">
-            <div className="rbt-quick-btn-grp has-mixup-midlayer bottom-right--position">
-              <AddtoCompare2 product={product} />
-              <AddtoQuickview1
-                product={product}
-                className="rbt-watch-btn rbt-quick-btn tooltips"
-                data-tooltip="Quick View"
-                data-tooltip-position="left"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#quickViewModal"
-              >
-                <i className="fa-sharp fa-regular fa-eye" />
-              </AddtoQuickview1>
-            </div>
-          </div>
+        
+        <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
+          <AddtoCompare2
+            className="w-9 h-9 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors tooltips"
+            product={product}
+          />
+          <AddtoQuickview1
+            product={product}
+            className="w-9 h-9 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors tooltips"
+            data-tooltip="Quick View"
+            data-tooltip-position="left"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#quickViewModal"
+          >
+            <i className="fa-sharp fa-regular fa-eye" />
+          </AddtoQuickview1>
         </div>
-        <div className="rbt-card-top-content">
-          <div className="rbt-product-switch-area">
-            <ul className="rbt-switcher-product-list product-switcher-activation">
+
+        <div className="flex flex-col flex-grow relative z-0 pr-12">
+          <div className="flex items-center gap-2 mb-3">
+            <ul className="flex items-center gap-2 m-0 p-0 list-none">
               {product.variants?.map((variant, index) => (
                 <li
-                  className={selectedVariant === variant.src ? "active" : ""}
+                  className={cn("rounded-md overflow-hidden border-2 transition-all cursor-pointer", selectedVariant === variant.src ? "border-primary" : "border-transparent hover:border-gray-300")}
                   key={index}
                 >
                   <a
-                    className={`rbt-switcher--prd rbt-switcher--prd-${
-                      ["one", "two", "three", "four"][index]
-                    }`}
+                    className="block w-10 h-10 relative"
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
@@ -106,6 +103,7 @@ export default function ProductCardVariant({
                   >
                     {variant.src && (
                       <Image
+                        className="object-cover w-full h-full"
                         alt="Product Image"
                         src={variant.src}
                         width={624}
@@ -118,51 +116,62 @@ export default function ProductCardVariant({
             </ul>
             {product.moreText && (
               <Link
-                className="prd-link-text"
+                className="text-xs text-gray-500 hover:text-primary transition-colors font-medium ml-2"
                 href={`/product-single-default/${product.id}`}
               >
                 +{product.moreText} More
               </Link>
             )}
           </div>
+          
           {product.category?.length && product.category.length > 0 && (
-            <div>
+            <div className="flex items-center gap-2 mb-1 flex-wrap">
               {product.category?.map((item, index) => (
                 <Link
                   key={index}
                   href={`/shop-by-categories`}
-                  className="rbt-card-subtitle rbt-card-catagories-text mt--12"
+                  className="text-[10px] text-gray-500 hover:text-primary transition-colors uppercase tracking-wider font-semibold"
                 >
                   {item}
+                  {index < (product.category?.length || 0) - 1 ? "," : ""}
                 </Link>
               ))}
             </div>
           )}
-          <h6 className="rbt-card-title mt--4">
-            <Link href={`/product-single-default/${product.id}`}>
+          <h6 className="font-semibold text-lg text-gray-900 mb-2 leading-tight">
+            <Link href={`/product-single-default/${product.id}`} className="hover:text-primary transition-colors">
               {product.title}
             </Link>
           </h6>
-          <div className="rbt-card-rating">
-            <ul className="rbt-rating-icon-list">
+          <div className="flex items-center gap-2 mb-2">
+            <ul className="flex items-center gap-1 text-yellow-400 text-[10px] list-none p-0 m-0">
               {[...Array(product.rating)].map((_, i) => (
                 <li key={i}>
-                  <i className="fa-solid fa-star rbt-rated-icon" />
+                  <i className="fa-solid fa-star" />
+                </li>
+              ))}
+              {[...Array(5 - (product.rating ?? 0))].map((_, index) => (
+                <li key={`empty-${index}`}>
+                  <i className="fa-regular fa-star" />
                 </li>
               ))}
             </ul>
-            <p className="rating-digit">({product.reviewCount})</p>
+            <p className="text-[10px] text-gray-500 m-0 font-medium">({product.reviewCount})</p>
           </div>
-          <div className="pricing-part">
-            <del className="price-text">${product.oldPrice?.toFixed(2)}</del>
-            <span className="price-text">${product.price.toFixed(2)}</span>
+          <div className="flex items-center flex-wrap gap-2 mb-4 mt-auto">
+            {product.oldPrice && (
+              <del className="text-sm text-gray-400 font-medium">${product.oldPrice?.toFixed(2)}</del>
+            )}
+            <span className="text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span>
             {product.discount && (
-              <span className="rbt-offer-badge">-{product.discount}%</span>
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-600">
+                -{product.discount}%
+              </span>
             )}
           </div>
         </div>
-        <div className="rbt-card-footer d-flex footer-content-btn">
-          <AddToCart3 product={product} />
+        <div className="w-full mt-auto pt-4 border-t border-gray-50">
+          <AddToCart3 variant="default" size="sm" className="w-full font-semibold" product={product} />
         </div>
       </div>
     </div>

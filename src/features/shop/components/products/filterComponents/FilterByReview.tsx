@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 const ratings = [
   { id: 1, stars: 4 },
   { id: 2, stars: 3 },
@@ -24,29 +26,31 @@ export default function FilterByReview({
         const isActive = selectedItems.includes(rating.stars);
 
         return (
-          <li
-            key={rating.id}
-            className={`rbt-review-group ${isActive ? "active" : ""}`}
-          >
-            <a
-              onClick={() => handleToggle(rating.stars)}
-              className={`rbt-card-rating d-flex w-full text-left ${
-                isActive ? "active" : ""
-              }`}
+          <li key={rating.id}>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleToggle(rating.stars);
+              }}
+              className={cn(
+                "flex items-center w-full text-left p-2 rounded-lg transition-colors",
+                isActive ? "bg-primary/5" : "hover:bg-gray-50"
+              )}
             >
-              <ul className="rbt-rating-icon-list flex">
+              <ul className="flex items-center gap-1 m-0 p-0 list-none">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <li key={i}>
                     <i
-                      className={`fa-solid fa-star ${
-                        i < rating.stars ? "rbt-rated-icon" : ""
-                      }`}
+                      className={cn(
+                        "fa-solid fa-star text-[10px]",
+                        i < rating.stars ? "text-yellow-400" : "text-gray-300"
+                      )}
                     />
                   </li>
                 ))}
               </ul>
-              <p className="rbt-rating-text ml-2">&amp; Up</p>
-            </a>
+              <span className="text-xs text-gray-600 font-medium ml-2">&amp; Up</span>
+            </button>
           </li>
         );
       })}

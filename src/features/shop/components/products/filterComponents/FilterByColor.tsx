@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Product } from "@/shared/types";
 
 const colors = [
-  { name: "Black", count: 33, bgClass: "rbt-swatch-bg-black" },
-  { name: "Blue", count: 56, bgClass: "rbt-swatch-bg-blue" },
-  { name: "Brown", count: 90, bgClass: "rbt-swatch-bg-brown" },
-  { name: "Gray", count: 33, bgClass: "rbt-swatch-bg-gray" },
-  { name: "Green", count: 46, bgClass: "rbt-swatch-bg-green" },
-  { name: "Orange", count: 94, bgClass: "rbt-swatch-bg-orange" },
-  { name: "Red", count: 85, bgClass: "rbt-swatch-bg-red" },
-  { name: "Yellow", count: 55, bgClass: "rbt-swatch-bg-yellow" },
+  { name: "Black", bgClass: "bg-black" },
+  { name: "Blue", bgClass: "bg-blue-600" },
+  { name: "Brown", bgClass: "bg-amber-900" },
+  { name: "Gray", bgClass: "bg-gray-500" },
+  { name: "Green", bgClass: "bg-green-600" },
+  { name: "Orange", bgClass: "bg-orange-500" },
+  { name: "Red", bgClass: "bg-red-600" },
+  { name: "Yellow", bgClass: "bg-yellow-400" },
 ];
-
-import { Product } from "@/shared/types";
 
 export default function FilterByColor({
   selectedItems,
@@ -27,40 +27,45 @@ export default function FilterByColor({
   scrollAble?: boolean;
 }) {
   const [showMore, setShowMore] = useState(false);
+  const visibleColors = showMore || scrollAble ? colors : colors.slice(0, 5);
 
   const handleToggle = (colorName: string) => {
     onChange(colorName);
   };
 
   return (
-    <div
-      className={`${scrollAble ? "" : "rbt-has-show-more"} ${
-        showMore ? "active" : ""
-      }`}
-    >
-      <span className="rbt-filter-item-not-found rbt-text-color-danger">
-        Color not matched
-      </span>
-
-      <ul className="rbt-sidebar-list-wrapper rbt-categories-list-color-swatch rbt-search-filter-item-list rbt-has-show-more-inner-content">
-        {colors.map((color) => {
+    <div className="flex flex-col">
+      <ul className={cn("flex flex-col gap-3", scrollAble ? "max-h-60 overflow-y-auto pr-2 custom-scrollbar" : "")}>
+        {visibleColors.map((color) => {
           const isActive = selectedItems.includes(color.name);
 
           return (
-            <li key={color.name} className="rbt-color-swatch-group">
-              <a
-                onClick={() => handleToggle(color.name)}
-                className={`rbt-color-swatch-content ${
-                  isActive ? "active" : ""
-                }`}
+            <li key={color.name} className="flex items-center justify-between">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleToggle(color.name);
+                }}
+                className="flex items-center gap-3 group cursor-pointer"
               >
-                <span className="rbt-color-swatch">
-                  <span className={`rbt-color-swatch-bg ${color.bgClass}`} />
-                  <span className="rbt-color-swatch-text">{color.name}</span>
+                <span
+                  className={cn(
+                    "w-6 h-6 rounded-full shadow-sm ring-2 ring-offset-2 transition-all duration-300",
+                    color.bgClass,
+                    isActive ? "ring-primary" : "ring-transparent group-hover:ring-gray-300"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "text-sm font-medium transition-colors",
+                    isActive ? "text-primary" : "text-gray-700 group-hover:text-primary"
+                  )}
+                >
+                  {color.name}
                 </span>
-              </a>
+              </button>
 
-              <span className="rbt-color-swatch-count">
+              <span className="text-xs text-gray-400">
                 (
                 {getFilterCount(
                   (product) =>
@@ -72,17 +77,16 @@ export default function FilterByColor({
           );
         })}
       </ul>
-      {!scrollAble ? (
-        <div
-          className={`rbt-show-more-btn-area ${showMore ? "active" : ""}`}
-          onClick={() => setShowMore((prev) => !prev)}
-        >
-          <button type="button" className="rbt-show-more-btn">
+      {!scrollAble && colors.length > 5 && (
+        <div className="mt-4 border-t border-gray-100 pt-3 text-center">
+          <button
+            type="button"
+            className="text-xs font-semibold text-primary hover:text-primary-dark transition-colors bg-white px-4 py-1.5 rounded-full shadow-sm border border-gray-200"
+            onClick={() => setShowMore((prev) => !prev)}
+          >
             {showMore ? "Show Less" : "Show More"}
           </button>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );

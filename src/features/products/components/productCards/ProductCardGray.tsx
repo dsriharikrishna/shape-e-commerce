@@ -6,57 +6,44 @@ import AddtoWishlist2 from "@/shared/components/common/AddtoWishlist2";
 import AddtoCompare2 from "@/shared/components/common/AddtoCompare2";
 import { Product } from "@/shared/types";
 import AddToCart3 from "@/shared/components/common/AddToCart2";
-const ProductCardGray = ({ product }: { product: Product }) => {
-  // Function to render rating stars
-  const renderStars = (rating: number) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(
-        <li key={i}>
-          <i
-            className={`fa-solid fa-star ${i < rating ? "rbt-rated-icon" : ""}`}
-          />
-        </li>
-      );
-    }
-    return stars;
-  };
+import { cn } from "@/lib/utils";
 
+const ProductCardGray = ({ product }: { product: Product }) => {
   return (
     <div
-      className={`rbt-card rbt-product-card rbt-product-card-style-2 rbt-scroll-trigger fade_in animation-order-${product.animationOrder}`}
+      className={cn(
+        "group relative flex flex-col bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 h-full",
+      )}
     >
-      <div
-        className={`rbt-card-img top-rounded-md rbt-bg-color-gray-100 rbt-scroll-trigger zoom_in animation-order-${product.animationOrder}`}
-      >
-        <Link href={`/product-single-default/${product.id}`}>
+      <div className="relative w-full aspect-[3/4] rounded-t-xl overflow-hidden bg-gray-100 group/image p-4 pb-0">
+        <Link href={`/product-single-default/${product.id}`} className="block w-full h-full">
           <Image
             alt="Card Image"
             src={product.imgSrc}
             width={312}
             height={445}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover/image:scale-105"
           />
         </Link>
         {product.badge && (
-          <div
-            className={`rbt-product-badge ${product.badge.bg} rbt-badge-top-left--position`}
-          >
-            {product.badge.text}
+          <div className="absolute top-4 left-4">
+            <span className={cn("text-xs font-semibold px-2 py-1 rounded", product.badge.bg)}>
+              {product.badge.text}
+            </span>
           </div>
         )}
-        <div className="rbt-quick-btn-grp has-mixup-midlayer rbt-top-right--position hover-variation-one">
+        <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 translate-x-4 group-hover/image:opacity-100 group-hover/image:translate-x-0 transition-all duration-300">
           <AddtoWishlist2
-            parentClass="rbt-wishlist-btn bg-light-one rbt-quick-btn tooltips"
+            className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors tooltips"
             product={product}
           />
-
           <AddtoCompare2
-            parentClass="rbt-compare-btn bg-light-one rbt-quick-btn tooltips"
+            className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors tooltips"
             product={product}
           />
           <AddtoQuickview1
             product={product}
-            className="rbt-watch-btn bg-light-one rbt-quick-btn tooltips"
+            className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors tooltips"
             data-tooltip="Quick View"
             data-tooltip-position="left"
             type="button"
@@ -67,48 +54,53 @@ const ProductCardGray = ({ product }: { product: Product }) => {
           </AddtoQuickview1>
         </div>
       </div>
-      <div className="rbt-card-body rbt-card-body-center-align rbt-bg-color-gray-100">
-        <div className="rbt-card-top-content">
+      <div className="p-4 flex flex-col items-center text-center flex-grow bg-gray-100 rounded-b-xl">
+        <div className="flex flex-col flex-grow w-full items-center">
           {product.category?.length && product.category.length > 0 && (
-            <div>
+            <div className="flex items-center justify-center gap-2 mb-1 flex-wrap">
               {product.category?.map((item, index) => (
                 <Link
                   key={index}
                   href={`/shop-by-categories`}
-                  className="rbt-card-subtitle rbt-card-catagories-text"
+                  className="text-xs text-gray-500 hover:text-primary transition-colors uppercase tracking-wider"
                 >
                   {item}
+                  {index < (product.category?.length || 0) - 1 ? "," : ""}
                 </Link>
               ))}
             </div>
           )}
-          <h6 className="rbt-card-title">
-            <Link href={`/product-single-default/${product.id}`}>
+          <h6 className="font-semibold text-base text-gray-900 mb-2 leading-tight">
+            <Link href={`/product-single-default/${product.id}`} className="hover:text-primary transition-colors">
               {product.title}
             </Link>
           </h6>
-          <div className="rbt-card-rating">
-            <ul className="rbt-rating-icon-list">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <ul className="flex items-center gap-1 text-yellow-400 text-[10px] list-none p-0 m-0">
               <RatingStars rating={product.rating} />
             </ul>
-            <p className="rating-digit">({product.reviewCount})</p>
-            <span className="icon">
+            <p className="text-[10px] text-gray-500 m-0">({product.reviewCount})</p>
+            <span className="text-gray-400 text-xs ml-1">
               <i className="fa-sharp fa-solid fa-truck-fast" />
             </span>
           </div>
-          <div className="pricing-part">
-            <del className="price-text">${product.oldPrice?.toFixed(2)}</del>
-            <span className="price-text">${product.price.toFixed(2)}</span>
+          <div className="flex items-center justify-center flex-wrap gap-2 mb-4 mt-auto">
+            {product.oldPrice && (
+              <del className="text-sm text-gray-400 font-medium">${product.oldPrice?.toFixed(2)}</del>
+            )}
+            <span className="text-base font-bold text-gray-900">${product.price.toFixed(2)}</span>
             {product.discountPercentage && (
-              <span className="rbt-offer-badge">
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-600">
                 -{product.discountPercentage}%
               </span>
             )}
           </div>
         </div>
-        <div className="rbt-card-footer d-block footer-content-btn">
+        <div className="w-full mt-auto">
           <AddToCart3
-            parentClass="rbt-btn rbt-btn-sm has-left-icon d-block"
+            variant="default"
+            size="sm"
+            className="w-full font-semibold"
             product={product}
           />
         </div>

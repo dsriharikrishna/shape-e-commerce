@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 const services = [
   { id: 1, label: "Free Delivery", icon: "fa-truck-fast" },
   { id: 2, label: "Hot Deals", icon: "fa-stars" },
@@ -20,24 +22,28 @@ export default function FilterByService({
   };
 
   return (
-    <>
+    <div className="flex flex-wrap gap-2">
       {services.map((service) => {
         const isActive = selectedItems.includes(service.label);
         return (
-          <a
+          <button
             key={service.id}
-            href="#"
             onClick={(e) => {
               e.preventDefault();
               toggleService(service.label);
             }}
-            className={` ${isActive ? "active" : ""}`}
+            className={cn(
+              "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors",
+              isActive 
+                ? "bg-primary border-primary text-white" 
+                : "bg-white border-gray-200 text-gray-600 hover:border-primary hover:text-primary"
+            )}
           >
             {service.label}
-            <i className={`fa-regular ${service.icon}`} />
-          </a>
+            <i className={cn("fa-regular", service.icon)} />
+          </button>
         );
       })}
-    </>
+    </div>
   );
 }

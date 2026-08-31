@@ -7,67 +7,63 @@ import { letUsHelpYouLinks, makeMoneyWithUsLinks, getToKnowUsLinks } from "@/sha
 export default function Footer() {
   return (
     <>
-      <footer className="rbt-footer rbt-footer-style-three rbt-bg-color-gray-light pt--48">
-        <div className="p-0 rbt-footer-top">
-          <div className="container">
-            <div className="row row--12 mt_dec--24 mb--40 justify-content-between align-items-center mb_sm--16">
-              <div className="col-md-6 col-12 mt--24">
+      <footer className="w-full bg-gray-50 pt-12">
+        <div className="w-full pb-8">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap md:flex-nowrap justify-between items-center mb-10 mt-[-24px]">
+              <div className="w-full md:w-1/2 mt-6">
                 <div className="footer-widget">
-                  <div className="rbt-breadcrumb-inner text-left">
-                    <ul className="rbt-breadcrumb-page-list justify-content-start mt--0">
-                      <li className="rbt-breadcrumb-item">
-                        <Link href={`/`}>Home</Link>
+                  <div className="flex justify-start">
+                    <ul className="flex items-center text-sm text-gray-500 gap-2 m-0 p-0 list-none">
+                      <li>
+                        <Link href={`/`} className="hover:text-primary transition-colors">Home</Link>
                       </li>
                       <li>
-                        <div className="icon-right">
-                          <i className="fa-solid fa-chevron-right" />
-                        </div>
-                      </li>
-                      <li className="rbt-breadcrumb-item">
-                        <a href="#">Products</a>
+                        <i className="fa-solid fa-chevron-right text-[10px]" />
                       </li>
                       <li>
-                        <div className="icon-right">
-                          <i className="fa-solid fa-chevron-right" />
-                        </div>
+                        <a href="#" className="hover:text-primary transition-colors">Products</a>
                       </li>
-                      <li className="rbt-breadcrumb-item active">Shop</li>
+                      <li>
+                        <i className="fa-solid fa-chevron-right text-[10px]" />
+                      </li>
+                      <li className="text-gray-900 font-medium">Shop</li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-12 mt--24">
+              <div className="w-full md:w-1/2 mt-6">
                 <div className="footer-widget">
-                  <div className="rbt-footer-social-area d-flex rbt-gap--16 align-items-center justify-content-start justify-content-md-end">
-                    <p className="title mb--0">Follow Us :</p>
-                    <ul className="rbt-social-icon-list">
+                  <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-end gap-4">
+                    <p className="font-medium mb-0 text-sm">Follow Us :</p>
+                    <ul className="flex items-center gap-3 text-gray-600 list-none p-0 m-0">
                       <li>
-                        <a href="#">
+                        <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:bg-primary hover:text-white transition-all">
                           <i className="fa-brands fa-twitter" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:bg-primary hover:text-white transition-all">
                           <i className="fa-brands fa-youtube" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:bg-primary hover:text-white transition-all">
                           <i className="fa-brands fa-facebook" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:bg-primary hover:text-white transition-all">
                           <i className="fa-brands fa-whatsapp" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:bg-primary hover:text-white transition-all">
                           <i className="fa-brands fa-instagram" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm hover:bg-primary hover:text-white transition-all">
                           <i className="fa-brands fa-telegram" />
                         </a>
                       </li>

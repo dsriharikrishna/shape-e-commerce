@@ -20,51 +20,45 @@ import { useSticky } from "@/shared/hooks/useSticky";
 import MobileMenuToggler from "@/shared/components/common/MobileMenuToggler";
 import NavFilterTab from "./headerComponents/NavFilterTab";
 import HeaderUserButton from "./headerComponents/HeaderUserButton";
+import { cn } from "@/lib/utils";
 
 export default function Header({ showFeatures = true, sticky = false }) {
   const isSticky = useSticky();
-  const stickyClass = sticky && isSticky ? " rbt-sticky" : "";
+
   return (
-    <header className="rbt-header rbt-header-3">
+    <header className="relative w-full z-[99]">
       <div
-        className={`rbt-header-wrapper rbt-header-sticky-activation rbt-header-wrapper-three rbt-header-wrapper-one header-space-between rbt-bg-color-white header-not-transparent header-sticky plr--0${stickyClass}`}
+        className={cn(
+          "w-full bg-white shadow-sm transition-all duration-300",
+          sticky && isSticky ? "fixed top-0 left-0 z-[99] animate-in slide-in-from-top-4" : "relative"
+        )}
       >
-        <div className="rbt-header-campaign rbt-header-campaign-1 rbt-header-top-news rbt-topbar-bg-img rbt-topbar-bg-one w-100">
-          <div className="rbt-corner-portion-wrapper">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6">
-                  <div className="inner justify-content-center">
+        <div className="w-full bg-cover rbt-header-campaign relative">
+          <div className="w-full px-4">
+            <div className="container mx-auto">
+              <div className="flex justify-center">
+                <div className="w-full lg:w-1/2">
+                  <div className="flex justify-center">
                     <TopbarSwiper position="start" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="icon-close position-right">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
             <TopbarRemover />
           </div>
         </div>
-        <div className="rbt-wrapper-middle rbt-header-middle-one position-relative">
-          <div className="container">
-            <div className="mainbar-row @@navigationEnd align-items-center">
-              <div className="rbt-header-sec-col rbt-header-right rbt-fancy-item fancy-menu-address fancy-menu-end d-none d-xl-block">
-                <div className="rbt-header-content">
-                  <ul className="rbt-quick-access d-none d-lg-flex">
-                    <li className="rbt-access-box">
-                      <div className="header-info">
-                        <a href="#" className="rbt-access-link">
-                          Store Location
-                        </a>
-                      </div>
-                      <div className="header-info">
-                        <a href="#" className="rbt-access-link">
-                          Track Your Order
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+        <div className="relative w-full py-4 border-b border-gray-100">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between">
+              <div className="hidden xl:flex items-center gap-6 text-sm font-medium text-gray-600">
+                <a href="#" className="hover:text-primary transition-colors">
+                  Store Location
+                </a>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Track Your Order
+                </a>
               </div>
               {/* Start Mobile-Menu-Bar */}
               <div className="mobile-menu-bar d-block d-xl-none">
@@ -73,9 +67,9 @@ export default function Header({ showFeatures = true, sticky = false }) {
                 </div>
               </div>
               {/* Start Mobile-Menu-Bar */}
-              <div className="rbt-header-content">
-                <div className="header-info">
-                  <div className="logo">
+              <div className="flex-shrink-0">
+                <div className="flex items-center">
+                  <div className="w-[150px] lg:w-[180px]">
                     <Link href={`/`}>
                       <Image
                         alt="Ecommerce Logo Images"
@@ -87,9 +81,9 @@ export default function Header({ showFeatures = true, sticky = false }) {
                   </div>
                 </div>
               </div>
-              <div className="header-right rbt-gap--32">
+              <div className="flex items-center gap-8">
                 {/* Navbar Icons */}
-                <ul className="rbt-quick-access">
+                <ul className="flex items-center gap-4">
                   <li
                     className="rbt-access-box rbt-scroll-trigger fade_in animation-order-2 tooltips tooltip-distance-lg d-none d-lg-flex"
                     data-tooltip="Search"
@@ -160,19 +154,20 @@ export default function Header({ showFeatures = true, sticky = false }) {
         </div>
       </div>
       {/* Start Header Mid */}
-      <div className="rbt-header-middle position-relative rbt-header-mid-3 rbt-bg-color-white d-none d-xl-block">
-        <div className="container">
-          <div className="rbt-header-sec align-items-center @@flexDirection">
-            <div className="rbt-main-navigation d-none d-xl-block">
+      {/* Start Header Mid */}
+      <div className="relative bg-white hidden xl:block border-b border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between py-4">
+            <div className="hidden xl:block">
               <nav className="rbt-mainmenu-nav">
-                <ul className="mainmenu has-nav-bg-shape-hover">
+                <ul className="mainmenu flex items-center gap-6">
                   <Nav />
                 </ul>
               </nav>
             </div>
-            <div className="rbt-header-sec-col rbt-header-right">
-              <div className="rbt-header-cat-link-section rbt-gap--12 align-items-center d-none d-lg-flex justify-content-end">
-                <div className="rbt-cat-link-title">Choose Gender :</div>
+            <div className="">
+              <div className="flex items-center gap-4 justify-end">
+                <div className="text-sm font-medium">Choose Gender :</div>
                 <NavFilterTab />
               </div>
             </div>
@@ -182,68 +177,57 @@ export default function Header({ showFeatures = true, sticky = false }) {
       {/* End Header Top */}
       {/* Start Header Bottom */}
       {showFeatures && (
-        <div className="rbt-header-bottom position-relative rbt-header-bottom-2 rbt-bg-color-gray-light d-none d-xl-flex ptb--16">
-          <div className="container">
-            <div className="rbt-inf-box-wrapper">
-              <ul className="rbt-inf-box-wrapper-list justify-content-center">
+        <div className="relative bg-gray-50 hidden xl:flex py-4">
+          <div className="container mx-auto px-4">
+            <div className="w-full">
+              <ul className="flex items-center justify-center gap-12">
                 <li>
-                  <div className="rbt-inf-box rbt-scroll-trigger fade_in animation-order-1">
-                    <div className="rbt-inf-box-icon">
+                  <div className="flex items-center gap-4 transition-all duration-300">
+                    <div className="text-primary text-3xl">
                       <i className="fa-light fa-truck-fast" />
                     </div>
-                    <div className="rbt-inf-box-content">
-                      <h6 className="rbt-inf-box-title">Free Shipping</h6>
-                      <p className="rbt-inf-box-desc">
+                    <div>
+                      <h6 className="text-sm font-semibold m-0 text-gray-900">Free Shipping</h6>
+                      <p className="text-xs text-gray-500 m-0">
                         From all orders over $100
                       </p>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div className="rbt-inf-box rbt-scroll-trigger fade_in animation-order-2">
-                    <div className="rbt-inf-box-icon">
+                  <div className="flex items-center gap-4 transition-all duration-300">
+                    <div className="text-primary text-3xl">
                       <i className="fa-light fa-headset" />
                     </div>
-                    <div className="rbt-inf-box-content">
-                      <h6 className="rbt-inf-box-title">Quality Support</h6>
-                      <p className="rbt-inf-box-desc">24/7 online feedback</p>
+                    <div>
+                      <h6 className="text-sm font-semibold m-0 text-gray-900">Quality Support</h6>
+                      <p className="text-xs text-gray-500 m-0">24/7 online feedback</p>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div className="rbt-inf-box rbt-scroll-trigger fade_in animation-order-3">
-                    <div className="rbt-inf-box-icon">
+                  <div className="flex items-center gap-4 transition-all duration-300">
+                    <div className="text-primary text-3xl">
                       <i className="fa-light fa-box" />
                     </div>
-                    <div className="rbt-inf-box-content">
-                      <h6 className="rbt-inf-box-title">Return &amp; Refund</h6>
-                      <p className="rbt-inf-box-desc">
+                    <div>
+                      <h6 className="text-sm font-semibold m-0 text-gray-900">Return &amp; Refund</h6>
+                      <p className="text-xs text-gray-500 m-0">
                         Return money within 30 days
                       </p>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div className="rbt-inf-box rbt-scroll-trigger fade_in animation-order-4">
-                    <div className="rbt-inf-box-icon">
+                  <div className="flex items-center gap-4 transition-all duration-300">
+                    <div className="text-primary text-3xl">
                       <i className="fa-light fa-ticket" />
                     </div>
-                    <div className="rbt-inf-box-content">
-                      <h6 className="rbt-inf-box-title">Gift Voucher</h6>
-                      <p className="rbt-inf-box-desc">
+                    <div>
+                      <h6 className="text-sm font-semibold m-0 text-gray-900">Gift Voucher</h6>
+                      <p className="text-xs text-gray-500 m-0">
                         20% off when you shop online
                       </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="rbt-inf-box rbt-scroll-trigger fade_in animation-order-5">
-                    <div className="rbt-inf-box-icon">
-                      <i className="fa-light fa-headset" />
-                    </div>
-                    <div className="rbt-inf-box-content">
-                      <h6 className="rbt-inf-box-title">Quality Support</h6>
-                      <p className="rbt-inf-box-desc">24/7 online feedback</p>
                     </div>
                   </div>
                 </li>
@@ -254,53 +238,34 @@ export default function Header({ showFeatures = true, sticky = false }) {
       )}
       {/* End Header Bottom */}
       <div
-        className={`rbt-header-common-sticky-activation rbt-header-wrapper-common justify-content-between rbt-bg-color-white${stickyClass}`}
+        className={cn(
+          "w-full bg-white shadow-sm flex flex-col justify-between transition-all duration-300",
+          sticky && isSticky ? "fixed top-0 left-0 z-[99] animate-in slide-in-from-top-4" : "hidden"
+        )}
       >
-        <div className="rbt-header-campaign rbt-header-campaign-1 rbt-header-top-news rbt-topbar-bg-img rbt-topbar-bg-one w-100">
-          <div className="rbt-corner-portion-wrapper">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6">
-                  <div className="inner justify-content-center">
+        <div className="w-full bg-cover rbt-header-campaign relative">
+          <div className="w-full px-4">
+            <div className="container mx-auto">
+              <div className="flex justify-center">
+                <div className="w-full lg:w-1/2">
+                  <div className="flex justify-center">
                     <TopbarSwiper />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="icon-close position-right">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
             <TopbarRemover />
           </div>
         </div>
-        <div className="container">
-          <div className="mainbar-row rbt-mainbar-row-md-height @@navigationEnd align-items-center">
-            <div className="header-left">
-              <div className="rbt-header-content d-flex">
-                <div className="header-info p-0 d-none d-xxl-flex mr--24">
-                </div>
-                <div className="header-info d-xl-block d-none">
-                  <div className="logo rbt-logo-height-sm">
-                    <Link href={`/`}>
-                      <Image
-                        alt="Ecommerce Logo Images"
-                        src="/assets/images/logo/logo.svg"
-                        width={1487}
-                        height={334}
-                      />
-                    </Link>
-                  </div>
-                </div>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center gap-4">
+              <div className="xl:hidden">
+                <MobileMenuToggler />
               </div>
-              {/* Start Mobile-Menu-Bar */}
-              <div className="mobile-menu-bar d-block d-xl-none">
-                <div className="hamburger">
-                  <MobileMenuToggler />
-                </div>
-              </div>
-              {/* Start Mobile-Menu-Bar */}
-            </div>
-            <div className="header-info d-xl-none d-block">
-              <div className="logo">
+              <div className="w-[120px] lg:w-[150px]">
                 <Link href={`/`}>
                   <Image
                     alt="Ecommerce Logo Images"
@@ -311,18 +276,17 @@ export default function Header({ showFeatures = true, sticky = false }) {
                 </Link>
               </div>
             </div>
-            <div className="rbt-header-content d-none d-xl-block">
-              <div className="header-info">
-                <nav className="rbt-mainmenu-nav">
-                  <ul className="mainmenu mainmenu has-nav-bg-shape-hover">
-                    <Nav />
-                  </ul>
-                </nav>
-              </div>
+
+            <div className="hidden xl:block">
+              <nav className="rbt-mainmenu-nav">
+                <ul className="mainmenu flex items-center gap-6">
+                  <Nav />
+                </ul>
+              </nav>
             </div>
-            <div className="header-right">
-              {/* Navbar Icons */}
-              <ul className="rbt-quick-access rbt-gap--12">
+
+            <div className="flex items-center">
+              <ul className="flex items-center gap-4">
                 <li
                   className="rbt-access-box rbt-scroll-trigger fade_in animation-order-2 tooltips tooltip-distance-lg"
                   data-tooltip="Search"

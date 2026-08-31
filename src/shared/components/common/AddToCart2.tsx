@@ -1,29 +1,39 @@
 "use client";
-
 import { useContextElement } from "@/shared/store/Context";
 import { Product } from "@/shared/types";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import type { VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface AddToCartProps {
+interface AddToCartProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   parentClass?: string;
+  className?: string;
   product: Product;
 }
 
 export default function AddToCart2({
-  parentClass = "rbt-btn rbt-btn-sm has-left-icon flex-basis-100",
+  parentClass,
+  className,
+  variant = "default",
+  size = "sm",
   product,
+  ...props
 }: AddToCartProps) {
   const { addProductToCart, isAddedToCartProducts } = useContextElement();
+  
   return (
-    <a
+    <Button
+      variant={variant}
+      size={size}
+      className={cn("gap-2", parentClass, className)}
       onClick={(e) => {
         e.preventDefault();
         addProductToCart(product.id);
       }}
-      className={parentClass}
-      href="#"
+      {...props}
     >
       <i className="fa-regular fa-cart-shopping" />{" "}
       {isAddedToCartProducts(product.id) ? "Already Added" : "Add To Cart"}
-    </a>
+    </Button>
   );
 }

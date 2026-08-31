@@ -17,6 +17,8 @@ import FilterByService from "./filterComponents/FilterByService";
 import { FilterState, FilterAction } from "@/shared/types";
 import { Product } from "@/shared/types";
 import { Input } from "@/shared/components/ui/input";
+import { ChevronDown, ChevronUp, Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Sidebar({
   state,
@@ -28,12 +30,12 @@ export default function Sidebar({
   getFilterCount: (fn: (product: Product) => boolean) => number;
 }) {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    "rbt-collapse-3": true,
-    "rbt-collapse-6": true,
-    "rbt-collapse-7": true,
-    "rbt-collapse-8": true,
-    "rbt-collapse-9": true,
-    "rbt-collapse-10": true,
+    categories: true,
+    reviews: true,
+    price: true,
+    color: true,
+    brand: true,
+    promotion: true,
   });
 
   const toggleSection = (sectionId: string) => {
@@ -43,230 +45,132 @@ export default function Sidebar({
     }));
   };
 
+  const renderSectionHeader = (id: string, title: string) => (
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        toggleSection(id);
+      }}
+      className="flex w-full items-center justify-between py-3 text-lg font-semibold text-gray-900 border-b border-gray-100 bg-white hover:text-primary transition-colors"
+      aria-expanded={openSections[id]}
+      aria-controls={`filter-${id}`}
+    >
+      {title}
+      <span className="text-gray-400">
+        {openSections[id] ? (
+          <ChevronUp className="h-5 w-5" />
+        ) : (
+          <ChevronDown className="h-5 w-5" />
+        )}
+      </span>
+    </button>
+  );
+
   return (
-    <div className="rbt-sidebar-bottom">
-      {/* Start Widget Area  */}
-      <div className="rbt-single-widget rbt-widget-categories">
-        <div className="bt-single-widget-inner">
-          <h4 className="rbt-widget-title rbt-widget-title-without-border">
-            <a
-              href="#rbt-collapse-3"
-              role="button"
-              aria-expanded={openSections["rbt-collapse-3"]}
-              aria-controls="rbt-collapse-3"
-              onClick={(event) => {
-                event.preventDefault();
-                toggleSection("rbt-collapse-3");
-              }}
-            >
-              Categories
-              <span className="icon">
-                <i className="fa-regular fa-chevron-down" />
-              </span>
-            </a>
-          </h4>
-          <div
-            className={`collapse ${openSections["rbt-collapse-3"] ? "show" : ""}`}
-            id="rbt-collapse-3"
-          >
-            <ul className="rbt-sidebar-list-wrapper rbt-categories-list-check">
-              <FilterByCategories
-                selectedItems={state.categories}
-                getFilterCount={getFilterCount}
-                onChange={(value) =>
-                  toggleCategory(value, dispatch, state.categories)
-                }
-              />
-            </ul>
-          </div>
-        </div>
-      </div>
-      {/* End Widget Area  */}
-      {/* Start Widget Area  */}
-      <div className="rbt-single-widget rbt-widget-categories">
-        <div className="bt-single-widget-inner">
-          <h4 className="rbt-widget-title rbt-widget-title-without-border">
-            <a
-              href="#rbt-collapse-6"
-              role="button"
-              aria-expanded={openSections["rbt-collapse-6"]}
-              aria-controls="rbt-collapse-6"
-              onClick={(event) => {
-                event.preventDefault();
-                toggleSection("rbt-collapse-6");
-              }}
-            >
-              Customer Reviews
-              <span className="icon">
-                <i className="fa-regular fa-chevron-down" />
-              </span>
-            </a>
-          </h4>
-          <div
-            className={`collapse ${openSections["rbt-collapse-6"] ? "show" : ""}`}
-            id="rbt-collapse-6"
-          >
-            <ul className="rbt-sidebar-list-wrapper rbt-categories-review-list">
-              <FilterByReview
-                selectedItems={state.ratings}
-                onChange={(value) =>
-                  toggleRating(value, dispatch, state.ratings)
-                }
-              />
-            </ul>
-          </div>
-        </div>
-      </div>
-      {/* End Widget Area  */}
-      {/* Start Widget Area  */}
-      <div className="rbt-single-widget rbt-widget-categories">
-        <div className="bt-single-widget-inner">
-          <h4 className="rbt-widget-title rbt-widget-title-without-border">
-            <a
-              href="#rbt-collapse-7"
-              role="button"
-              aria-expanded={openSections["rbt-collapse-7"]}
-              aria-controls="rbt-collapse-7"
-              onClick={(event) => {
-                event.preventDefault();
-                toggleSection("rbt-collapse-7");
-              }}
-            >
-              Filter by price
-              <span className="icon">
-                <i className="fa-regular fa-chevron-down" />
-              </span>
-            </a>
-          </h4>
-          <div
-            className={`collapse ${openSections["rbt-collapse-7"] ? "show" : ""}`}
-            id="rbt-collapse-7"
-          >
-            <FilterByPrice
+    <div className="flex flex-col gap-8">
+      {/* Categories Widget */}
+      <div>
+        {renderSectionHeader("categories", "Categories")}
+        <div
+          id="filter-categories"
+          className={cn("pt-4 transition-all duration-300", openSections.categories ? "block" : "hidden")}
+        >
+          <ul className="flex flex-col gap-3">
+            <FilterByCategories
+              selectedItems={state.categories}
               getFilterCount={getFilterCount}
-              priceRange={state.price}
-              onChange={(value) => setPriceRange(value, dispatch)}
+              onChange={(value) => toggleCategory(value, dispatch, state.categories)}
+            />
+          </ul>
+        </div>
+      </div>
+
+      {/* Customer Reviews Widget */}
+      <div>
+        {renderSectionHeader("reviews", "Customer Reviews")}
+        <div
+          id="filter-reviews"
+          className={cn("pt-4 transition-all duration-300", openSections.reviews ? "block" : "hidden")}
+        >
+          <ul className="flex flex-col gap-3">
+            <FilterByReview
+              selectedItems={state.ratings}
+              onChange={(value) => toggleRating(value, dispatch, state.ratings)}
+            />
+          </ul>
+        </div>
+      </div>
+
+      {/* Price Widget */}
+      <div>
+        {renderSectionHeader("price", "Filter by price")}
+        <div
+          id="filter-price"
+          className={cn("pt-6 pb-2 transition-all duration-300", openSections.price ? "block" : "hidden")}
+        >
+          <FilterByPrice
+            getFilterCount={getFilterCount}
+            priceRange={state.price}
+            onChange={(value) => setPriceRange(value, dispatch)}
+          />
+        </div>
+      </div>
+
+      {/* Color Widget */}
+      <div>
+        {renderSectionHeader("color", "Filter by color")}
+        <div
+          id="filter-color"
+          className={cn("transition-all duration-300", openSections.color ? "block" : "hidden")}
+        >
+          <div className="relative my-4">
+            <Input
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-transparent focus:border-primary focus:bg-white transition-colors rounded-lg"
+              type="text"
+              placeholder="Search and Select Color"
+            />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          </div>
+          <FilterByColor
+            getFilterCount={getFilterCount}
+            selectedItems={state.colors}
+            onChange={(value) => toggleColor(value, dispatch, state.colors)}
+          />
+        </div>
+      </div>
+
+      {/* Brand Widget */}
+      <div>
+        {renderSectionHeader("brand", "Brand")}
+        <div
+          id="filter-brand"
+          className={cn("pt-4 transition-all duration-300", openSections.brand ? "block" : "hidden")}
+        >
+          <ul className="flex flex-col gap-3 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
+            <FilterByBrand
+              getFilterCount={getFilterCount}
+              selectedItems={state.brands}
+              onChange={(value) => toggleBrand(value, dispatch, state.brands)}
+            />
+          </ul>
+        </div>
+      </div>
+
+      {/* Promotion & Services Widget */}
+      <div>
+        {renderSectionHeader("promotion", "Promotion & Services")}
+        <div
+          id="filter-promotion"
+          className={cn("pt-4 transition-all duration-300", openSections.promotion ? "block" : "hidden")}
+        >
+          <div className="flex flex-col gap-3">
+            <FilterByService
+              selectedItems={state.services}
+              onChange={(value) => toggleService(value, dispatch, state.services)}
             />
           </div>
         </div>
       </div>
-      {/* End Widget Area  */}
-      {/* Start Widget Area  */}
-      <div className="rbt-single-widget rbt-widget-categories">
-        <div className="bt-single-widget-inner">
-          <h4 className="rbt-widget-title rbt-widget-title-without-border pb--0">
-            <a
-              href="#rbt-collapse-8"
-              role="button"
-              aria-expanded={openSections["rbt-collapse-8"]}
-              aria-controls="rbt-collapse-8"
-              onClick={(event) => {
-                event.preventDefault();
-                toggleSection("rbt-collapse-8");
-              }}
-            >
-              Filter by color
-              <span className="icon">
-                <i className="fa-regular fa-chevron-down" />
-              </span>
-            </a>
-          </h4>
-          <div className="rbt-inner-search-field border-0 pt--16 pb--16">
-            <div className="rbt-search-input-section rbt-sm-search-section">
-              <Input
-                className="rbt-filter-search-field"
-                type="text"
-                placeholder="Search and Select Product"
-              />
-              <span className="search-btn search-btn-dark bg-transparent rbt-text-color-gray-400">
-                <i className="fa-sharp fa-solid fa-magnifying-glass" />
-              </span>
-            </div>
-          </div>
-          <div
-            className={`collapse ${openSections["rbt-collapse-8"] ? "show" : ""}`}
-            id="rbt-collapse-8"
-          >
-            <FilterByColor
-              getFilterCount={getFilterCount}
-              selectedItems={state.colors}
-              onChange={(value) => toggleColor(value, dispatch, state.colors)}
-            />
-          </div>
-        </div>
-      </div>
-      {/* End Widget Area  */}
-      {/* Start Widget Area  */}
-      <div className="rbt-single-widget rbt-widget-categories">
-        <div className="bt-single-widget-inner">
-          <h4 className="rbt-widget-title rbt-widget-title-without-border">
-            <a
-              href="#rbt-collapse-9"
-              role="button"
-              aria-expanded={openSections["rbt-collapse-9"]}
-              aria-controls="rbt-collapse-9"
-              onClick={(event) => {
-                event.preventDefault();
-                toggleSection("rbt-collapse-9");
-              }}
-            >
-              Brand
-              <span className="icon">
-                <i className="fa-regular fa-chevron-down" />
-              </span>
-            </a>
-          </h4>
-          <div
-            className={`collapse ${openSections["rbt-collapse-9"] ? "show" : ""}`}
-            id="rbt-collapse-9"
-          >
-            <ul className="rbt-sidebar-list-wrapper rbt-categories-list-check rbt-categories-brand-list-check">
-              <FilterByBrand
-                getFilterCount={getFilterCount}
-                selectedItems={state.brands}
-                onChange={(value) => toggleBrand(value, dispatch, state.brands)}
-              />
-            </ul>
-          </div>
-        </div>
-      </div>
-      {/* End Widget Area  */}
-      {/* Start Widget Area  */}
-      <div className="rbt-single-widget rbt-widget-categories">
-        <div className="bt-single-widget-inner">
-          <h4 className="rbt-widget-title rbt-widget-title-without-border">
-            <a
-              href="#rbt-collapse-10"
-              role="button"
-              aria-expanded={openSections["rbt-collapse-10"]}
-              aria-controls="rbt-collapse-10"
-              onClick={(event) => {
-                event.preventDefault();
-                toggleSection("rbt-collapse-10");
-              }}
-            >
-              Promotion &amp; Services
-              <span className="icon">
-                <i className="fa-regular fa-chevron-down" />
-              </span>
-            </a>
-          </h4>
-          <div
-            className={`collapse ${openSections["rbt-collapse-10"] ? "show" : ""}`}
-            id="rbt-collapse-10"
-          >
-            <div className="rbt-sidebar-list-wrapper rbt-tag-list justify-content-start pt--0">
-              <FilterByService
-                selectedItems={state.services}
-                onChange={(value) =>
-                  toggleService(value, dispatch, state.services)
-                }
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Widget Area  */}
     </div>
   );
 }

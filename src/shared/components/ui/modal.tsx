@@ -60,7 +60,7 @@ const ModalCloseButton = React.forwardRef<
     data-bs-dismiss="modal"
     aria-label="Close"
     className={cn(
-      "rbt-round-btn absolute -right-5 -top-5 z-10 flex h-10 w-10 items-center justify-center bg-transparent text-base text-gray-900 opacity-100 transition-all hover:text-gray-900 focus:outline-none",
+      "absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-sm text-gray-500 hover:bg-black hover:text-white transition-all shadow-sm focus:outline-none",
       className
     )}
     {...props}

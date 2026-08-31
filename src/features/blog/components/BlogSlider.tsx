@@ -1,131 +1,117 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 import { blogPosts26 } from "@/shared/data/blogs";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { buttonVariants } from "@/shared/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function BlogSlider({
-  className = "rbt-component-area rbt-blog-post-area rbt-bg-color-gray-light rbt-swiper-container-one rbt-swiper-container-one-blog rbt-arrow-between",
+  className = "bg-gray-50 py-16 md:py-24",
 }) {
   return (
     <div className={className}>
-      <div className="container position-relative">
-        <div className="row">
-          <div className="col-12">
-            {/* Start banner part */}
-            <div className="rbt-blog-post-banner rbt-curved-style-box">
-              <Swiper
-                className="swiper rbt-blog-wrapper-slide-acivation"
-                {...{
-                  slidesPerView: 1,
-                  spaceBetween: 24,
-                  slidesPerGroup: 1,
-                  loop: true,
-                  draggable: true,
-                  navigation: {
-                    prevEl: ".rbt-arrow-left",
-                    nextEl: ".rbt-arrow-right",
-                  },
-                }}
-                modules={[Navigation]}
-              >
-                {blogPosts26.map((post, index) => (
-                  <SwiperSlide className="swiper-slide" key={index}>
-                    <div className="rbt-blog-post-wrapper">
-                      <div className="row row--12">
-                        {/* Content Section */}
-                        <div className="col-12 col-lg-6 order-2 order-lg-1">
-                          <div className="rbt-blog-post-banner-content">
-                            <div className="rbt-blog-post-meta">
-                              <ul className="rbt-blog-details-meta-list">
-                                <li>
-                                  <a href="#">{post.category}</a>
-                                </li>
-                                <li>
-                                  <a href="#">{post.date}</a>
-                                </li>
-                              </ul>
-                            </div>
-                            <h3 className="rbt-title rbt-blog-banner-title">
-                              <Link href={`/blog-single`}>{post.title}</Link>
-                            </h3>
-                            <p className="rbt-blog-banner-text">
-                              {post.description}
-                            </p>
-                            <Link
-                              className={buttonVariants({ size: "md", })}
-                              href={`/blog-single`}
-                            >
-                              Continue Reading
-                            </Link>
-                          </div>
-                        </div>
-
-                        {/* Image Slider Section */}
-                        <div className="col-12 col-lg-6 order-1 order-lg-2">
-                          <div className="rbt-blog-banner-thumbnail position-relative mt_sm--0 mt_md--0 mb_sm--24 mb_md--24">
-                            <Swiper
-                              className="swiper rbt-blog-banner-slide-acivation rbt-curved-style-box"
-                              {...{
-                                slidesPerView: 1,
-                                loop: true,
-                                autoplay: {
-                                  delay: 3000,
-                                },
-                                pagination: {
-                                  el: `.rbt-blog-slider-${index}`,
-                                  clickable: true,
-                                },
-                                navigation: false,
-                              }}
-                              modules={[Pagination, Autoplay]}
-                            >
-                              {post.images?.map((img, i) => (
-                                <SwiperSlide className="swiper-slide" key={i}>
-                                  <div className="rbt-about-banner-img">
-                                    <Image
-                                      alt="About us image"
-                                      src={img}
-                                      width={1130}
-                                      height={764}
-                                    />
-                                  </div>
-                                </SwiperSlide>
-                              ))}
-
-                              {/* Pagination */}
-                              <div
-                                className={`swiper-pagination rbt-swiper-progress rbt-swiper-pagination-dot-extend rbt-blog-slider-${index}`}
-                              />
-                            </Swiper>
-                          </div>
-                        </div>
-                      </div>
+      <div className="container mx-auto px-4 md:px-8 relative">
+        <div className="bg-white rounded-3xl overflow-hidden shadow-sm relative">
+          <Swiper
+            className="pb-12 md:pb-0"
+            {...{
+              slidesPerView: 1,
+              spaceBetween: 24,
+              slidesPerGroup: 1,
+              loop: true,
+              draggable: true,
+              navigation: {
+                prevEl: ".blog-slider-prev",
+                nextEl: ".blog-slider-next",
+              },
+            }}
+            modules={[Navigation]}
+          >
+            {blogPosts26.map((post, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex flex-col lg:flex-row p-6 md:p-12 gap-8 md:gap-12 items-center">
+                  {/* Content Section */}
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-start text-left">
+                    <div className="flex items-center gap-4 text-sm text-gray-500 font-medium tracking-wide uppercase mb-4">
+                      <Link href="#" className="hover:text-primary transition-colors">{post.category}</Link>
+                      <span className="w-1 h-1 rounded-full bg-gray-300" />
+                      <Link href="#" className="hover:text-primary transition-colors">{post.date}</Link>
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-            {/* End banner part */}
-          </div>
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 leading-tight mb-6">
+                      <Link href={`/blog-single`} className="hover:text-primary transition-colors">
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-2xl">
+                      {post.description}
+                    </p>
+                    <Link
+                      className={cn(buttonVariants({ size: "lg" }), "rounded-full px-8")}
+                      href={`/blog-single`}
+                    >
+                      Continue Reading
+                    </Link>
+                  </div>
+
+                  {/* Image Slider Section */}
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div className="rounded-2xl overflow-hidden relative shadow-md aspect-[4/3] w-full group">
+                      <Swiper
+                        className="h-full w-full"
+                        {...{
+                          slidesPerView: 1,
+                          loop: true,
+                          autoplay: {
+                            delay: 3000,
+                          },
+                          pagination: {
+                            el: `.blog-inner-slider-${index}`,
+                            clickable: true,
+                          },
+                          navigation: false,
+                        }}
+                        modules={[Pagination, Autoplay]}
+                      >
+                        {post.images?.map((img, i) => (
+                          <SwiperSlide key={i} className="h-full w-full">
+                            <Image
+                              alt={post.title}
+                              src={img}
+                              fill
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                      {/* Pagination */}
+                      <div
+                        className={cn(
+                          `blog-inner-slider-${index}`,
+                          "absolute bottom-4 left-0 w-full flex justify-center gap-2 z-10"
+                        )}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          
+          {/* Global Navigation Arrows */}
+          <button className="blog-slider-prev absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg text-gray-600 hover:bg-primary hover:text-white transition-all disabled:opacity-50 xl:-translate-x-6">
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button className="blog-slider-next absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg text-gray-600 hover:bg-primary hover:text-white transition-all disabled:opacity-50 xl:translate-x-6">
+            <ChevronRight className="h-6 w-6" />
+          </button>
         </div>
-        {/* Start slider navigation buttons */}
-        <div className="rbt-swiper-arrow rbt-arrow-left rbt-arrow-gray rbt-arrow-lg">
-          <div className="custom-overflow">
-            <i className="rbt-icon fa-regular fa-arrow-left" />
-            <i className="rbt-icon-top fa-regular fa-arrow-left" />
-          </div>
-        </div>
-        <div className="rbt-swiper-arrow rbt-arrow-right rbt-arrow-gray rbt-arrow-lg">
-          <div className="custom-overflow">
-            <i className="rbt-icon fa-regular fa-arrow-right" />
-            <i className="rbt-icon-top fa-regular fa-arrow-right" />
-          </div>
-        </div>
-        {/* End slider navigation buttons */}
       </div>
     </div>
   );

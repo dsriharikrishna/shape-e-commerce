@@ -1,32 +1,42 @@
 "use client";
 import { useContextElement, useUiElement } from "@/shared/store/Context";
 import type { Product } from "@/shared/types";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import type { VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface AddToCompareProps {
+interface AddToCompareProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   product: Product;
   parentClass?: string;
+  className?: string;
 }
 
 export default function AddtoCompare1({
   product,
-  parentClass = "rbt-btn rbt-btn-border rbt-btn-sm rbt-square-btn d-block rbt-btn-transparent has-left-icon rbt-compare-btn-activation rbt-compare-bottom-sidenav-activation",
+  parentClass,
+  className,
+  variant = "outline",
+  size = "sm",
+  ...props
 }: AddToCompareProps) {
   const { addToCompareItem, isAddedToCompareItem } = useContextElement();
   const { openComparePanel } = useUiElement();
 
   return (
-    <a
-      className={parentClass}
-      href="#"
+    <Button
+      variant={variant}
+      size={size}
+      className={cn("gap-2", parentClass, className)}
       onClick={() => {
         if (product.id && !isAddedToCompareItem(product.id)) {
           addToCompareItem(product.id);
           openComparePanel();
         }
       }}
+      {...props}
     >
       <i className="fa-regular fa-file-plus-minus" />
       {isAddedToCompareItem(product.id) ? "Already Compared" : "Compare"}
-    </a>
+    </Button>
   );
 }

@@ -13,6 +13,7 @@ import {
 import type { MenuItem } from "@/shared/types";
 import { Button, buttonVariants } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
+import { cn } from "@/lib/utils";
 
 const BADGE_CLASS: Record<string, string> = {
   green: "rbt-product-badge-bg-green",
@@ -79,14 +80,23 @@ export default function MobileMenu() {
 
   return (
     <div
-      className={`popup-mobile-menu ${mobileMenuOpen ? "active" : ""}`}
+      className={cn(
+        "fixed inset-0 z-[9999] bg-black/60 transition-opacity duration-300",
+        mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+      )}
       onClick={handleBackdropClick}
       role="presentation"
     >
-      <div className="inner-wrapper" onClick={(e) => e.stopPropagation()}>
-        <div className="mobile-menu-top">
-          <div className="inner-top">
-            <div className="content">
+      <div 
+        className={cn(
+          "fixed top-0 left-0 bottom-0 w-[320px] max-w-[85vw] bg-white shadow-2xl transition-transform duration-300 ease-in-out overflow-y-auto overflow-x-hidden",
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex flex-col">
+          <div className="flex flex-col p-6 bg-gray-50 border-b border-gray-100">
+            <div className="flex items-center justify-between mb-6">
               <div className="logo">
                 <Link href={`/`}>
                   <Image
@@ -97,38 +107,37 @@ export default function MobileMenu() {
                   />
                 </Link>
               </div>
-              <div className="rbt-btn-close">
+              <div className="">
                 <button
-                  className="close-button rbt-round-btn"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-500 shadow-sm hover:bg-black hover:text-white transition-all"
                   onClick={closeMenu}
                 >
-                  <i className="fa-solid fa-xmark" />
+                  <i className="fa-solid fa-xmark text-lg" />
                 </button>
               </div>
             </div>
-            <p className="description">
+            <p className="text-sm text-gray-500 mb-6">
               TryShape is a E-commerce Template. Worldwide electronics store
               since 1978.
             </p>
-            <div className="rbt-inner-search-field style-one rbt-search-field-rounded rbt-search-field-sm-width">
-              <Input type="text" placeholder="Search for products" />
+            <div className="relative">
+              <Input className="w-full pl-4 pr-12 py-2.5 bg-white border-transparent focus:border-primary shadow-sm rounded-full" type="text" placeholder="Search for products" />
               <button
-                className="rbt-round-btn search-btn rbt-text-color-gray-500"
+                className="absolute right-1 top-1 bottom-1 w-10 flex items-center justify-center text-gray-400 hover:text-primary transition-colors bg-transparent border-0"
                 type="submit"
               >
                 <i className="fa-solid fa-magnifying-glass" />
               </button>
             </div>
           </div>
-          <div className="rbt-tab rbt-round-shape-tab">
-            <ul
-              className="nav nav-tabs mb--0"
-              id="mobile-menuTab"
-              role="tablist"
-            >
-              <li className="nav-item" role="presentation">
+          <div className="px-4 py-4">
+            <ul className="flex border-b border-gray-100 mb-4" role="tablist">
+              <li className="flex-1" role="presentation">
                 <button
-                  className="nav-link active"
+                  className={cn(
+                    "w-full py-3 text-sm font-semibold flex items-center justify-center gap-2 border-b-2 transition-colors",
+                    "border-primary text-primary" // Assuming active tab for now, since it doesn't have React state for tabs, just bootstrap data-bs
+                  )}
                   id="rbt-tab-mobilemenu-1"
                   data-bs-toggle="tab"
                   data-bs-target="#rbt-tab-pane-mobilemenu-1"
@@ -141,9 +150,11 @@ export default function MobileMenu() {
                   Menu
                 </button>
               </li>
-              <li className="nav-item" role="presentation">
+              <li className="flex-1" role="presentation">
                 <button
-                  className="nav-link"
+                  className={cn(
+                    "w-full py-3 text-sm font-medium text-gray-500 flex items-center justify-center gap-2 border-b-2 border-transparent hover:text-primary transition-colors"
+                  )}
                   id="rbt-tab-mobilemenu-2"
                   data-bs-toggle="tab"
                   data-bs-target="#rbt-tab-pane-mobilemenu-2"
@@ -153,7 +164,7 @@ export default function MobileMenu() {
                   aria-selected="false"
                 >
                   <i className="fa-sharp fa-regular fa-layer-group" />
-                  Catagories
+                  Categories
                 </button>
               </li>
             </ul>
@@ -165,55 +176,64 @@ export default function MobileMenu() {
                 aria-labelledby="rbt-tab-mobilemenu-1"
                 tabIndex={0}
               >
-                <nav className="rbt-mainmenu-nav">
-                  <ul className="mainmenu">
+                <nav className="flex flex-col gap-2">
+                  <ul className="flex flex-col">
                     {/* Home */}
                     <li>
-                      <Link href="/" onClick={closeMenu}>
+                      <Link href="/" onClick={closeMenu} className="block py-3 text-base font-semibold text-gray-900 border-b border-gray-100 hover:text-primary transition-colors">
                         Home
                       </Link>
                     </li>
 
                     {/* Collections */}
-                    <li className="with-rbt-megamenu has-menu-child-item position-static">
+                    <li className="flex flex-col border-b border-gray-100">
                       <a
                         href="#!"
                         onClick={(e) => {
                           e.preventDefault();
                           toggleMenu("menu-collections");
                         }}
-                        className={
-                          openMenuIds.has("menu-collections") ? "open" : ""
-                        }
+                        className={cn(
+                          "flex items-center justify-between py-3 text-base font-semibold transition-colors",
+                          openMenuIds.has("menu-collections") ? "text-primary" : "text-gray-900 hover:text-primary"
+                        )}
                         role="button"
                         aria-expanded={openMenuIds.has("menu-collections")}
                       >
-                        Collections <i className="fa-regular fa-chevron-down" />
+                        Collections 
+                        <i className={cn(
+                          "fa-regular fa-chevron-down text-sm transition-transform duration-300",
+                          openMenuIds.has("menu-collections") ? "rotate-180" : ""
+                        )} />
                       </a>
                       <div
-                        className={`rbt-megamenu grid-item-3 pl_sm--0 pl_md--0 pl_lg--0 ${openMenuIds.has("menu-collections") ? "active" : ""}`}
+                        className={cn(
+                          "overflow-hidden transition-all duration-300 ease-in-out",
+                          openMenuIds.has("menu-collections") ? "max-h-[1000px] opacity-100 mb-4" : "max-h-0 opacity-0"
+                        )}
                       >
-                        <div className="rbt-megamenu-wrapper">
+                        <div className="flex flex-col gap-4 pl-4 border-l border-gray-100 ml-2">
                           {categoryMegamenus.map((cat, catIndex) => (
-                            <div key={catIndex} className="mb--16">
-                              <h6 className="rbt-short-title">
-                                <i className={`${cat.icon} mr--8`} />
-                                <Link href={cat.href} onClick={closeMenu}>
+                            <div key={catIndex} className="flex flex-col gap-2">
+                              <h6 className="text-sm font-semibold text-gray-900 flex items-center gap-2 mb-1">
+                                <i className={cn(cat.icon, "text-gray-400")} />
+                                <Link href={cat.href} onClick={closeMenu} className="hover:text-primary transition-colors">
                                   {cat.label}
                                 </Link>
                               </h6>
-                              <div className="row row--8 mt--8">
+                              <div className="grid grid-cols-2 gap-4">
                                 {cat.sections.map((section, secIdx) => (
-                                  <div key={secIdx} className="col-6">
-                                    <h6 className="rbt-short-title rbt-text-color-gray-500 mb--8">
+                                  <div key={secIdx} className="flex flex-col">
+                                    <h6 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
                                       {section.title}
                                     </h6>
-                                    <ul className="mega-menu-item">
+                                    <ul className="flex flex-col gap-2">
                                       {section.items.map((item, itemIdx) => (
                                         <li key={itemIdx}>
                                           <Link
                                             href={item.href}
                                             onClick={closeMenu}
+                                            className="text-sm text-gray-600 hover:text-primary transition-colors block"
                                           >
                                             {item.label}
                                           </Link>
@@ -230,27 +250,39 @@ export default function MobileMenu() {
                     </li>
 
                     {/* Shop */}
-                    <li className="has-dropdown position-relative">
+                    <li className="flex flex-col border-b border-gray-100">
                       <a
                         href="#!"
                         onClick={(e) => {
                           e.preventDefault();
                           toggleMenu("menu-shop");
                         }}
-                        className={openMenuIds.has("menu-shop") ? "open" : ""}
+                        className={cn(
+                          "flex items-center justify-between py-3 text-base font-semibold transition-colors",
+                          openMenuIds.has("menu-shop") ? "text-primary" : "text-gray-900 hover:text-primary"
+                        )}
                         role="button"
                         aria-expanded={openMenuIds.has("menu-shop")}
                       >
-                        Shop <i className="fa-regular fa-chevron-down" />
+                        Shop 
+                        <i className={cn(
+                          "fa-regular fa-chevron-down text-sm transition-transform duration-300",
+                          openMenuIds.has("menu-shop") ? "rotate-180" : ""
+                        )} />
                       </a>
                       <ul
-                        className={`submenu ${openMenuIds.has("menu-shop") ? "active" : ""}`}
+                        className={cn(
+                          "flex flex-col gap-2 pl-4 border-l border-gray-100 ml-2 overflow-hidden transition-all duration-300 ease-in-out",
+                          openMenuIds.has("menu-shop") ? "max-h-[500px] opacity-100 mb-4" : "max-h-0 opacity-0"
+                        )}
                       >
                         {shopPages
                           .flatMap((section) => section.items)
                           .map((item, index) => (
                             <li key={index}>
-                              <MenuItemLink item={item} />
+                              <div className="text-sm text-gray-600 hover:text-primary transition-colors py-1 block">
+                                <MenuItemLink item={item} />
+                              </div>
                             </li>
                           ))}
                       </ul>
@@ -258,9 +290,9 @@ export default function MobileMenu() {
 
                     {/* New Arrivals */}
                     <li>
-                      <Link href="/shop?collection=new-arrivals" onClick={closeMenu}>
+                      <Link href="/shop?collection=new-arrivals" onClick={closeMenu} className="flex items-center py-3 text-base font-semibold text-gray-900 border-b border-gray-100 hover:text-primary transition-colors">
                         New Arrivals
-                        <div className="rbt-product-badge rbt-product-badge-bg-danger border-rounded ml--8">
+                        <div className="ml-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white bg-red-500 rounded-full">
                           New
                         </div>
                       </Link>
@@ -268,7 +300,7 @@ export default function MobileMenu() {
 
                     {/* Blog */}
                     <li>
-                      <Link href="/blog-default" onClick={closeMenu}>
+                      <Link href="/blog-default" onClick={closeMenu} className="block py-3 text-base font-semibold text-gray-900 border-b border-gray-100 hover:text-primary transition-colors">
                         Blog
                       </Link>
                     </li>
@@ -309,14 +341,14 @@ export default function MobileMenu() {
                 aria-labelledby="rbt-tab-mobilemenu-2"
                 tabIndex={0}
               >
-                <nav className="rbt-mainmenu-nav">
-                  <ul className="mainmenu">
+                <nav className="flex flex-col gap-2">
+                  <ul className="flex flex-col">
                     {categoryMegamenus.map((cat, catIndex) => {
                       const catMenuId = `cat-${catIndex}`;
                       return (
                         <li
                           key={cat.label}
-                          className="with-rbt-megamenu has-menu-child-item position-static"
+                          className="flex flex-col border-b border-gray-100"
                         >
                           <a
                             href="#!"
@@ -324,92 +356,96 @@ export default function MobileMenu() {
                               e.preventDefault();
                               toggleMenu(catMenuId);
                             }}
-                            className={openMenuIds.has(catMenuId) ? "open" : ""}
+                            className={cn(
+                              "flex items-center justify-between py-3 text-base font-semibold transition-colors",
+                              openMenuIds.has(catMenuId) ? "text-primary" : "text-gray-900 hover:text-primary"
+                            )}
                             role="button"
                             aria-expanded={openMenuIds.has(catMenuId)}
                           >
-                            <span>
-                              <i
-                                className={`rbt-catagories-icon mr--8 ${cat.icon}`}
-                              />
+                            <span className="flex items-center gap-2">
+                              <i className={cn("text-gray-400 text-sm", cat.icon)} />
+                              {cat.label}
                             </span>
-                            {cat.label}
-                            <span className="rbt-chevron-right">
-                              <i className="fa-regular fa-chevron-right" />
+                            <span className="text-sm">
+                              <i className={cn(
+                                "fa-regular fa-chevron-down transition-transform duration-300",
+                                openMenuIds.has(catMenuId) ? "rotate-180" : ""
+                              )} />
                             </span>
                           </a>
                           {/* Start Mega Menu  */}
                           <div
-                            className={`rbt-megamenu grid-item-5 pl_sm--0 pl_md--0 pl_lg--0 ${openMenuIds.has(catMenuId) ? "active" : ""}`}
+                            className={cn(
+                              "overflow-hidden transition-all duration-300 ease-in-out",
+                              openMenuIds.has(catMenuId) ? "max-h-[2000px] opacity-100 mb-4" : "max-h-0 opacity-0"
+                            )}
                           >
-                            <div className="container p_sm--0 p_md--0 p_lg--0">
-                              <div className="rbt-megamenu-wrapper">
-                                <div className="row row--12">
+                            <div className="flex flex-col gap-6 pl-4 border-l border-gray-100 ml-2">
+                              <div className="flex flex-col gap-6">
+                                <div className="grid grid-cols-2 gap-4">
                                   {cat.sections.map((section, sectionIdx) => (
                                     <div
                                       key={`${cat.label}-${section.title}-${sectionIdx}`}
-                                      className="col-lg-12 col-xl-3 col-xxl-3 single-mega-item rbt-scroll-trigger fade_in animation-order-1"
+                                      className="flex flex-col"
                                     >
-                                      <h6 className="rbt-short-title">
+                                      <h6 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
                                         {section.title}
                                       </h6>
-                                      <ul className="mega-menu-item">
+                                      <ul className="flex flex-col gap-2">
                                         {section.items.map((item) => (
                                           <li
                                             key={`${item.href}-${item.label}`}
                                           >
-                                            <MenuItemLink item={item} />
+                                            <div className="text-sm text-gray-600 hover:text-primary transition-colors block">
+                                              <MenuItemLink item={item} />
+                                            </div>
                                           </li>
                                         ))}
                                       </ul>
                                     </div>
                                   ))}
-                                  <div className="col-lg-12 col-xl-3 col-xxl-3 single-mega-item rbt-scroll-trigger fade_in animation-order-1">
-                                    <div
-                                      className={`rbt-menu-offer-card ${cat.banner.bannerCardClass ?? ""}`}
-                                    >
-                                      <div
-                                        className={`mega-top-banner ${cat.banner.bannerInnerClass ?? ""}`}
+                                </div>
+                                <div className="mt-4">
+                                  <div
+                                    className="rounded-xl overflow-hidden shadow-sm relative p-4 flex flex-col items-center text-center justify-center bg-gray-50 border border-gray-100"
+                                  >
+                                    <div className="z-10 flex flex-col items-center">
+                                      <h5 className="text-lg font-bold text-gray-900 mb-1">
+                                        {cat.banner.title}
+                                      </h5>
+                                      <p className="text-sm text-gray-600 mb-4">
+                                        {cat.banner.desc}
+                                      </p>
+                                      {cat.banner.btnHref.startsWith(
+                                        "http"
+                                      ) || cat.banner.btnHref === "#" ? (
+                                        <a
+                                          className={buttonVariants({ variant: "black", size: "sm" })}
+                                          href={cat.banner.btnHref}
+                                        >
+                                          {cat.banner.btnText}
+                                        </a>
+                                      ) : (
+                                        <Link
+                                          className={buttonVariants({ variant: "black", size: "sm" })}
+                                          href={cat.banner.btnHref}
+                                        >
+                                          {cat.banner.btnText}
+                                        </Link>
+                                      )}
+                                      <a
+                                        href="#"
+                                        className="mt-4 block"
                                       >
-                                        <div className="rbt-banner-inner flex-column justify-content-center rbt-gap--8 align-items-center text-center">
-                                          <div className="rbt-banner-content">
-                                            <h5 className="title">
-                                              {cat.banner.title}
-                                            </h5>
-                                            <p className="b3 desc">
-                                              {cat.banner.desc}
-                                            </p>
-                                          </div>
-                                          {cat.banner.btnHref.startsWith(
-                                            "http"
-                                          ) || cat.banner.btnHref === "#" ? (
-                                            <a
-                                              className={buttonVariants({ variant: "black", size: "sm", })}
-                                              href={cat.banner.btnHref}
-                                            >
-                                              {cat.banner.btnText}
-                                            </a>
-                                          ) : (
-                                            <Link
-                                              className={buttonVariants({ variant: "black", size: "sm", })}
-                                              href={cat.banner.btnHref}
-                                            >
-                                              {cat.banner.btnText}
-                                            </Link>
-                                          )}
-                                          <a
-                                            href="#"
-                                            className="product-img position-bottom mt--24"
-                                          >
-                                            <Image
-                                              alt="Ecommerce Product"
-                                              src={cat.banner.imgSrc}
-                                              width={cat.banner.imgWidth}
-                                              height={cat.banner.imgHeight}
-                                            />
-                                          </a>
-                                        </div>
-                                      </div>
+                                        <Image
+                                          alt="Ecommerce Product"
+                                          src={cat.banner.imgSrc}
+                                          width={cat.banner.imgWidth}
+                                          height={cat.banner.imgHeight}
+                                          className="max-w-[120px] h-auto object-contain"
+                                        />
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
