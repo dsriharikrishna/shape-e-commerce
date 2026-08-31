@@ -5,6 +5,7 @@ import Image from "next/image";
 import { blogPosts26 } from "@/shared/data/blogs";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function BlogSlider({
   className = "rbt-component-area rbt-blog-post-area rbt-bg-color-gray-light rbt-swiper-container-one rbt-swiper-container-one-blog rbt-arrow-between",
@@ -55,7 +56,7 @@ export default function BlogSlider({
                               {post.description}
                             </p>
                             <Link
-                              className="rbt-btn rbt-btn-md"
+                              className={buttonVariants({ size: "md", })}
                               href={`/blog-single`}
                             >
                               Continue Reading

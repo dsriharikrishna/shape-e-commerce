@@ -7,12 +7,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { ChevronRight, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { useContextElement } from "@/shared/store/store";
-import Header3 from "@/shared/components/layout/headers/Header3";
-import Footer3 from "@/shared/components/layout/footers/Footer3";
+import Header from "@/shared/components/layout/headers/Header";
+import Footer from "@/shared/components/layout/footers/Footer";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
-import { allProducts as products } from "@/features/products/data/products";
+import { allProducts as products } from "@/shared/data/products";
 
 const checkoutSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -80,7 +80,7 @@ export default function CheckoutPage() {
   if (orderPlaced) {
     return (
       <>
-        <Header3 sticky={true} />
+        <Header sticky={true} />
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-24">
           <CheckCircle2 className="h-24 w-24 text-emerald-500 mb-6" />
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -97,14 +97,14 @@ export default function CheckoutPage() {
             </Button>
           </Link>
         </div>
-        <Footer3 />
+        <Footer />
       </>
     );
   }
 
   return (
     <>
-      <Header3 sticky={true} />
+      <Header sticky={true} />
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-8 border-b border-gray-200">
@@ -315,7 +315,7 @@ export default function CheckoutPage() {
 
                   {/* Payment Methods */}
                   <div className="space-y-4 mb-8">
-                    <label className="flex items-start space-x-3 cursor-pointer group">
+                    <Label className="flex items-start space-x-3 cursor-pointer group">
                       <input
                         type="radio"
                         name="payment"
@@ -331,8 +331,8 @@ export default function CheckoutPage() {
                           Please use your Order ID as the payment reference.
                         </p>
                       </div>
-                    </label>
-                    <label className="flex items-center space-x-3 cursor-pointer group">
+                    </Label>
+                    <Label className="flex items-center space-x-3 cursor-pointer group">
                       <input
                         type="radio"
                         name="payment"
@@ -341,8 +341,8 @@ export default function CheckoutPage() {
                       <span className="text-sm font-semibold text-gray-900">
                         Cash on delivery
                       </span>
-                    </label>
-                    <label className="flex items-center space-x-3 cursor-pointer group">
+                    </Label>
+                    <Label className="flex items-center space-x-3 cursor-pointer group">
                       <input
                         type="radio"
                         name="payment"
@@ -351,7 +351,7 @@ export default function CheckoutPage() {
                       <span className="text-sm font-semibold text-gray-900">
                         PayPal
                       </span>
-                    </label>
+                    </Label>
                   </div>
 
                   <p className="text-xs text-gray-500 mb-6">
@@ -378,7 +378,7 @@ export default function CheckoutPage() {
         </div>
       </div>
 
-      <Footer3 />
+      <Footer />
     </>
   );
 }

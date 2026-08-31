@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+
 export default function Brands({
   parentClass = "rbt-component-area rbt-brands-area rbt-bg-color-white rbt-section-gap2",
 }) {
@@ -16,7 +18,7 @@ export default function Brands({
                 <span className="rbt-bold--text">Trending </span>Brands
               </h2>
               <a
-                className="rbt-btn-link rbt-text-color-primary d-flex rbt-text-medium rbt-gap--8 mt--8 justify-content-center rbt-scroll-trigger zoom_in animation-order-3"
+                className={buttonVariants({ className: "rbt-btn-link rbt-text-color-primary d-flex rbt-text-medium rbt-gap--8 mt--8 justify-content-center rbt-scroll-trigger zoom_in animation-order-3" })}
                 href="#"
               >
                 <span className="btn-text">View All Brands</span>
@@ -45,7 +47,7 @@ export default function Brands({
                   it’s constantly selling out.”
                 </p>
                 <Link
-                  className="rbt-btn rbt-btn-secondary rbt-btn-sm"
+                  className={buttonVariants({ variant: "secondary", size: "sm", })}
                   href={`/shop-by-brands`}
                 >
                   <span className="btn-text">See 16 Products</span>
@@ -72,7 +74,7 @@ export default function Brands({
                   it’s constantly selling out.”
                 </p>
                 <Link
-                  className="rbt-btn rbt-btn-secondary rbt-btn-sm"
+                  className={buttonVariants({ variant: "secondary", size: "sm", })}
                   href={`/shop-by-brands`}
                 >
                   <span className="btn-text">See 32 Products</span>
@@ -99,7 +101,7 @@ export default function Brands({
                   it’s constantly selling out.”
                 </p>
                 <Link
-                  className="rbt-btn rbt-btn-secondary rbt-btn-sm"
+                  className={buttonVariants({ variant: "secondary", size: "sm", })}
                   href={`/shop-by-brands`}
                 >
                   <span className="btn-text">See 28 Products</span>
@@ -126,7 +128,7 @@ export default function Brands({
                   it’s constantly selling out.”
                 </p>
                 <Link
-                  className="rbt-btn rbt-btn-secondary rbt-btn-sm"
+                  className={buttonVariants({ variant: "secondary", size: "sm", })}
                   href={`/shop-by-brands`}
                 >
                   <span className="btn-text">See 64 Products</span>
@@ -153,7 +155,7 @@ export default function Brands({
                   it’s constantly selling out.”
                 </p>
                 <Link
-                  className="rbt-btn rbt-btn-secondary rbt-btn-sm"
+                  className={buttonVariants({ variant: "secondary", size: "sm", })}
                   href={`/shop-by-brands`}
                 >
                   <span className="btn-text">See 48 Products</span>

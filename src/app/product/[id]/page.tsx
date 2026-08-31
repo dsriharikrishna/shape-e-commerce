@@ -13,9 +13,9 @@ import {
   Heart,
   Share2,
 } from "lucide-react";
-import { allProducts as products } from "@/features/products/data/products";
-import Header3 from "@/shared/components/layout/headers/Header3";
-import Footer3 from "@/shared/components/layout/footers/Footer3";
+import { allProducts as products } from "@/shared/data/products";
+import Header from "@/shared/components/layout/headers/Header";
+import Footer from "@/shared/components/layout/footers/Footer";
 import { Button } from "@/shared/components/ui/button";
 import { useContextElement } from "@/shared/store/store";
 import {
@@ -24,7 +24,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
-import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
+import ProductCardVariant from "@/features/products/components/productCards/ProductCardVariant";
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -81,7 +81,7 @@ export default function ProductDetailsPage() {
 
   return (
     <>
-      <Header3 sticky={true} />
+      <Header sticky={true} />
 
       {/* Breadcrumb Header */}
       <div className="bg-gray-50 py-4 border-b border-gray-200">
@@ -409,7 +409,7 @@ export default function ProductDetailsPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.slice(10, 14).map((relatedProduct) => (
-                <ProductCard1
+                <ProductCardVariant
                   key={relatedProduct.id}
                   product={relatedProduct}
                 />
@@ -419,7 +419,7 @@ export default function ProductDetailsPage() {
         </div>
       </div>
 
-      <Footer3 />
+      <Footer />
     </>
   );
 }

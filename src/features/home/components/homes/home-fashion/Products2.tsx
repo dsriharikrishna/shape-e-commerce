@@ -1,8 +1,8 @@
 "use client";
 
 import Countdown from "@/shared/components/common/Countdown";
-import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
-import { fashionProducts } from "@/features/products/data/products/fashion";
+import ProductCardVariant from "@/features/products/components/productCards/ProductCardVariant";
+import { fashionProducts } from "@/shared/data/products/fashion";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -49,7 +49,7 @@ export default function Products2() {
           >
             {fashionProducts.map((product, i) => (
               <SwiperSlide key={i}>
-                <ProductCard1 product={product} />
+                <ProductCardVariant product={product} />
               </SwiperSlide>
             ))}
           </Swiper>

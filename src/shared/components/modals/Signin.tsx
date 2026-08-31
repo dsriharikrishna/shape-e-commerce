@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { useAuthStore } from "@/shared/store/authStore";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
@@ -97,14 +100,14 @@ export default function Signin() {
                   </h6>
                   <form onSubmit={handleSubmit}>
                     <div className="rbt-input-field-grp">
-                      <label
+                      <Label
                         className="rbt-field-label"
                         htmlFor="modal_signin_email"
                       >
                         Email Address
                         <span className="rbt-text-color-danger">*</span>
-                      </label>
-                      <input
+                      </Label>
+                      <Input
                         className="rbt-input-field"
                         placeholder="Enter your email"
                         type="email"
@@ -116,14 +119,14 @@ export default function Signin() {
                       />
                     </div>
                     <div className="rbt-input-field-grp mt--16">
-                      <label
+                      <Label
                         className="rbt-field-label"
                         htmlFor="modal_signin_password"
                       >
                         Password
                         <span className="rbt-text-color-danger">*</span>
-                      </label>
-                      <input
+                      </Label>
+                      <Input
                         className="rbt-input-field"
                         placeholder="Enter your password"
                         type="password"
@@ -142,22 +145,22 @@ export default function Signin() {
                         {error}
                       </p>
                     )}
-                    <button
+                    <Button
                       type="submit"
-                      className="rbt-btn d-block w-100 mt--24 mb--16"
+                      className="d-block w-100 mt--24 mb--16"
                       disabled={loading}
                     >
                       {loading ? "Signing in..." : "Sign In"}
-                    </button>
+                    </Button>
                     <div className="rbt-check-group">
                       <input
                         id="modal_login_checked1"
                         type="checkbox"
                         name="login"
                       />
-                      <label htmlFor="modal_login_checked1">
+                      <Label htmlFor="modal_login_checked1">
                         Stay Logged In
-                      </label>
+                      </Label>
                     </div>
                   </form>
                   {/* Separator */}
@@ -167,9 +170,9 @@ export default function Signin() {
                     <hr className="rbt-separator rbt-bg-color-gray-light mb--0" />
                   </div>
                   {/* Start social login button */}
-                  <button
+                  <Button
                     type="button"
-                    className="rbt-btn rbt-btn-border rbt-social-login-btn d-block w-100 mb--16 rbt-social-login-btn"
+                    className="rbt-social-login-btn d-block w-100 mb--16 rbt-social-login-btn" variant="outline"
                   >
                     <Image
                       className="icon"
@@ -179,10 +182,10 @@ export default function Signin() {
                       height={36}
                     />
                     Continue with Facebook
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     type="button"
-                    className="rbt-btn rbt-btn-border rbt-social-login-btn d-block w-100 rbt-social-login-btn"
+                    className="rbt-social-login-btn d-block w-100 rbt-social-login-btn" variant="outline"
                   >
                     <Image
                       className="icon"
@@ -192,7 +195,7 @@ export default function Signin() {
                       height={36}
                     />
                     Continue with Google
-                  </button>
+                  </Button>
                   {/* End social login button */}
                   <div className="rbt-login-system-switch rbt-link-hover">
                     Don&apos;t have an account?

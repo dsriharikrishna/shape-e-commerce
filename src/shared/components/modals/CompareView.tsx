@@ -5,6 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/shared/store/Context";
 import { allProducts } from "@/shared/data/products";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Modal, ModalDialog, ModalContent, ModalHeader, ModalCloseButton } from "@/shared/components/ui/modal";
+
 export default function CompareView() {
   const {
     removeFromCompareItem,
@@ -20,15 +24,15 @@ export default function CompareView() {
   }, [compareItem]);
 
   return (
-    <div
-      className="rbt-default-modal modal fade has-rbt-top-folder-shape"
+    <Modal
+      className="has-rbt-top-folder-shape"
       id="compareReviewModal"
       tabIndex={-1}
       aria-labelledby="compareReviewModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog modal-dialog-centered xl-size">
-        <div className="modal-content">
+      <ModalDialog className="modal-dialog-centered xl-size">
+        <ModalContent>
           <div className="rbt-folder-shape-right-portion">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,16 +47,15 @@ export default function CompareView() {
               />
             </svg>
           </div>
-          <div className="modal-header">
-            <button
+          <ModalHeader>
+            <ModalCloseButton
               type="button"
-              className="rbt-round-btn rbt-modal-dis-btn"
               data-bs-dismiss="modal"
               aria-label="Close"
             >
-              <i className="fa-solid fa-xmark" />
-            </button>
-          </div>
+              
+            </ModalCloseButton>
+          </ModalHeader>
           <div className="rbt-top-folder-shape-wrapper">
             {/* Start Componente Area */}
             <div className="rbt-component-area rbt-compare-table-area rbt-content-trs-portion">
@@ -76,7 +79,7 @@ export default function CompareView() {
                         {items.map((product, i) => (
                           <td key={i}>
                             <div className="rbt-input-field-grp">
-                              <input
+                              <Input
                                 className="rbt-input-field"
                                 type="text"
                                 placeholder="Search and Select Product"
@@ -148,7 +151,7 @@ export default function CompareView() {
                                   </Link>
                                 </h6>
                                 <a
-                                  className="rbt-btn rbt-btn-sm has-left-icon"
+                                  className={buttonVariants({ size: "sm", className: "has-left-icon" })}
                                   href="#"
                                   onClick={() => addProductToCart(product.id)}
                                 >
@@ -262,8 +265,8 @@ export default function CompareView() {
             </div>
             {/* End Componente Area */}
           </div>
-        </div>
-      </div>
-    </div>
+        </ModalContent>
+      </ModalDialog>
+    </Modal>
   );
 }

@@ -11,6 +11,8 @@ import {
   supportMenuItems,
 } from "@/shared/data/menu";
 import type { MenuItem } from "@/shared/types";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
 
 const BADGE_CLASS: Record<string, string> = {
   green: "rbt-product-badge-bg-green",
@@ -109,7 +111,7 @@ export default function MobileMenu() {
               since 1978.
             </p>
             <div className="rbt-inner-search-field style-one rbt-search-field-rounded rbt-search-field-sm-width">
-              <input type="text" placeholder="Search for products" />
+              <Input type="text" placeholder="Search for products" />
               <button
                 className="rbt-round-btn search-btn rbt-text-color-gray-500"
                 type="submit"
@@ -382,14 +384,14 @@ export default function MobileMenu() {
                                             "http"
                                           ) || cat.banner.btnHref === "#" ? (
                                             <a
-                                              className="rbt-btn rbt-btn-sm rbt-btn-black"
+                                              className={buttonVariants({ variant: "black", size: "sm", })}
                                               href={cat.banner.btnHref}
                                             >
                                               {cat.banner.btnText}
                                             </a>
                                           ) : (
                                             <Link
-                                              className="rbt-btn rbt-btn-sm rbt-btn-black"
+                                              className={buttonVariants({ variant: "black", size: "sm", })}
                                               href={cat.banner.btnHref}
                                             >
                                               {cat.banner.btnText}

@@ -1,3 +1,8 @@
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Label } from "@/shared/components/ui/label";
+
 export default function Contact() {
   return (
     <div className="rbt-component-area rbt-bg-color-gray-light">
@@ -346,8 +351,8 @@ export default function Contact() {
                   <div className="row">
                     <div className="col-md-6 col-12 mb--16">
                       <div className="rbt-input-field-grp form-group">
-                        <label htmlFor="f_name">First Name</label>
-                        <input
+                        <Label htmlFor="f_name">First Name</Label>
+                        <Input
                           className="rbt-contact-input-field"
                           type="text"
                           id="f_name"
@@ -356,8 +361,8 @@ export default function Contact() {
                     </div>
                     <div className="col-md-6 col-12 mb--16">
                       <div className="rbt-input-field-grp form-group">
-                        <label htmlFor="l_name">Last Name</label>
-                        <input
+                        <Label htmlFor="l_name">Last Name</Label>
+                        <Input
                           className="rbt-contact-input-field"
                           type="text"
                           id="l_name"
@@ -366,8 +371,8 @@ export default function Contact() {
                     </div>
                     <div className="col-12 mb--16">
                       <div className="rbt-input-field-grp form-group">
-                        <label htmlFor="email">Email Address</label>
-                        <input
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
                           className="rbt-contact-input-field"
                           type="email"
                           id="email"
@@ -376,8 +381,8 @@ export default function Contact() {
                     </div>
                     <div className="col-12 mb--16">
                       <div className="rbt-input-field-grp form-group">
-                        <label htmlFor="message">Your Message</label>
-                        <textarea
+                        <Label htmlFor="message">Your Message</Label>
+                        <Textarea
                           className="rbt-contact-input-field"
                           name="message"
                           id="message"
@@ -386,14 +391,14 @@ export default function Contact() {
                       </div>
                     </div>
                     <div className="col-12 d-block mt--0">
-                      <button
+                      <Button
                         name="submit"
                         type="submit"
                         id="submit"
-                        className="rbt-btn rbt-btn-md d-block text-center w-100"
+                        className="d-block text-center w-100" size="md"
                       >
                         Send Message
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>

@@ -14,6 +14,7 @@ const categories = [
 ];
 
 import { Product } from "@/shared/types";
+import { Label } from "@/shared/components/ui/label";
 
 export default function FilterByCategories({
   selectedItems,
@@ -46,7 +47,7 @@ export default function FilterByCategories({
               checked={isChecked}
               onChange={() => handleToggle(category.name)}
             />
-            <label htmlFor={inputId}>
+            <Label htmlFor={inputId}>
               <span className="rbt-lable-content">
                 <span className="rbt-lable-text">{category.name}</span>
                 <span className="rbt-lable-count">
@@ -62,7 +63,7 @@ export default function FilterByCategories({
                   )
                 </span>
               </span>
-            </label>
+            </Label>
           </li>
         );
       })}

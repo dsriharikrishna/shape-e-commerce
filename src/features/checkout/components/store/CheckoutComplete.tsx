@@ -1,10 +1,11 @@
 "use client";
 
-import { furnitureSliderProducts } from "@/features/products/data/products/furnitures";
+import { furnitureSliderProducts } from "@/shared/data/products/furnitures";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useStore } from "@/shared/store/store";
+import { Input } from "@/shared/components/ui/input";
 
 export default function CheckoutComplete() {
   const setCartProducts = useStore((s) => s.setCartProducts);
@@ -54,7 +55,7 @@ export default function CheckoutComplete() {
               <div className="rbt-coupon rbt-coupon-lg mt--12 rbt-coupon-bg-white w-50">
                 <div className="inner rbt-text-copy-activation">
                   <div className="left-part">
-                    <input
+                    <Input
                       type="text"
                       defaultValue="20%SALEOFF"
                       readOnly

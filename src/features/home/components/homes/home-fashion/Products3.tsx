@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
+import ProductCardVariant from "@/features/products/components/productCards/ProductCardVariant";
 import NavEffectTabs from "@/shared/components/common/NavEffectTabs";
-import { fashionProducts3 } from "@/features/products/data/products/fashion";
+import { fashionProducts3 } from "@/shared/data/products/fashion";
 
 const TABS = [
   { id: "this-week", label: "This Week" },
@@ -40,7 +40,7 @@ export default function Products3() {
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {fashionProducts3.map((product, i) => (
-            <ProductCard1 product={product} key={i} />
+            <ProductCardVariant product={product} key={i} />
           ))}
         </div>
       </div>

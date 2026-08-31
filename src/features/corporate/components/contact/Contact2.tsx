@@ -1,4 +1,8 @@
 import Image from "next/image";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Label } from "@/shared/components/ui/label";
 
 export default function Contact2() {
   return (
@@ -41,8 +45,8 @@ export default function Contact2() {
                   <div className="row">
                     <div className="col-md-6 col-12 mb--16">
                       <div className="rbt-input-field-grp">
-                        <label htmlFor="f_name">First Name</label>
-                        <input
+                        <Label htmlFor="f_name">First Name</Label>
+                        <Input
                           className="rbt-contact-input-field"
                           type="text"
                           id="f_name"
@@ -51,8 +55,8 @@ export default function Contact2() {
                     </div>
                     <div className="col-md-6 col-12 mb--16">
                       <div className="rbt-input-field-grp">
-                        <label htmlFor="l_name">Last Name</label>
-                        <input
+                        <Label htmlFor="l_name">Last Name</Label>
+                        <Input
                           className="rbt-contact-input-field"
                           type="text"
                           id="l_name"
@@ -61,8 +65,8 @@ export default function Contact2() {
                     </div>
                     <div className="col-12 mb--16">
                       <div className="rbt-input-field-grp">
-                        <label htmlFor="email">Email Address</label>
-                        <input
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
                           className="rbt-contact-input-field"
                           type="email"
                           id="email"
@@ -71,8 +75,8 @@ export default function Contact2() {
                     </div>
                     <div className="col-12 mb--16">
                       <div className="rbt-input-field-grp">
-                        <label htmlFor="message">Your Message</label>
-                        <textarea
+                        <Label htmlFor="message">Your Message</Label>
+                        <Textarea
                           className="rbt-contact-input-field"
                           name="message"
                           id="message"
@@ -81,7 +85,7 @@ export default function Contact2() {
                       </div>
                     </div>
                     <div className="d-flex justify-content-md-end mt--8">
-                      <a className="rbt-btn rbt-btn-md" href="#">
+                      <a className={buttonVariants({ size: "md", })} href="#">
                         Send Message
                       </a>
                     </div>

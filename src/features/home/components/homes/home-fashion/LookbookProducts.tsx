@@ -1,7 +1,7 @@
 "use client";
 import type { Swiper as SwiperClass } from "swiper";
-import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
-import { fashionProducts2 } from "@/features/products/data/products/fashion";
+import ProductCardVariant from "@/features/products/components/productCards/ProductCardVariant";
+import { fashionProducts2 } from "@/shared/data/products/fashion";
 import { useRef } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -91,7 +91,7 @@ export default function LookbookProducts() {
               >
                 {fashionProducts2.map((product, i) => (
                   <SwiperSlide key={i}>
-                    <ProductCard1 product={product} />
+                    <ProductCardVariant product={product} />
                   </SwiperSlide>
                 ))}
               </Swiper>

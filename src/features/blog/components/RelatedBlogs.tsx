@@ -2,6 +2,7 @@ import { blogCards } from "@/shared/data/blogs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function RelatedBlogs() {
   return (
@@ -16,7 +17,7 @@ export default function RelatedBlogs() {
                 </h4>
               </div>
               <Link
-                className="rbt-link rbt-text-color-primary d-flex rbt-text-medium rbt-gap--8 justify-content-center rbt-btn-link"
+                className={buttonVariants({ className: "rbt-link rbt-text-color-primary d-flex rbt-text-medium rbt-gap--8 justify-content-center rbt-btn-link" })}
                 href={`/blogs`}
               >
                 <span className="btn-text">View All Blogs</span>

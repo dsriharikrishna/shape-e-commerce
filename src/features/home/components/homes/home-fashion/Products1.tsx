@@ -2,8 +2,8 @@
 
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { products } from "@/features/products/data/products/fashion";
-import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
+import { products } from "@/shared/data/products/fashion";
+import ProductCardVariant from "@/features/products/components/productCards/ProductCardVariant";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -51,7 +51,7 @@ export default function Products1() {
           >
             {[...products, ...products].map((product, i) => (
               <SwiperSlide key={i}>
-                <ProductCard1 product={product} />
+                <ProductCardVariant product={product} />
               </SwiperSlide>
             ))}
           </Swiper>

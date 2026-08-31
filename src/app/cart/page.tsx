@@ -4,10 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Trash2, ArrowRight, ShoppingCart } from "lucide-react";
 import { useContextElement } from "@/shared/store/store";
-import Header3 from "@/shared/components/layout/headers/Header3";
-import Footer3 from "@/shared/components/layout/footers/Footer3";
+import Header from "@/shared/components/layout/headers/Header";
+import Footer from "@/shared/components/layout/footers/Footer";
 import { Button } from "@/shared/components/ui/button";
-import { allProducts as products } from "@/features/products/data/products";
+import { allProducts as products } from "@/shared/data/products";
+import { Input } from "@/shared/components/ui/input";
 
 export default function CartPage() {
   const { cartProducts, updateQuantity, removeFromCart } = useContextElement();
@@ -35,7 +36,7 @@ export default function CartPage() {
 
   return (
     <>
-      <Header3 sticky={true} />
+      <Header sticky={true} />
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-8 border-b border-gray-200">
@@ -152,7 +153,7 @@ export default function CartPage() {
 
                 <div className="flex justify-between items-center mt-8 pt-8 border-t border-gray-200">
                   <div className="flex gap-4 w-full max-w-md">
-                    <input
+                    <Input
                       type="text"
                       placeholder="Coupon code"
                       className="flex-1 h-12 px-4 rounded-xl border border-gray-200 focus:ring-black focus:border-black text-sm"
@@ -226,7 +227,7 @@ export default function CartPage() {
         </div>
       </div>
 
-      <Footer3 />
+      <Footer />
     </>
   );
 }

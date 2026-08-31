@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/shared/store/Context";
 import { allProducts } from "@/shared/data/products";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+
 export default function WishList() {
   const {
     wishList,
@@ -103,7 +105,7 @@ export default function WishList() {
                           <td>
                             <div className="rbt-button-group">
                               <Link
-                                className="rbt-btn rbt-btn-sm has-left-icon"
+                                className={buttonVariants({ size: "sm", className: "has-left-icon" })}
                                 href={`/cart`}
                                 onClick={() => addProductToCart(product.id)}
                               >

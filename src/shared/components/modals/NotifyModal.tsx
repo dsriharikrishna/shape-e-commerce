@@ -1,3 +1,6 @@
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+
 export default function NotifyModal() {
   return (
     <div
@@ -51,15 +54,15 @@ export default function NotifyModal() {
                       Want to be notified when this product is back in stock?
                     </p>
                     <div className="rbt-input-field-grp">
-                      <input
+                      <Input
                         className="rbt-input-field rbt-bg-color-white shadow-none plr--24"
                         type="email"
                         placeholder="Enter your e-mail"
                       />
                     </div>
-                    <button className="rbt-btn rbt-btn-rounded w-100 mt--12">
+                    <Button className="rbt-btn-rounded w-100 mt--12">
                       Notify Me
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

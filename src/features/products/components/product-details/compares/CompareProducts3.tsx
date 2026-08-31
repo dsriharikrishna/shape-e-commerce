@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Product } from "@/shared/types/product";
 import { apparelCompareProducts } from "@/shared/data/products/others";
 import { useContextElement } from "@/shared/store/store";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
 
 export default function CompareProducts3({
   products = apparelCompareProducts,
@@ -36,7 +38,7 @@ export default function CompareProducts3({
                   {products.map((_, idx) => (
                     <td key={`search-${idx}`}>
                       <div className="rbt-input-field-grp">
-                        <input
+                        <Input
                           className="rbt-input-field"
                           type="text"
                           placeholder="Search and Select Product"
@@ -105,7 +107,7 @@ export default function CompareProducts3({
                             </a>
                           </h6>
                           <a
-                            className="rbt-btn rbt-btn-sm has-left-icon"
+                            className={buttonVariants({ size: "sm", className: "has-left-icon" })}
                             onClick={() => addProductToCart(product.id)}
                             href="#"
                           >

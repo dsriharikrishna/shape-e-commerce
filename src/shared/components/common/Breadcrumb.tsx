@@ -4,14 +4,40 @@ export default function Breadcrumb({
   title = "Compare",
   className = "rbt-breadcrumb-two rbt-bg-color-white",
   hasHrLine = false,
+  align = "left", // "left" | "center"
+  dataBlackOverlay,
+}: {
+  subtitle?: string | null;
+  title?: string;
+  className?: string;
+  hasHrLine?: boolean;
+  align?: "left" | "center";
+  dataBlackOverlay?: number;
 }) {
+  const isCenter = align === "center";
   return (
-    <div className={`${className}`}>
+    <div
+      className={`${className}`}
+      {...(dataBlackOverlay ? { "data-black-overlay": dataBlackOverlay } : {})}
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div className="rbt-breadcrumb-inner text-left">
-              <ul className="rbt-breadcrumb-page-list justify-content-start mt--0">
+            <div
+              className={`rbt-breadcrumb-inner text-${
+                isCenter ? "center" : "left"
+              }`}
+            >
+              {isCenter && (
+                <h2 className="rbt-breadcrumb-title h1">
+                  <span>{title}</span>
+                </h2>
+              )}
+              <ul
+                className={`rbt-breadcrumb-page-list ${
+                  !isCenter ? "justify-content-start mt--0" : ""
+                }`}
+              >
                 <li className="rbt-breadcrumb-item">
                   <Link href={`/index`}>Home</Link>
                 </li>

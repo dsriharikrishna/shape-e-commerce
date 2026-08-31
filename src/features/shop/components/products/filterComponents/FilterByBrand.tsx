@@ -14,6 +14,7 @@ const brands = [
 ];
 
 import { Product } from "@/shared/types";
+import { Label } from "@/shared/components/ui/label";
 
 export default function FilterByBrand({
   selectedItems,
@@ -46,7 +47,7 @@ export default function FilterByBrand({
               checked={isActive}
               onChange={() => handleToggle(brand.name)}
             />
-            <label htmlFor={inputId}>
+            <Label htmlFor={inputId}>
               <span className="rbt-lable-content">
                 <span className="rbt-lable-text">{brand.name}</span>
               </span>
@@ -58,7 +59,7 @@ export default function FilterByBrand({
                 )}
                 )
               </span>
-            </label>
+            </Label>
           </li>
         );
       })}

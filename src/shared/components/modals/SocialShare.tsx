@@ -1,3 +1,6 @@
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+
 export default function SocialShare() {
   return (
     <div
@@ -86,19 +89,19 @@ export default function SocialShare() {
                   </li>
                 </ul>
                 <div className="rbt-copy-link-part rbt-text-copy-activation mt--24 mt_sm--8 w-100">
-                  <input
+                  <Input
                     className="rbt-copy-value-field w-100"
                     type="text"
                     defaultValue="https://tryshape.template/wishlist"
                     readOnly
                   />
-                  <button
-                    className="rbt-btn rbt-btn-xs has-left-icon rbt-copy-btn"
-                    data-tooltip="Copy to clipboard"
+                  <Button
+                    className="has-left-icon rbt-copy-btn"
+                    data-tooltip="Copy to clipboard" size="xs"
                   >
                     <i className="fa-regular fa-copy" />
                     <span className="rbt-btn-text">Copy</span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

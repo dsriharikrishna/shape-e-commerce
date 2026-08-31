@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function Socials() {
   return (
@@ -27,7 +28,7 @@ export default function Socials() {
                     <span className="insta-icon">
                       <i className="fa-brands fa-instagram" />
                     </span>
-                    <a href="#!" className="rbt-btn-link">
+                    <a href="#!" className={buttonVariants({ className: "rbt-btn-link" })}>
                       View Product
                     </a>
                   </div>
@@ -52,7 +53,7 @@ export default function Socials() {
                     <span className="insta-icon">
                       <i className="fa-brands fa-instagram" />
                     </span>
-                    <a href="#!" className="rbt-btn-link">
+                    <a href="#!" className={buttonVariants({ className: "rbt-btn-link" })}>
                       View Product
                     </a>
                   </div>
@@ -77,7 +78,7 @@ export default function Socials() {
                     <span className="insta-icon">
                       <i className="fa-brands fa-instagram" />
                     </span>
-                    <a href="#!" className="rbt-btn-link">
+                    <a href="#!" className={buttonVariants({ className: "rbt-btn-link" })}>
                       View Product
                     </a>
                   </div>
@@ -125,7 +126,7 @@ export default function Socials() {
                     <span className="insta-icon">
                       <i className="fa-brands fa-instagram" />
                     </span>
-                    <a href="#!" className="rbt-btn-link">
+                    <a href="#!" className={buttonVariants({ className: "rbt-btn-link" })}>
                       View Product
                     </a>
                   </div>
@@ -150,7 +151,7 @@ export default function Socials() {
                     <span className="insta-icon">
                       <i className="fa-brands fa-instagram" />
                     </span>
-                    <a href="#!" className="rbt-btn-link">
+                    <a href="#!" className={buttonVariants({ className: "rbt-btn-link" })}>
                       View Product
                     </a>
                   </div>
@@ -175,7 +176,7 @@ export default function Socials() {
                     <span className="insta-icon">
                       <i className="fa-brands fa-instagram" />
                     </span>
-                    <a href="#!" className="rbt-btn-link">
+                    <a href="#!" className={buttonVariants({ className: "rbt-btn-link" })}>
                       View Product
                     </a>
                   </div>

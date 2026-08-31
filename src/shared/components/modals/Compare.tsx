@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContextElement, useUiElement } from "@/shared/store/Context";
 import { allProducts } from "@/shared/data/products";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+
 export default function Compare() {
   const { removeFromCompareItem, compareItem, setCompareItem } =
     useContextElement();
@@ -82,13 +84,13 @@ export default function Compare() {
             <div className="col-12 col-lg-3 col-xl-2">
               <div className="rbt-popup-action-area justify-content-center">
                 <a
-                  className="rbt-btn rbt-btn-sm rbt-square-btn has-left-icon mb--12"
+                  className={buttonVariants({ size: "sm", className: "rbt-square-btn has-left-icon mb--12" })}
                   href="#"
                 >
                   <i className="fa-regular fa-scale-balanced" /> Compare Now
                 </a>
                 <Link
-                  className="rbt-btn rbt-btn-border rbt-btn-sm rbt-square-btn has-left-icon mb--12"
+                  className={buttonVariants({ variant: "outline", size: "sm", className: "rbt-square-btn has-left-icon mb--12" })}
                   href={`/shop`}
                 >
                   <i className="fa-regular fa-browser" /> Browse Products

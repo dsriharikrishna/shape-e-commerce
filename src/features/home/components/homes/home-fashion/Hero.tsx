@@ -1,6 +1,6 @@
 "use client";
 
-import { collections } from "@/features/home/data/collections";
+import { collections } from "@/shared/data/collections";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";

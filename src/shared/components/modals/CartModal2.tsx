@@ -3,6 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/shared/store/Context";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Modal, ModalDialog, ModalContent, ModalHeader, ModalCloseButton } from "@/shared/components/ui/modal";
+
 export default function CartModal2() {
   const [openTool, setOpenTool] = useState(1);
   const {
@@ -17,15 +22,15 @@ export default function CartModal2() {
     setCartProducts((pre) => [...pre.filter((elm) => elm.id != id)]);
   };
   return (
-    <div
-      className="rbt-default-modal has-rbt-top-folder-shape modal fade"
+    <Modal
+      className="has-rbt-top-folder-shape"
       id="popup-cartModal"
       tabIndex={-1}
       aria-labelledby="popup-cartModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog modal-dialog-centered xxs-size">
-        <div className="modal-content">
+      <ModalDialog className="modal-dialog-centered xxs-size">
+        <ModalContent>
           <div className="rbt-folder-shape-right-portion">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,16 +45,15 @@ export default function CartModal2() {
               />
             </svg>
           </div>
-          <div className="modal-header">
-            <button
+          <ModalHeader>
+            <ModalCloseButton
               type="button"
-              className="rbt-round-btn rbt-modal-dis-btn"
               data-bs-dismiss="modal"
               aria-label="Close"
             >
-              <i className="fa-solid fa-xmark" />
-            </button>
-          </div>
+              
+            </ModalCloseButton>
+          </ModalHeader>
           <div className="rbt-modal-cart rbt-top-folder-shape-wrapper rbt-sidebar-cart">
             <div className="overflow-hidden position-relative rbt-content-trs-portion">
               <div className="inner-wrapper">
@@ -153,7 +157,7 @@ export default function CartModal2() {
                                 >
                                   <i className="fa-solid fa-minus" />
                                 </button>
-                                <input
+                                <Input
                                   type="number"
                                   className="items-qty-input"
                                   onChange={(e) =>
@@ -274,7 +278,7 @@ export default function CartModal2() {
                     <div className="checkout-btn mt--20">
                       <Link
                         href={`/checkout-delivery-step-one`}
-                        className="rbt-btn w-100 text-center"
+                        className={buttonVariants({ className: "w-100 text-center" })}
                       >
                         <span className="btn-text">Checkout</span>
                       </Link>
@@ -311,7 +315,7 @@ export default function CartModal2() {
                     </h6>
                     <form onSubmit={(e) => e.preventDefault()}>
                       <div className="rbt-input-field-grp mb--12">
-                        <textarea
+                        <Textarea
                           className="rbt-text-field"
                           name="message"
                           placeholder="Notes about your order, e.g. special notes for delivery."
@@ -319,15 +323,15 @@ export default function CartModal2() {
                         />
                       </div>
                       <div className="rbt-btn-group mt--16">
-                        <button className="rbt-btn rbt-btn-md rbt-btn-primary d-block w-100">
+                        <Button className="rbt-btn-primary d-block w-100" size="md">
                           Apply
-                        </button>
-                        <button
-                          className="rbt-btn rbt-btn-md rbt-btn-naked d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
-                          onClick={() => setOpenTool(-1)}
+                        </Button>
+                        <Button
+                          className="d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
+                          onClick={() => setOpenTool(-1)} variant="naked" size="md"
                         >
                           Cancel
-                        </button>
+                        </Button>
                       </div>
                     </form>
                   </div>
@@ -369,24 +373,24 @@ export default function CartModal2() {
                         </div>
                       </div>
                       <div className="rbt-input-field-grp mb--12">
-                        <input type="text" placeholder="State / County" />
+                        <Input type="text" placeholder="State / County" />
                       </div>
                       <div className="rbt-input-field-grp mb--12">
-                        <input type="text" placeholder="City" />
+                        <Input type="text" placeholder="City" />
                       </div>
                       <div className="rbt-input-field-grp">
-                        <input type="text" placeholder="Postcode / ZIP" />
+                        <Input type="text" placeholder="Postcode / ZIP" />
                       </div>
                       <div className="rbt-btn-group mt--16">
-                        <button className="rbt-btn rbt-btn-md rbt-btn-primary d-block w-100">
+                        <Button className="rbt-btn-primary d-block w-100" size="md">
                           Calculate shipping rates
-                        </button>
-                        <button
-                          className="rbt-btn rbt-btn-md rbt-btn-naked d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
-                          onClick={() => setOpenTool(-1)}
+                        </Button>
+                        <Button
+                          className="d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
+                          onClick={() => setOpenTool(-1)} variant="naked" size="md"
                         >
                           Cancel
-                        </button>
+                        </Button>
                       </div>
                     </form>
                   </div>
@@ -409,7 +413,7 @@ export default function CartModal2() {
                       <div className="rbt-coupon">
                         <div className="inner rbt-text-copy-activation">
                           <div className="left-part">
-                            <input
+                            <Input
                               type="text"
                               defaultValue="WELCOME100"
                               readOnly
@@ -446,7 +450,7 @@ export default function CartModal2() {
                       <div className="rbt-coupon">
                         <div className="inner rbt-text-copy-activation">
                           <div className="left-part">
-                            <input
+                            <Input
                               type="text"
                               defaultValue="WELCOME100"
                               readOnly
@@ -486,18 +490,18 @@ export default function CartModal2() {
                         <p className="b1 mb--12 rbt-text-color-gray-600">
                           If you have coupon code, please apply it below.
                         </p>
-                        <input type="text" placeholder="Coupon code" />
+                        <Input type="text" placeholder="Coupon code" />
                       </div>
                       <div className="rbt-btn-group mt--16">
-                        <button className="rbt-btn rbt-btn-md rbt-btn-primary d-block w-100">
+                        <Button className="rbt-btn-primary d-block w-100" size="md">
                           Apply
-                        </button>
-                        <button
-                          className="rbt-btn rbt-btn-md rbt-btn-naked d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
-                          onClick={() => setOpenTool(-1)}
+                        </Button>
+                        <Button
+                          className="d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
+                          onClick={() => setOpenTool(-1)} variant="naked" size="md"
                         >
                           Cancel
-                        </button>
+                        </Button>
                       </div>
                     </form>
                   </div>
@@ -505,8 +509,8 @@ export default function CartModal2() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </ModalContent>
+      </ModalDialog>
+    </Modal>
   );
 }

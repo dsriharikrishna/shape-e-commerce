@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function VideoSection() {
   return (
@@ -22,7 +23,7 @@ export default function VideoSection() {
                   </p>
                   <div className="read-more-btn">
                     <a
-                      className="rbt-btn"
+                      className={buttonVariants({ })}
                       href="https://www.youtube.com/watch?v=abFXQQzFVDc"
                       data-fancybox=""
                     >
@@ -43,7 +44,7 @@ export default function VideoSection() {
                 height={846}
               />
               <a
-                className="rbt-btn rounded-player popup-video position-to-top rbtplayer"
+                className={buttonVariants({ className: "rounded-player popup-video position-to-top rbtplayer" })}
                 href="https://www.youtube.com/watch?v=abFXQQzFVDc"
                 data-fancybox=""
               >

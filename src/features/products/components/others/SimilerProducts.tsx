@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { electronicsCardData } from "@/features/products/data/products/electronics";
+import { electronicsCardData } from "@/shared/data/products/electronics";
 
-import ProductCard9 from "@/features/products/components/productCards/ProductCard9";
+import ProductCardList from "@/features/products/components/productCards/ProductCardList";
 import Link from "next/link";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function SimilerProducts({
   parentClass = "rbt-component-area rbt-section-gap rbt-bg-color-gray-light pt--0",
@@ -42,7 +43,7 @@ export default function SimilerProducts({
                 </span>
               </div>
               <Link
-                className="rbt-link position-absolute d-inline-block rbt-text-color-primary rbt-text-medium rbt-gap--8 justify-content-center rbt-btn-link"
+                className={buttonVariants({ className: "rbt-link position-absolute d-inline-block rbt-text-color-primary rbt-text-medium rbt-gap--8 justify-content-center rbt-btn-link" })}
                 href={`/shop`}
               >
                 <span className="btn-text">View All Products</span>
@@ -60,7 +61,7 @@ export default function SimilerProducts({
                   key={product.id}
                   className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mt--24"
                 >
-                  <ProductCard9 product={product} />
+                  <ProductCardList product={product} />
                 </div>
               ))}
               {/* Start Single Card  */}
@@ -85,7 +86,7 @@ export default function SimilerProducts({
                         Shop Beats Headphones &amp; Earbuds
                       </p>
                       <a
-                        className="rbt-btn rbt-btn-white rbt-btn-sm has-left-icon"
+                        className={buttonVariants({ variant: "white", size: "sm", className: "has-left-icon" })}
                         href="#"
                       >
                         Shop Beats <i className="fa-solid fa-arrow-up-right" />

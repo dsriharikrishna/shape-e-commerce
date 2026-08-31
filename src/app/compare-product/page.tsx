@@ -1,6 +1,6 @@
-import { apparelCompareProducts } from "@/features/products/data/products/others";
+import { apparelCompareProducts } from "@/shared/data/products/others";
 import Breadcrumb from "@/shared/components/common/Breadcrumb";
-import CompareProducts3 from "@/features/shop/components/compares/CompareProducts3";
+import CompareProducts3 from "@/features/products/components/product-details/compares/CompareProducts3";
 
 export default function page() {
   return (

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 const categoriesData = [
   {
@@ -404,7 +405,7 @@ export default function Categories3() {
                       >
                         {items.map((item, itemIndex) => (
                           <li key={`${cat.id}-${colIndex}-${itemIndex}`}>
-                            <Link href={item.href} className="rbt-btn-link">
+                            <Link href={item.href} className={buttonVariants({ className: "rbt-btn-link" })}>
                               {item.label}
                             </Link>
                           </li>

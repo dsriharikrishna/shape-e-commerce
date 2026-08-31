@@ -11,6 +11,9 @@ const priceRanges = [
 ];
 
 import { Product } from "@/shared/types";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 
 export default function FilterByPrice({
   priceRange,
@@ -57,7 +60,7 @@ export default function FilterByPrice({
                 checked={isChecked}
                 onChange={() => handleRangeChange([range.min, range.max])}
               />
-              <label htmlFor={inputId}>
+              <Label htmlFor={inputId}>
                 {range.label}
                 <span className="rbt-lable-count">
                   (
@@ -67,7 +70,7 @@ export default function FilterByPrice({
                   )}
                   )
                 </span>
-              </label>
+              </Label>
             </li>
           );
         })}
@@ -84,7 +87,7 @@ export default function FilterByPrice({
           step={15}
         />
         <p className="rbt-range-value">
-          <input
+          <Input
             type="text"
             id="amount"
             readOnly
@@ -95,23 +98,23 @@ export default function FilterByPrice({
 
       {/* Manual Input Group */}
       <div className="rbt-price-input-grp">
-        <input
+        <Input
           type="number"
           min={0}
           placeholder="$ Min"
           value={priceRange[0]}
           onChange={handleMinChange}
         />
-        <input
+        <Input
           type="number"
           min={0}
           placeholder="$ Max"
           value={priceRange[1]}
           onChange={handleMaxChange}
         />
-        <button type="button" className="rbt-btn">
+        <Button type="button">
           $Go
-        </button>
+        </Button>
       </div>
     </>
   );

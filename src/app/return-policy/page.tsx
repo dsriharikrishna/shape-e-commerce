@@ -1,45 +1,17 @@
 import Socials from "@/features/corporate/components/privacy/Socials";
 import ReturnPolicy from "@/features/checkout/components/store/ReturnPolicy";
-import Link from "next/link";
+import Breadcrumb from "@/shared/components/common/Breadcrumb";
 
 export default function ReturnPolicyPage() {
   return (
     <>
-      <div
+      <Breadcrumb
+        title="Return Policy"
+        subtitle="Return Policy"
+        align="center"
         className="rbt-breadcrumb-default ptb--92 ptb_md--40 ptb_sm--40 bg-image rbt-breadcrumb-bg-1"
-        data-black-overlay={5}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="rbt-breadcrumb-inner text-center">
-                <h2 className="rbt-breadcrumb-title h1">
-                  <span>Return Policy</span>
-                </h2>
-                <ul className="rbt-breadcrumb-page-list">
-                  <li className="rbt-breadcrumb-item">
-                    <Link href="/">Home</Link>
-                  </li>
-                  <li>
-                    <div className="icon-right">
-                      <i className="fa-solid fa-chevron-right" />
-                    </div>
-                  </li>
-                  <li className="rbt-breadcrumb-item">
-                    <Link href="/return-policy">Return Policy</Link>
-                  </li>
-                  <li>
-                    <div className="icon-right">
-                      <i className="fa-solid fa-chevron-right" />
-                    </div>
-                  </li>
-                  <li className="rbt-breadcrumb-item active">Return Policy</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        dataBlackOverlay={5}
+      />
       <ReturnPolicy />
       <Socials />
     </>

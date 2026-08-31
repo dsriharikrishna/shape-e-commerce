@@ -3,6 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/shared/store/Context";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Label } from "@/shared/components/ui/label";
 
 const FREE_SHIPPING_THRESHOLD = 250;
 const SHIPPING_COST = 10;
@@ -111,7 +115,7 @@ export default function Cart() {
                         </p>
                         <Link
                           href="/shop-default"
-                          className="rbt-btn rbt-btn-md rbt-btn-primary mt--16"
+                          className={buttonVariants({ size: "md", className: "rbt-btn-primary mt--16" })}
                         >
                           Continue Shopping
                         </Link>
@@ -180,7 +184,7 @@ export default function Cart() {
                             >
                               <i className="fa-solid fa-minus" />
                             </button>
-                            <input
+                            <Input
                               type="number"
                               className="items-qty-input"
                               value={product.quantity}
@@ -254,11 +258,11 @@ export default function Cart() {
                                   type="radio"
                                   name="rbt-cat-list-brand-radio"
                                 />
-                                <label htmlFor="rbt-cat-list-brand-radio-1">
+                                <Label htmlFor="rbt-cat-list-brand-radio-1">
                                   <span className="rbt-lable-content">
                                     Express Delivery
                                   </span>
-                                </label>
+                                </Label>
                               </li>
                               <li className="rbt-check-group">
                                 <input
@@ -266,14 +270,14 @@ export default function Cart() {
                                   type="radio"
                                   name="rbt-cat-list-brand-radio"
                                 />
-                                <label htmlFor="rbt-cat-list-brand-radio-2">
+                                <Label htmlFor="rbt-cat-list-brand-radio-2">
                                   <span className="rbt-lable-content">
                                     Local Pickup :
                                     <span className="rbt-text-color-black rbt-text-bold">
                                       $10.00 (Flat Rate)
                                     </span>
                                   </span>
-                                </label>
+                                </Label>
                               </li>
                               <li className="rbt-check-group">
                                 <input
@@ -281,11 +285,11 @@ export default function Cart() {
                                   type="radio"
                                   name="rbt-cat-list-brand-radio"
                                 />
-                                <label htmlFor="rbt-cat-list-brand-radio-3">
+                                <Label htmlFor="rbt-cat-list-brand-radio-3">
                                   <span className="rbt-lable-content">
                                     Regular Delivery
                                   </span>
-                                </label>
+                                </Label>
                               </li>
                             </ul>
                             <p className="rbt-text-color-primary rbt-text-semi-bold b2 mb--16 mt--20">
@@ -317,21 +321,21 @@ export default function Cart() {
                                 </div>
                               </div>
                               <div className="rbt-input-field-grp mb--12">
-                                <input
+                                <Input
                                   className="rbt-bg-color-white"
                                   type="text"
                                   placeholder="State / County"
                                 />
                               </div>
                               <div className="rbt-input-field-grp mb--12">
-                                <input
+                                <Input
                                   className="rbt-bg-color-white"
                                   type="text"
                                   placeholder="City"
                                 />
                               </div>
                               <div className="rbt-input-field-grp">
-                                <input
+                                <Input
                                   className="rbt-bg-color-white"
                                   type="text"
                                   placeholder="Postcode / ZIP"
@@ -340,13 +344,13 @@ export default function Cart() {
                               <div className="rbt-button-group m--0 mt--16">
                                 <Link
                                   href="/checkout-delivery-step-one"
-                                  className="rbt-btn rbt-btn-md rbt-btn-primary"
+                                  className={buttonVariants({ size: "md", className: "rbt-btn-primary" })}
                                 >
                                   Calculate shipping
                                 </Link>
                                 <a
                                   href="#!"
-                                  className="rbt-btn rbt-btn-md rbt-btn-gray-light text-center"
+                                  className={buttonVariants({ variant: "gray-light", size: "md", className: "text-center" })}
                                 >
                                   Cancel
                                 </a>
@@ -389,7 +393,7 @@ export default function Cart() {
                                     <div className="rbt-coupon">
                                       <div className="inner rbt-text-copy-activation">
                                         <div className="left-part">
-                                          <input
+                                          <Input
                                             type="text"
                                             defaultValue="WELCOME100"
                                             readOnly
@@ -434,7 +438,7 @@ export default function Cart() {
                                     <div className="rbt-coupon">
                                       <div className="inner rbt-text-copy-activation">
                                         <div className="left-part">
-                                          <input
+                                          <Input
                                             type="text"
                                             defaultValue="WELCOME100"
                                             readOnly
@@ -479,7 +483,7 @@ export default function Cart() {
                                     <div className="rbt-coupon">
                                       <div className="inner rbt-text-copy-activation">
                                         <div className="left-part">
-                                          <input
+                                          <Input
                                             type="text"
                                             defaultValue="WELCOME100"
                                             readOnly
@@ -530,7 +534,7 @@ export default function Cart() {
                               <p className="b1 mb--12 rbt-text-color-gray-600">
                                 If you have coupon code, please apply it below.
                               </p>
-                              <input
+                              <Input
                                 className="rbt-bg-color-white"
                                 type="text"
                                 placeholder="Coupon code"
@@ -540,12 +544,12 @@ export default function Cart() {
                               </p>
                             </div>
                             <div className="rbt-button-group m--0 mt--16">
-                              <button className="rbt-btn rbt-btn-md rbt-btn-primary">
+                              <Button className="rbt-btn-primary" size="md">
                                 Apply
-                              </button>
-                              <button className="rbt-btn rbt-btn-md rbt-btn-gray-light">
+                              </Button>
+                              <Button variant="gray-light" size="md">
                                 Cancel
-                              </button>
+                              </Button>
                             </div>
                           </form>
                         </div>
@@ -578,7 +582,7 @@ export default function Cart() {
                           <div className="rbt-offcanvas-card-inner">
                             <form>
                               <div className="rbt-input-field-grp mb--12 mt--12">
-                                <textarea
+                                <Textarea
                                   className="rbt-text-field rbt-bg-color-white"
                                   name="message"
                                   placeholder="Notes about your order, e.g. special notes for delivery."
@@ -586,12 +590,12 @@ export default function Cart() {
                                 />
                               </div>
                               <div className="rbt-button-group m--0 mt--16">
-                                <button className="rbt-btn rbt-btn-md rbt-btn-primary">
+                                <Button className="rbt-btn-primary" size="md">
                                   Add Note
-                                </button>
-                                <button className="rbt-btn rbt-btn-md rbt-btn-gray-light">
+                                </Button>
+                                <Button variant="gray-light" size="md">
                                   Cancel
-                                </button>
+                                </Button>
                               </div>
                             </form>
                           </div>
@@ -649,7 +653,7 @@ export default function Cart() {
                   <div className="rbt-minicart-bottom mt--24">
                     <div className="checkout-btn mt--20">
                       <Link
-                        className="rbt-btn w-100 text-center"
+                        className={buttonVariants({ className: "w-100 text-center" })}
                         href={
                           cartProducts.length > 0
                             ? "/checkout-delivery-step-one"

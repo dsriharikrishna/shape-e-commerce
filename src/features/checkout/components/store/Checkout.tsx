@@ -1,5 +1,8 @@
 import Link from "next/link";
 import MiniCheckout from "./MiniCheckout";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 
 export default function Checkout() {
   return (
@@ -20,10 +23,10 @@ export default function Checkout() {
                       </p>
                       <div className="form-area">
                         <div className="w-100">
-                          <label htmlFor="postcode" className="form-label">
+                          <Label htmlFor="postcode" className="form-label">
                             Postcode :
-                          </label>
-                          <input
+                          </Label>
+                          <Input
                             type="text"
                             className="form-control form-control-lg"
                             id="postcode"
@@ -32,7 +35,7 @@ export default function Checkout() {
                         </div>
                         <Link
                           href="/checkout-delivery-step-two"
-                          className="rbt-btn splash-btn icon-reverse-right rbt-scroll-trigger fade_in animation-order-6 rbt-rounded--4 border-0"
+                          className={buttonVariants({ className: "splash-btn icon-reverse-right rbt-scroll-trigger fade_in animation-order-6 rbt-rounded--4 border-0" })}
                         >
                           <span className="icon-left">
                             <i className="fa-regular fa-calculator-simple mr--4" />

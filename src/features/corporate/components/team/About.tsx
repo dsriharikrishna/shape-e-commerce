@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function About() {
   return (
@@ -24,9 +25,9 @@ export default function About() {
                   </span>
                   Monochrome Magic Dots!
                 </h2>
-                <button className="rbt-btn rbt-btn-md mt--24">
+                <Button className="mt--24" size="md">
                   Know About Us
-                </button>
+                </Button>
               </div>
             </div>
           </div>

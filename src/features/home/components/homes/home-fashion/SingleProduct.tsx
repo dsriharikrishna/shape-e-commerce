@@ -13,7 +13,7 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
-import { singleStyleProducts2 } from "@/features/products/data/products/others";
+import { singleStyleProducts2 } from "@/shared/data/products/others";
 import { useContextElement } from "@/shared/store/store";
 import "swiper/css";
 import "swiper/css/navigation";

@@ -16,6 +16,8 @@ import FilterByBrand from "./filterComponents/FilterByBrand";
 import FilterByService from "./filterComponents/FilterByService";
 import { FilterState, FilterAction } from "@/shared/types";
 import { Product } from "@/shared/types";
+import { Input } from "@/shared/components/ui/input";
+
 export default function Sidebar({
   state,
   dispatch,
@@ -171,7 +173,7 @@ export default function Sidebar({
           </h4>
           <div className="rbt-inner-search-field border-0 pt--16 pb--16">
             <div className="rbt-search-input-section rbt-sm-search-section">
-              <input
+              <Input
                 className="rbt-filter-search-field"
                 type="text"
                 placeholder="Search and Select Product"

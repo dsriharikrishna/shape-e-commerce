@@ -1,8 +1,10 @@
 "use client";
 
-import ProductCard10 from "@/features/products/components/productCards/ProductCard10";
+import ProductCardAction from "@/features/products/components/productCards/ProductCardAction";
 import { useUiElement } from "@/shared/store/uiStore";
 import { electronicsHoverVideoData } from "@/shared/data/products/electronics";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
 
 export default function SearchDropdown() {
   const { searchOpen } = useUiElement();
@@ -26,7 +28,7 @@ export default function SearchDropdown() {
             <div className="col-lg-12">
               <form className="rbt-search-form">
                 <div className="input-section position-relative w-100 mr--12 mr_sm--4">
-                  <input
+                  <Input
                     className="search-input"
                     type="text"
                     placeholder="What Are You Looking For?"
@@ -37,7 +39,7 @@ export default function SearchDropdown() {
                   </button>
                 </div>
                 <div className="submit-btn">
-                  <a className="rbt-btn btn-md" href="#">
+                  <a className={buttonVariants({ className: "btn-md" })} href="#">
                     Search
                   </a>
                 </div>
@@ -64,28 +66,28 @@ export default function SearchDropdown() {
                             Drag &amp; Drop Files Here
                             <span className="rbt-text-color-gray-400">Or</span>
                           </p>
-                          <button className="browseFilesButton rbt-btn rbt-btn-sm">
+                          <Button className="browseFilesButton" size="sm">
                             Browse Files
-                          </button>
+                          </Button>
                         </div>
                         <div className="fileList file-list" />
                       </div>
                       <p className="fileCount">0 of 10</p>
                     </div>
                     <div className="rbt-copy-link-part rbt-text-copy-activation">
-                      <input
+                      <Input
                         className="rbt-copy-value-field"
                         type="text"
                         defaultValue="https://tryshape.template/wishlist"
                         readOnly
                       />
-                      <button
-                        className="rbt-btn rbt-btn-xs has-left-icon rbt-copy-btn"
-                        data-tooltip="Copy"
+                      <Button
+                        className="has-left-icon rbt-copy-btn"
+                        data-tooltip="Copy" size="xs"
                       >
                         <i className="fa-regular fa-copy" />
                         <span className="rbt-btn-text">Copy</span>
-                      </button>
+                      </Button>
                     </div>
                     <button
                       type="button"
@@ -141,7 +143,7 @@ export default function SearchDropdown() {
                 key={product.id}
                 className="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6 mt--24 mt_sm--16"
               >
-                <ProductCard10 product={product} />
+                <ProductCardAction product={product} />
                 {/* Product details area not present in the provided HTML */}
               </div>
             ))}

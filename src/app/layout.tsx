@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Cabin, Caveat, Bebas_Neue, Caprasimo } from "next/font/google";
-import "@/public/assets/scss/main.scss";
 import "rc-slider/assets/index.css";
+import "../../public/assets/css/vendor/bootstrap.min.css";
+import "../../public/assets/css/plugins/fontawesome-all.min.css";
+import "../../public/assets/css/plugins/swiper.css";
+import "../../public/assets/css/plugins/fancybox.css";
+import "../../public/assets/css/plugins/mavo.css";
+import "../../public/assets/css/plugins/odometer.css";
+import "../../public/assets/css/plugins/animation.css";
+import "../../public/assets/css/plugins/bootstrap-select.min.css";
+import "../../public/assets/css/plugins/bootstrap-datepicker.min.css";
 import "./globals.css";
 
 import BodyUiSync from "@/shared/components/common/BodyUiSync";

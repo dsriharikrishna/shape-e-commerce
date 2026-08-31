@@ -1,4 +1,4 @@
-import Header3 from "@/shared/components/layout/headers/Header3";
+import Header from "@/shared/components/layout/headers/Header";
 import Hero from "@/features/home/components/homes/home-fashion/Hero";
 import CategoryScroll from "@/features/home/components/homes/home-fashion/CategoryScroll";
 import Categories from "@/features/home/components/homes/home-fashion/Categories";
@@ -9,7 +9,7 @@ import SingleProduct from "@/features/home/components/homes/home-fashion/SingleP
 import LookbookProducts from "@/features/home/components/homes/home-fashion/LookbookProducts";
 import Products3 from "@/features/home/components/homes/home-fashion/Products3";
 import VideosSection from "@/features/home/components/homes/home-fashion/VideosSection";
-import Footer3 from "@/shared/components/layout/footers/Footer3";
+import Footer from "@/shared/components/layout/footers/Footer";
 // ... other components to be migrated ...
 
 export const metadata = {
@@ -21,7 +21,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="relative overflow-x-hidden">
-      <Header3 sticky={true} />
+      <Header sticky={true} />
       <Hero />
       <CategoryScroll />
       <Categories />
@@ -33,7 +33,7 @@ export default function Home() {
       <Products3 />
       <VideosSection />
 
-      <Footer3 />
+      <Footer />
     </div>
   );
 }

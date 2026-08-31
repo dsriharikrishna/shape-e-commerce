@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ChevronRight, Filter, SlidersHorizontal, Search } from "lucide-react";
-import { allProducts as products } from "@/features/products/data/products";
-import ProductCard1 from "@/features/products/components/productCards/ProductCard1";
-import Header3 from "@/shared/components/layout/headers/Header3";
-import Footer3 from "@/shared/components/layout/footers/Footer3";
+import { allProducts as products } from "@/shared/data/products";
+import ProductCardVariant from "@/features/products/components/productCards/ProductCardVariant";
+import Header from "@/shared/components/layout/headers/Header";
+import Footer from "@/shared/components/layout/footers/Footer";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const collection = searchParams.get("collection");
   const isNewArrivals = collection === "new-arrivals";
@@ -64,8 +65,6 @@ export default function ShopPage() {
 
   return (
     <>
-      <Header3 sticky={true} />
-
       {/* Breadcrumb Header */}
       <div className="bg-gray-50 py-8 border-b border-gray-200">
         <div className="container mx-auto px-4 md:px-8">
@@ -126,7 +125,7 @@ export default function ShopPage() {
                 <ul className="space-y-3">
                   {allCategories.map((category) => (
                     <li key={category}>
-                      <label className="flex items-center space-x-3 cursor-pointer group">
+                      <Label className="flex items-center space-x-3 cursor-pointer group">
                         <input
                           type="checkbox"
                           className="form-checkbox h-5 w-5 text-black rounded border-gray-300 focus:ring-black transition duration-150 ease-in-out"
@@ -136,7 +135,7 @@ export default function ShopPage() {
                         <span className="text-gray-600 group-hover:text-black transition-colors">
                           {category}
                         </span>
-                      </label>
+                      </Label>
                     </li>
                   ))}
                 </ul>
@@ -146,7 +145,7 @@ export default function ShopPage() {
               <div>
                 <h3 className="text-lg font-bold text-gray-900 mb-4">Price</h3>
                 <div className="space-y-4">
-                  <input
+                  <Input
                     type="range"
                     min="0"
                     max="500"
@@ -189,7 +188,7 @@ export default function ShopPage() {
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProducts.slice(0, 12).map((product) => (
-                  <ProductCard1 key={product.id} product={product} />
+                  <ProductCardVariant key={product.id} product={product} />
                 ))}
               </div>
             ) : (
@@ -242,8 +241,18 @@ export default function ShopPage() {
           </main>
         </div>
       </div>
+    </>
+  );
+}
 
-      <Footer3 />
+export default function ShopPage() {
+  return (
+    <>
+      <Header sticky={true} />
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading shop...</div>}>
+        <ShopContent />
+      </Suspense>
+      <Footer />
     </>
   );
 }

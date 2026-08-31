@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { useAuthStore } from "@/shared/store/authStore";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -107,14 +110,14 @@ export default function Signup() {
                     </h6>
                     <form onSubmit={handleSubmit}>
                       <div className="rbt-input-field-grp">
-                        <label
+                        <Label
                           className="rbt-field-label"
                           htmlFor="modal_register_name"
                         >
                           Full Name
                           <span className="rbt-text-color-danger">*</span>
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           className="rbt-input-field"
                           placeholder="Enter your full name"
                           type="text"
@@ -127,14 +130,14 @@ export default function Signup() {
                         />
                       </div>
                       <div className="rbt-input-field-grp mt--16">
-                        <label
+                        <Label
                           className="rbt-field-label"
                           htmlFor="modal_register_email"
                         >
                           Email Address
                           <span className="rbt-text-color-danger">*</span>
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           className="rbt-input-field"
                           placeholder="Enter your email"
                           type="email"
@@ -146,14 +149,14 @@ export default function Signup() {
                         />
                       </div>
                       <div className="rbt-input-field-grp mt--16">
-                        <label
+                        <Label
                           className="rbt-field-label"
                           htmlFor="modal_register_password"
                         >
                           Password
                           <span className="rbt-text-color-danger">*</span>
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           className="rbt-input-field"
                           placeholder="Minimum 6 characters"
                           type="password"
@@ -166,7 +169,7 @@ export default function Signup() {
                         />
                       </div>
                       <div className="rbt-input-field-grp mt--16">
-                        <label
+                        <Label
                           className="rbt-field-label"
                           htmlFor="modal_register_phone"
                         >
@@ -177,8 +180,8 @@ export default function Signup() {
                           >
                             (optional)
                           </span>
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           className="rbt-input-field"
                           placeholder="Enter your phone number"
                           type="tel"
@@ -196,20 +199,20 @@ export default function Signup() {
                           {error}
                         </p>
                       )}
-                      <button
+                      <Button
                         type="submit"
-                        className="rbt-btn d-block w-100 mt--24 mb--16"
+                        className="d-block w-100 mt--24 mb--16"
                         disabled={loading}
                       >
                         {loading ? "Creating account..." : "Create Account"}
-                      </button>
+                      </Button>
                       <div className="rbt-check-group">
                         <input
                           id="login_checked2"
                           type="checkbox"
                           name="login"
                         />
-                        <label htmlFor="login_checked2">Stay Logged In</label>
+                        <Label htmlFor="login_checked2">Stay Logged In</Label>
                       </div>
                     </form>
                     {/* Separator */}
@@ -219,9 +222,9 @@ export default function Signup() {
                       <hr className="rbt-separator rbt-bg-color-gray-light mb--0" />
                     </div>
                     {/* Start social login button */}
-                    <button
+                    <Button
                       type="button"
-                      className="rbt-btn rbt-btn-border rbt-social-login-btn d-block w-100 mb--16 rbt-social-login-btn"
+                      className="rbt-social-login-btn d-block w-100 mb--16 rbt-social-login-btn" variant="outline"
                     >
                       <Image
                         className="icon"
@@ -231,10 +234,10 @@ export default function Signup() {
                         height={36}
                       />
                       Continue with Facebook
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
-                      className="rbt-btn rbt-btn-border rbt-social-login-btn d-block w-100 rbt-social-login-btn"
+                      className="rbt-social-login-btn d-block w-100 rbt-social-login-btn" variant="outline"
                     >
                       <Image
                         className="icon"
@@ -244,7 +247,7 @@ export default function Signup() {
                         height={36}
                       />
                       Continue with Google
-                    </button>
+                    </Button>
                     {/* End social login button */}
                     <div className="rbt-login-system-switch rbt-link-hover">
                       Already a customer?

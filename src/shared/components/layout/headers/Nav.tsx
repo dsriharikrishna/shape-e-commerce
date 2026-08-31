@@ -16,49 +16,20 @@ export default function Nav() {
         <Link href="/">Home</Link>
       </li>
 
-      {/* Collections — category megamenu */}
-      <li
-        className="with-rbt-megamenu has-menu-child-item position-static"
-        {...menuHover}
-      >
+      {/* Collections — simple dropdown */}
+      <li className="has-dropdown position-relative" {...menuHover}>
         <a href="#!">
           Collections <i className="fa-regular fa-chevron-down" />
         </a>
-        <div className="rbt-megamenu rbt-width-fullscreen">
-          <div className="rbt-megamenu-wrapper">
-            <div className="container">
-              <div className="row row--24">
-                {categoryMegamenus.map((cat, catIndex) => (
-                  <div
-                    key={catIndex}
-                    className="col-xl-4 single-mega-item rbt-scroll-trigger fade_in animation-order-1"
-                  >
-                    <h6 className="rbt-short-title">
-                      <i className={`${cat.icon} mr--8`} />
-                      <Link href={cat.href}>{cat.label}</Link>
-                    </h6>
-                    <div className="row row--8 mt--8">
-                      {cat.sections.map((section, secIdx) => (
-                        <div key={secIdx} className="col-6">
-                          <h6 className="rbt-short-title rbt-text-color-gray-500 mb--8">
-                            {section.title}
-                          </h6>
-                          <ul className="mega-menu-item">
-                            {section.items.map((item, itemIdx) => (
-                              <li key={itemIdx}>
-                                <Link href={item.href}>{item.label}</Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <ul className="submenu">
+          {categoryMegamenus.map((cat, index) => (
+            <li key={index}>
+              <Link href={cat.href}>
+                <i className={`${cat.icon} mr--8`} /> {cat.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </li>
 
       {/* Shop — clean dropdown */}

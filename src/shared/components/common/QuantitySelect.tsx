@@ -1,3 +1,5 @@
+import { Input } from "@/shared/components/ui/input";
+
 "use client";
 export default function QuantitySelect({
   quantity = 1,
@@ -16,7 +18,7 @@ export default function QuantitySelect({
       >
         <i className="fa-solid fa-minus" />
       </button>
-      <input
+      <Input
         type="number"
         className="items-qty-input"
         value={quantity}

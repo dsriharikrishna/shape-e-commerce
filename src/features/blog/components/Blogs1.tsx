@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { blogCards } from "@/shared/data/blogs";
 import BlogSidebar from "./BlogSidebar";
+import { Button, buttonVariants } from "@/shared/components/ui/button";
 
 export default function Blogs1() {
   return (
@@ -67,7 +68,7 @@ export default function Blogs1() {
                         </div>
 
                         <Link
-                          className="rbt-btn rbt-btn-secondary rbt-btn-md mt--16"
+                          className={buttonVariants({ variant: "secondary", size: "md", className: "mt--16" })}
                           href={`/blog-single`}
                         >
                           <span className="btn-text">Read More</span>
