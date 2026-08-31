@@ -54,3 +54,13 @@ Performed a complete project-wide audit and refactoring to clean up the unused t
    - Verified that global state (`Zustand`) is properly scoped into `authStore` and `uiStore`.
    - Fixed a Next.js Suspense boundary error in `/shop/page.tsx` that was causing production build failures.
    - Rebuilt the project to ensure no active dependencies were broken.
+
+## [2026-08-31] Generated Backend API Contract
+
+**Summary:**
+Deeply analyzed the frontend codebase (Zustand stores, types, static mock data) to reverse-engineer and document the required backend API contract. 
+
+**Detailed Changes:**
+1. Created `docs/API_CONTRACT.md` establishing the single source of truth for communication between the frontend and backend.
+2. Mapped out required endpoints for `Products`, `Auth`, `Cart/Orders`, and `Contact` forms based on the UI's needs.
+3. Updated `GEMINI.md` to reference the new backend documentation structure.
