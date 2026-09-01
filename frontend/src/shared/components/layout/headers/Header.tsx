@@ -165,7 +165,7 @@ export default function Header({ showFeatures = true, sticky = false }) {
           <div className="rbt-header-sec align-items-center @@flexDirection">
             <div className="rbt-main-navigation d-none d-xl-block">
               <nav className="rbt-mainmenu-nav">
-                <ul className="mainmenu has-nav-bg-shape-hover">
+                <ul className="mainmenu has-nav-bg-shape-hover flex flex-row items-center gap-6">
                   <Nav />
                 </ul>
               </nav>
@@ -313,7 +313,7 @@ export default function Header({ showFeatures = true, sticky = false }) {
             <div className="rbt-header-content d-none d-xl-block">
               <div className="header-info">
                 <nav className="rbt-mainmenu-nav">
-                  <ul className="mainmenu mainmenu has-nav-bg-shape-hover">
+                  <ul className="mainmenu mainmenu has-nav-bg-shape-hover flex flex-row items-center gap-6">
                     <Nav />
                   </ul>
                 </nav>

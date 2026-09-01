@@ -18,9 +18,9 @@ export default function Nav() {
 
       {/* Collections — simple dropdown */}
       <li className="has-dropdown position-relative" {...menuHover}>
-        <a href="#!">
+        <Link href="/shop">
           Collections <i className="fa-regular fa-chevron-down" />
-        </a>
+        </Link>
         <ul className="submenu">
           {categoryMegamenus.map((cat, index) => (
             <li key={index}>
@@ -34,9 +34,9 @@ export default function Nav() {
 
       {/* Shop — clean dropdown */}
       <li className="has-dropdown position-relative" {...menuHover}>
-        <a href="#!">
+        <Link href="/shop">
           Shop <i className="fa-regular fa-chevron-down" />
-        </a>
+        </Link>
         <ul className="submenu">
           {shopPages
             .flatMap((section) => section.items)
@@ -74,9 +74,9 @@ export default function Nav() {
 
       {/* Support — dropdown */}
       <li className="has-dropdown position-relative" {...menuHover}>
-        <a href="#!">
+        <Link href="/contact">
           Support <i className="fa-regular fa-chevron-down" />
-        </a>
+        </Link>
         <ul className="submenu">
           {supportMenuItems.map((item, index) => (
             <li key={index}>

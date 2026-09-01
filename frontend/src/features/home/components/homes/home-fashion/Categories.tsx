@@ -32,7 +32,7 @@ export default function Categories() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
               <Link
                 href="/shop"
-                className="px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+                className="px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors whitespace-nowrap"
               >
                 Sports Caps
               </Link>
@@ -62,7 +62,7 @@ export default function Categories() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
               <Link
                 href="/shop"
-                className="px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+                className="px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors whitespace-nowrap"
               >
                 Leather Bags
               </Link>
@@ -107,7 +107,7 @@ export default function Categories() {
               <div>
                 <Link
                   href="/shop?collection=new-arrivals"
-                  className="pointer-events-auto inline-block px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors"
+                  className="pointer-events-auto inline-block px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors"
                 >
                   See Collection
                 </Link>
@@ -138,7 +138,7 @@ export default function Categories() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
               <Link
                 href="/shop"
-                className="px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+                className="px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors whitespace-nowrap"
               >
                 Watches
               </Link>
@@ -180,7 +180,7 @@ export default function Categories() {
               <div>
                 <Link
                   href="/shop"
-                  className="pointer-events-auto inline-block px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors"
+                  className="pointer-events-auto inline-block px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors"
                 >
                   View All Collection
                 </Link>
@@ -211,7 +211,7 @@ export default function Categories() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
               <Link
                 href="/shop"
-                className="px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+                className="px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors whitespace-nowrap"
               >
                 Sports Caps
               </Link>
@@ -241,7 +241,7 @@ export default function Categories() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
               <Link
                 href="/shop"
-                className="px-6 py-2 bg-white rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+                className="px-6 py-2 bg-white rounded-full text-sm font-semibold text-gray-900 no-underline cursor-pointer hover:bg-black hover:text-white transition-colors whitespace-nowrap"
               >
                 Stylish Polo
               </Link>

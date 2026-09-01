@@ -14,28 +14,30 @@ export default function Footer() {
       <footer className="rbt-footer rbt-footer-style-three rbt-bg-color-gray-light pt--48">
         <div className="p-0 rbt-footer-top">
           <div className="container">
-            <div className="row row--12 mt_dec--24 mb--40 justify-content-between align-items-center mb_sm--16">
+            <div className="row row--12 mb--40 justify-content-between align-items-center mb_sm--16">
               <div className="col-md-6 col-12 mt--24">
                 <div className="footer-widget">
                   <div className="rbt-breadcrumb-inner text-left">
-                    <ul className="rbt-breadcrumb-page-list justify-content-start mt--0">
-                      <li className="rbt-breadcrumb-item">
-                        <Link href={`/`}>Home</Link>
+                    <ul className="rbt-breadcrumb-page-list d-flex align-items-center justify-content-start flex-wrap gap-2 m-0 p-0">
+                      <li className="rbt-breadcrumb-item m-0">
+                        <Link href="/">Home</Link>
                       </li>
-                      <li>
+                      <li className="m-0">
                         <div className="icon-right">
-                          <i className="fa-solid fa-chevron-right" />
+                          <i className="fa-solid fa-chevron-right text-xs text-gray-400" />
                         </div>
                       </li>
-                      <li className="rbt-breadcrumb-item">
-                        <a href="#">Products</a>
+                      <li className="rbt-breadcrumb-item m-0">
+                        <Link href="/shop">Products</Link>
                       </li>
-                      <li>
+                      <li className="m-0">
                         <div className="icon-right">
-                          <i className="fa-solid fa-chevron-right" />
+                          <i className="fa-solid fa-chevron-right text-xs text-gray-400" />
                         </div>
                       </li>
-                      <li className="rbt-breadcrumb-item active">Shop</li>
+                      <li className="rbt-breadcrumb-item active m-0">
+                        <Link href="/shop">Shop</Link>
+                      </li>
                     </ul>
                   </div>
                 </div>

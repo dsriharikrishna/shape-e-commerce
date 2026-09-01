@@ -6,8 +6,10 @@ export default function Breadcrumb({
   hasHrLine = false,
   align = "left", // "left" | "center"
   dataBlackOverlay,
+  subtitleHref = "/shop", // Default redirect for "Products"
 }: {
   subtitle?: string | null;
+  subtitleHref?: string;
   title?: string;
   className?: string;
   hasHrLine?: boolean;
@@ -34,12 +36,12 @@ export default function Breadcrumb({
                 </h2>
               )}
               <ul
-                className={`rbt-breadcrumb-page-list ${
+                className={`rbt-breadcrumb-page-list flex flex-row items-center flex-wrap gap-2 ${
                   !isCenter ? "justify-content-start mt--0" : ""
                 }`}
               >
                 <li className="rbt-breadcrumb-item">
-                  <Link href={`/index`}>Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <div className="icon-right">
@@ -50,7 +52,11 @@ export default function Breadcrumb({
                 {subtitle ? (
                   <>
                     <li className="rbt-breadcrumb-item">
-                      <a href="#">{subtitle}</a>
+                      {subtitleHref ? (
+                        <Link href={subtitleHref}>{subtitle}</Link>
+                      ) : (
+                        <span>{subtitle}</span>
+                      )}
                     </li>
                     <li>
                       <div className="icon-right">

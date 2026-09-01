@@ -1,12 +1,24 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useContextElement, useUiElement } from "@/shared/store/Context";
-import { Button, buttonVariants } from "@/shared/components/ui/button";
+
+import {
+  useContextElement,
+  useUiElement,
+} from "@/shared/store/Context";
+
+import {
+  Button,
+  buttonVariants,
+} from "@/shared/components/ui/button";
+
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
+
 import { allProducts } from "@/shared/data/products";
+
 import {
   Modal,
   ModalDialog,
@@ -18,309 +30,515 @@ import {
 const FREE_SHIPPING_THRESHOLD = 248.0;
 const STANDARD_SHIPPING = 10.0;
 
-function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
-  const { cartProducts, totalPrice, setCartProducts, updateQuantity } =
-    useContextElement();
+interface CartModalContentProps {
+  openTool: number;
+  setOpenTool: React.Dispatch<React.SetStateAction<number>>;
+  closeCartSidebar?: () => void;
+}
+
+function CartModalContent({
+  openTool,
+  setOpenTool,
+  closeCartSidebar,
+}: CartModalContentProps) {
+  const {
+    cartProducts,
+    totalPrice,
+    setCartProducts,
+    updateQuantity,
+  } = useContextElement();
 
   const removeItem = (id: string | number) => {
-    setCartProducts((pre) => [...pre.filter((elm) => elm.id != id)]);
+    setCartProducts((prev) =>
+      prev.filter((item) => item.id !== id)
+    );
   };
 
-  const shippingCost = totalPrice >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING;
-  const cartTotal = totalPrice > 0 ? totalPrice + shippingCost : 0;
-  const remainingForFreeShipping = Math.max(FREE_SHIPPING_THRESHOLD - totalPrice, 0).toFixed(2);
-  const progressPercent = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
+  const shippingCost =
+    totalPrice >= FREE_SHIPPING_THRESHOLD
+      ? 0
+      : STANDARD_SHIPPING;
 
-  // Recommended products - just take top 2 that aren't in cart
-  const cartIds = cartProducts.map((p) => p.id);
+  const cartTotal =
+    totalPrice > 0
+      ? totalPrice + shippingCost
+      : 0;
+
+  const remainingForFreeShipping = Math.max(
+    FREE_SHIPPING_THRESHOLD - totalPrice,
+    0
+  ).toFixed(2);
+
+  const progressPercent = Math.min(
+    (totalPrice / FREE_SHIPPING_THRESHOLD) * 100,
+    100
+  );
+
+  const cartIds = cartProducts.map((product) => product.id);
+
   const recommendedProducts = allProducts
-    .filter((p) => !cartIds.includes(p.id))
+    .filter((product) => !cartIds.includes(product.id))
     .slice(0, 2);
 
   return (
-    <>
-      <div className="inner-wrapper" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div className="inner-top" style={{ flex: 1, overflowY: "auto", overflowX: "hidden", paddingBottom: "20px" }}>
-          <div className="rbt-cart-header">
-            <div className="title-section">
-              <h6 className="title mb--0" id="popup-cartModalLabel">
-                <i className="fa-sharp fa-regular fa-cart-shopping mr--12" />{" "}
-                Your cart
-              </h6>
-            </div>
-            <div className="rbt-quick-info-tag d-flex mt--16 rbt-flash-animation">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M18.9706 14.9359C18.8148 18.8649 15.7493 22 11.9891 22C8.12909 22 5 18.5858 5 14.6221C5 14.0924 4.99101 13.0336 5.74352 11.2472C6.19387 10.1781 6.47633 9.50646 6.63574 8.89253C6.72333 8.55511 6.89367 8.01904 7.37926 8.89253C7.66559 9.40757 7.67666 10.1483 7.67666 10.1483C7.67666 10.1483 8.74197 9.28536 9.4611 7.63673C10.5153 5.21985 9.67419 3.77512 9.38675 2.77048C9.28727 2.42294 9.22481 1.79833 9.90721 2.06409C10.6025 2.33495 12.4408 3.69334 13.4017 5.12512C14.7732 7.16855 15.2605 9.128 15.2605 9.128C15.2605 9.128 15.6997 8.55268 15.8553 7.95068C16.0312 7.27089 16.0338 6.59763 16.5988 7.32285C17.1361 8.01253 17.9341 9.3086 18.3833 10.5408C19.1989 12.7784 18.9706 14.9359 18.9706 14.9359Z"
-                  fill="url(#paint0_linear_47_2365484)"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M11.9999 22C9.23852 22 7 19.7944 7 17.0735C7 15.4318 7.67145 14.435 9.0689 13.0833C9.96366 12.2179 10.8011 11.1549 11.157 10.4311C11.2271 10.2886 11.3866 9.54605 12.0014 10.4155C12.3239 10.8714 12.8296 11.6823 13.1538 12.3744C13.7127 13.5676 13.8461 14.7239 13.8461 14.7239C13.8461 14.7239 14.3938 14.4059 14.7692 13.5871C14.8902 13.3232 15.1348 12.3241 15.8186 13.323C16.3204 14.0561 17.0097 15.3741 16.9999 17.0735C16.9999 19.7944 14.7613 22 11.9999 22Z"
-                  fill="#FC9502"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M12.1019 16C12.8497 16 12.8497 17.4475 13.7996 19.3803C14.4321 20.6672 13.486 22 12.1019 22C10.7178 22 10 20.8271 10 19.3803C10 17.9335 11.3541 16 12.1019 16Z"
-                  fill="#FCE202"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_47_2365484"
-                    x1="11.9995"
-                    y1="22.0148"
-                    x2="11.9995"
-                    y2="2.01511"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset={1} stopColor="#FF4C0D" />
-                    <stop offset={1} stopColor="#FC9502" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <p>
-                <strong>Free shipping on orders over ${FREE_SHIPPING_THRESHOLD}</strong>
-              </p>
-            </div>
-            {closeCartSidebar && (
-              <div className="rbt-btn-close" id="btn_sideNavClose">
-                <button
-                  className="minicart-close-button rbt-round-btn"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeCartSidebar();
-                  }}
-                >
-                  <i className="fa-solid fa-xmark" />
-                </button>
-              </div>
-            )}
+    <div className="flex h-full flex-col overflow-x-hidden overflow-y-auto pb-5">
+      {/* =========================================================
+          SCROLLABLE CONTENT
+      ========================================================== */}
+      <div className="flex-1 shrink-0">
+        {/* =======================================================
+            CART HEADER
+        ======================================================== */}
+        <div className="rbt-cart-header">
+          <div className="title-section">
+            <h6
+              className="title mb--0"
+              id="popup-cartModalLabel"
+            >
+              <i className="fa-sharp fa-regular fa-cart-shopping mr--12" />
+              Your cart
+            </h6>
           </div>
-          <nav className="side-nav w-100">
-            <ul className="rbt-minicart-wrapper">
-              {cartProducts.map((product, i) => (
-                <li key={i} className="minicart-item">
-                  <div className="thumbnail">
-                    <Link href={`/product-single-default/${product.id}`}>
-                      <Image
-                        alt="Product Image"
-                        src={product.imgSrc || ""}
-                        width={1246}
-                        height={976}
-                      />
+
+          <div className="rbt-quick-info-tag d-flex mt--16 rbt-flash-animation">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18.9706 14.9359C18.8148 18.8649 15.7493 22 11.9891 22C8.12909 22 5 18.5858 5 14.6221C5 14.0924 4.99101 13.0336 5.74352 11.2472C6.19387 10.1781 6.47633 9.50646 6.63574 8.89253C6.72333 8.55511 6.89367 8.01904 7.37926 8.89253C7.66559 9.40757 7.67666 10.1483 7.67666 10.1483C7.67666 10.1483 8.74197 9.28536 9.4611 7.63673C10.5153 5.21985 9.67419 3.77512 9.38675 2.77048C9.28727 2.42294 9.22481 1.79833 9.90721 2.06409C10.6025 2.33495 12.4408 3.69334 13.4017 5.12512C14.7732 7.16855 15.2605 9.128 15.2605 9.128C15.2605 9.128 15.6997 8.55268 15.8553 7.95068C16.0312 7.27089 16.0338 6.59763 16.5988 7.32285C17.1361 8.01253 17.9341 9.3086 18.3833 10.5408C19.1989 12.7784 18.9706 14.9359 18.9706 14.9359Z"
+                fill="url(#paint0_linear_47_2365484)"
+              />
+
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M11.9999 22C9.23852 22 7 19.7944 7 17.0735C7 15.4318 7.67145 14.435 9.0689 13.0833C9.96366 12.2179 10.8011 11.1549 11.157 10.4311C11.2271 10.2886 11.3866 9.54605 12.0014 10.4155C12.3239 10.8714 12.8296 11.6823 13.1538 12.3744C13.7127 13.5676 13.8461 14.7239 13.8461 14.7239C13.8461 14.7239 14.3938 14.4059 14.7692 13.5871C14.8902 13.3232 15.1348 12.3241 15.8186 13.323C16.3204 14.0561 17.0097 15.3741 16.9999 17.0735C16.9999 19.7944 14.7613 22 11.9999 22Z"
+                fill="#FC9502"
+              />
+
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12.1019 16C12.8497 16 12.8497 17.4475 13.7996 19.3803C14.4321 20.6672 13.486 22 12.1019 22C10.7178 22 10 20.8271 10 19.3803C10 17.9335 11.3541 16 12.1019 16Z"
+                fill="#FCE202"
+              />
+
+              <defs>
+                <linearGradient
+                  id="paint0_linear_47_2365484"
+                  x1="11.9995"
+                  y1="22.0148"
+                  x2="11.9995"
+                  y2="2.01511"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop
+                    offset={1}
+                    stopColor="#FF4C0D"
+                  />
+                  <stop
+                    offset={1}
+                    stopColor="#FC9502"
+                  />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <p>
+              <strong>
+                Free shipping on orders over $
+                {FREE_SHIPPING_THRESHOLD}
+              </strong>
+            </p>
+          </div>
+
+          {closeCartSidebar && (
+            <div
+              className="rbt-btn-close"
+              id="btn_sideNavClose"
+            >
+              <button
+                type="button"
+                className="minicart-close-button rbt-round-btn"
+                onClick={(event) => {
+                  event.preventDefault();
+                  closeCartSidebar();
+                }}
+              >
+                <i className="fa-solid fa-xmark" />
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* =======================================================
+            CART ITEMS
+        ======================================================== */}
+        <nav className="side-nav w-100 !max-h-none !overflow-visible">
+          <ul className="rbt-minicart-wrapper">
+            {cartProducts.map((product) => (
+              <li
+                key={product.id}
+                className="minicart-item"
+              >
+                {/* Product Image */}
+                <div className="thumbnail">
+                  <Link
+                    href={`/product-single-default/${product.id}`}
+                  >
+                    <Image
+                      alt={product.title || "Product Image"}
+                      src={product.imgSrc || ""}
+                      width={1246}
+                      height={976}
+                    />
+                  </Link>
+                </div>
+
+                {/* Product Content */}
+                <div className="product-content min-w-0">
+                  <h6 className="title">
+                    <Link
+                      href={`/product-single-default/${product.id}`}
+                    >
+                      {product.title}
                     </Link>
-                  </div>
-                  <div className="product-content">
-                    <h6 className="title">
-                      <Link href={`/product-single-default/${product.id}`}>
-                        {product.title}
-                      </Link>
-                    </h6>
-                    <span className="quantity">
-                      {product.quantity}x{" "}
-                      <span className="price">
-                        ${product.price.toFixed(2)}
-                      </span>
+                  </h6>
+
+                  <span className="quantity">
+                    {product.quantity}x{" "}
+                    <span className="price">
+                      ${product.price.toFixed(2)}
                     </span>
-                    <div className="bottom-part">
-                      <div className="rbt-qty-area">
-                        <button
-                          className="qty-item-btn qty-item-btn-decr"
-                          onClick={() =>
-                            updateQuantity(product.id, product.quantity - 1)
-                          }
-                        >
-                          <i className="fa-solid fa-minus" />
-                        </button>
-                        <Input
-                          type="number"
-                          className="items-qty-input"
-                          onChange={(e) =>
-                            updateQuantity(product.id, Number(e.target.value))
-                          }
-                          min={1}
-                          value={product.quantity}
-                        />
-                        <button
-                          className="qty-item-btn qty-item-btn-incr"
-                          onClick={() =>
-                            updateQuantity(product.id, product.quantity + 1)
-                          }
-                        >
-                          <i className="fa-solid fa-plus" />
-                        </button>
-                      </div>
+                  </span>
+
+                  <div className="bottom-part">
+                    {/* Quantity */}
+                    <div className="rbt-qty-area">
                       <button
-                        className="edit-btn"
                         type="button"
-                        data-bs-toggle="modal"
-                        data-bs-target="#quickviewEditCartModal"
+                        className="qty-item-btn qty-item-btn-decr"
+                        onClick={() =>
+                          updateQuantity(
+                            product.id,
+                            product.quantity - 1
+                          )
+                        }
                       >
-                        <i className="fa-regular fa-pen" /> Edit
+                        <i className="fa-solid fa-minus" />
+                      </button>
+
+                      <Input
+                        type="number"
+                        className="items-qty-input"
+                        min={1}
+                        value={product.quantity}
+                        onChange={(event) => {
+                          const value = Number(
+                            event.target.value
+                          );
+
+                          if (value >= 1) {
+                            updateQuantity(
+                              product.id,
+                              value
+                            );
+                          }
+                        }}
+                      />
+
+                      <button
+                        type="button"
+                        className="qty-item-btn qty-item-btn-incr"
+                        onClick={() =>
+                          updateQuantity(
+                            product.id,
+                            product.quantity + 1
+                          )
+                        }
+                      >
+                        <i className="fa-solid fa-plus" />
                       </button>
                     </div>
-                  </div>
-                  <div className="close-btn">
+
+                    {/* Edit */}
                     <button
-                      className="rbt-round-btn"
-                      onClick={() => removeItem(product.id)}
+                      type="button"
+                      className="edit-btn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#quickviewEditCartModal"
                     >
-                      <i className="fa-solid fa-xmark" />
+                      <i className="fa-regular fa-pen" /> Edit
                     </button>
                   </div>
-                </li>
-              ))}
-            </ul>
-            
+                </div>
+
+                {/* Remove */}
+                <div className="close-btn">
+                  <button
+                    type="button"
+                    className="rbt-round-btn"
+                    onClick={() =>
+                      removeItem(product.id)
+                    }
+                  >
+                    <i className="fa-solid fa-xmark" />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {/* =====================================================
+              RECOMMENDED PRODUCTS
+          ====================================================== */}
+          {recommendedProducts.length > 0 && (
             <div className="minicart-inc-items-area mt--12">
-              <h6 className="title positin-top">You May Also Like</h6>
+              <h6 className="title positin-top">
+                You May Also Like
+              </h6>
+
               <div className="bottom-area">
-                <div className="rbt-minicart-wrapper overflow-hidden d-flex gap-4">
-                    {recommendedProducts.map((product) => (
-                      <div className="minicart-item" key={product.id} style={{ flex: 1, padding: "12px", border: "1px solid #e1e1e1", borderRadius: "8px" }}>
-                        <div className="thumbnail" style={{ width: "80px", height: "80px" }}>
-                          <Link href={`/product-single-default/${product.id}`}>
-                            <Image
-                              alt="Product Image"
-                              src={product.imgSrc || ""}
-                              width={1246}
-                              height={976}
-                            />
-                          </Link>
-                        </div>
-                        <div className="product-content">
-                          <h6 className="title" style={{ fontSize: "14px" }}>
-                            <Link href={`/product-single-default/${product.id}`}>
-                              {product.title}
-                            </Link>
-                          </h6>
-                          <span className="quantity">
-                            <span className="price">${product.price.toFixed(2)}</span>
-                          </span>
-                        </div>
-                        <a
-                          href="#!"
-                          className="add-itembtn tooltips"
-                          data-bs-toggle="modal"
-                          data-bs-target="#addedcartModal"
-                          data-tooltip="Add to Cart"
+                <div className="flex gap-4 overflow-hidden">
+                  {recommendedProducts.map((product) => (
+                    <div
+                      key={product.id}
+                      className="min-w-0 flex-1 rounded-lg border border-gray-200 p-3"
+                    >
+                      {/* Image */}
+                      <div className="thumbnail h-20 w-20 shrink-0">
+                        <Link
+                          href={`/product-single-default/${product.id}`}
                         >
-                          <i className="fa-regular fa-cart-plus" />
-                        </a>
+                          <Image
+                            alt={
+                              product.title ||
+                              "Product Image"
+                            }
+                            src={
+                              product.imgSrc || ""
+                            }
+                            width={1246}
+                            height={976}
+                            className="h-full w-full object-cover"
+                          />
+                        </Link>
                       </div>
-                    ))}
+
+                      {/* Content */}
+                      <div className="product-content min-w-0">
+                        <h6 className="title text-sm">
+                          <Link
+                            href={`/product-single-default/${product.id}`}
+                          >
+                            {product.title}
+                          </Link>
+                        </h6>
+
+                        <span className="quantity">
+                          <span className="price">
+                            $
+                            {product.price.toFixed(
+                              2
+                            )}
+                          </span>
+                        </span>
+                      </div>
+
+                      {/* Add */}
+                      <button
+                        type="button"
+                        className="add-itembtn tooltips"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addedcartModal"
+                        data-tooltip="Add to Cart"
+                      >
+                        <i className="fa-regular fa-cart-plus" />
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-          </nav>
+          )}
+        </nav>
+      </div>
+
+      {/* =========================================================
+          FIXED FOOTER
+      ========================================================== */}
+      <div className="rbt-minicart-footer mt--16 shrink-0 !static">
+        {/* Quick Access */}
+        <div className="minicart-quick-access-area">
+          <button
+            type="button"
+            className="single-quick-access rbt-note-btn"
+            onClick={() =>
+              setOpenTool((previous) =>
+                previous === 1 ? -1 : 1
+              )
+            }
+          >
+            <span className="icon">
+              <i className="fa-regular fa-pen" />
+            </span>
+
+            <span className="text">Note</span>
+          </button>
+
+          <span className="hr-sepator" />
+
+          <button
+            type="button"
+            className="single-quick-access rbt-coupon-btn"
+            onClick={() =>
+              setOpenTool((previous) =>
+                previous === 3 ? -1 : 3
+              )
+            }
+          >
+            <span className="icon">
+              <i className="fa-regular fa-ticket" />
+            </span>
+
+            <span className="text">Coupon</span>
+          </button>
         </div>
-        <div className="rbt-minicart-footer mt--16" style={{ flexShrink: 0 }}>
-          <div className="minicart-quick-access-area">
-            <a
-              href="#"
-              className="single-quick-access rbt-note-btn"
-              onClick={() => setOpenTool((pre: any) => (pre == 1 ? -1 : 1))}
-            >
-              <span className="icon">
-                <i className="fa-regular fa-pen" />
-              </span>
-              <span className="text">Note</span>
-            </a>
-            <span className="hr-sepator" />
-            <a
-              href="#"
-              className="single-quick-access rbt-coupon-btn"
-              onClick={() => setOpenTool((pre: any) => (pre == 3 ? -1 : 3))}
-            >
-              <span className="icon">
-                <i className="fa-regular fa-ticket" />
-              </span>
-              <span className="text">Coupon</span>
-            </a>
-          </div>
-          <hr className="mb--0 mt--16" />
-          <div className="rbt-cart-subttotal">
-            <p>Subtotal ({cartProducts.length} items)</p>
-            <p className="price">${totalPrice.toFixed(2)}</p>
-          </div>
-          <div className="rbt-cart-subttotal">
-            <p>Shipping</p>
-            <p className="price">{totalPrice > 0 ? (shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`) : "$0.00"}</p>
-          </div>
-          <hr className="mb--0" />
-          <div className="rbt-cart-subttotal">
-            <p className="subtotal">
-              <strong>Total</strong>
+
+        <hr className="mb--0 mt--16" />
+
+        {/* Subtotal */}
+        <div className="rbt-cart-subttotal">
+          <p>
+            Subtotal ({cartProducts.length} items)
+          </p>
+
+          <p className="price">
+            ${totalPrice.toFixed(2)}
+          </p>
+        </div>
+
+        {/* Shipping */}
+        <div className="rbt-cart-subttotal">
+          <p>Shipping</p>
+
+          <p className="price">
+            {totalPrice > 0
+              ? shippingCost === 0
+                ? "Free"
+                : `$${shippingCost.toFixed(2)}`
+              : "$0.00"}
+          </p>
+        </div>
+
+        <hr className="mb--0" />
+
+        {/* Total */}
+        <div className="rbt-cart-subttotal">
+          <p className="subtotal">
+            <strong>Total</strong>
+          </p>
+
+          <p className="price">
+            ${cartTotal.toFixed(2)}
+          </p>
+        </div>
+
+        {/* Free Shipping Progress */}
+        <div className="offer-progress-area">
+          {parseFloat(remainingForFreeShipping) > 0 ? (
+            <p className="offer-text">
+              Add{" "}
+              <strong>
+                ${remainingForFreeShipping}
+              </strong>{" "}
+              More To Get{" "}
+              <strong>Free Shipping</strong>
             </p>
-            <p className="price">
-              ${cartTotal.toFixed(2)}
+          ) : (
+            <p className="offer-text">
+              <strong>
+                You've unlocked Free Shipping!
+              </strong>
             </p>
-          </div>
-          <div className="offer-progress-area">
-            {parseFloat(remainingForFreeShipping) > 0 ? (
-                <p className="offer-text">
-                  Add <strong>${remainingForFreeShipping}</strong> More To Get
-                  <strong>Free Shipping</strong>
-                </p>
-            ) : (
-                <p className="offer-text">
-                  <strong>You've unlocked Free Shipping!</strong>
-                </p>
-            )}
+          )}
+
+          <div
+            className="progress"
+            role="progressbar"
+            aria-label="Shipping progress"
+            aria-valuenow={progressPercent}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
             <div
-              className="progress"
-              role="progressbar"
-              aria-label="Shipping-progress"
-              aria-valuenow={progressPercent}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              style={{ height: "8px" }}
-            >
-              <div className="progress-bar" style={{ width: `${progressPercent}%` }} />
-            </div>
+              className="progress-bar"
+              style={{
+                width: `${progressPercent}%`,
+              }}
+            />
           </div>
-          <div className="rbt-minicart-bottom mt--24">
-            <div className="checkout-btn mt--20">
-              <Link
-                className={buttonVariants({ className: "w-100 text-center text-white" })}
-                href="/checkout-delivery-step-one"
-              >
-                <span className="btn-text text-white">Checkout</span>
-              </Link>
-            </div>
-            <div className="share-btn-grp rbt-link-hover">
-              <Link href={`/cart`} className="share-btn">
-                <i className="fa-regular fa-cart-shopping mr--4" /> View Cart
-              </Link>
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#socialShareModal"
-                type="button"
-                className="share-btn"
-              >
-                <i className="fa-sharp fa-solid fa-link mr--4" /> Share Cart
-              </button>
-            </div>
+        </div>
+
+        {/* Checkout */}
+        <div className="rbt-minicart-bottom mt--24">
+          <div className="checkout-btn mt--20">
+            <Link
+              className={buttonVariants({
+                className:
+                  "w-full text-center text-white",
+              })}
+              href="/checkout-delivery-step-one"
+            >
+              <span className="btn-text text-white">
+                Checkout
+              </span>
+            </Link>
+          </div>
+
+          {/* Cart Links */}
+          <div className="share-btn-grp rbt-link-hover">
+            <Link
+              href="/cart"
+              className="share-btn"
+            >
+              <i className="fa-regular fa-cart-shopping mr--4" />
+              View Cart
+            </Link>
+
+            <button
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#socialShareModal"
+              className="share-btn"
+            >
+              <i className="fa-sharp fa-solid fa-link mr--4" />
+              Share Cart
+            </button>
           </div>
         </div>
       </div>
-      
-      {/* Popups */}
-      <a href="#!" className="rbt-close-inner-popup rbt-popup-close-btn" />
+
+      {/* =========================================================
+          NOTE POPUP
+      ========================================================== */}
+      <a
+        href="#!"
+        className="rbt-close-inner-popup rbt-popup-close-btn"
+      />
+
       <div className="rbt-offcanvas-inner-popup">
         <div
           className={`rbt-offcanvas-inner-popup-card note-popup ${
-            openTool == 1 ? "open-note-popup" : ""
+            openTool === 1
+              ? "open-note-popup"
+              : ""
           }`}
         >
           <div className="rbt-offcanvas-card-inner">
@@ -330,22 +548,36 @@ function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
               </span>
               Add note for seller
             </h6>
-            <form onSubmit={(e) => e.preventDefault()}>
+
+            <form
+              onSubmit={(event) =>
+                event.preventDefault()
+              }
+            >
               <div className="rbt-input-field-grp mb--12">
                 <Textarea
                   className="rbt-text-field"
                   name="message"
                   placeholder="Notes about your order, e.g. special notes for delivery."
-                  defaultValue={""}
+                  defaultValue=""
                 />
               </div>
+
               <div className="rbt-btn-group mt--16">
-                <Button className="rbt-btn-primary d-block w-100" size="md">
+                <Button
+                  type="submit"
+                  className="rbt-btn-primary d-block w-100"
+                  size="md"
+                >
                   Apply
                 </Button>
+
                 <Button
+                  type="button"
                   className="d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
-                  onClick={() => setOpenTool(-1)}
+                  onClick={() =>
+                    setOpenTool(-1)
+                  }
                   variant="naked"
                   size="md"
                 >
@@ -356,10 +588,16 @@ function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
           </div>
         </div>
       </div>
+
+      {/* =========================================================
+          COUPON POPUP
+      ========================================================== */}
       <div className="rbt-offcanvas-inner-popup">
         <div
           className={`rbt-offcanvas-inner-popup-card coupon-popup ${
-            openTool == 3 ? "open-coupon-popup" : ""
+            openTool === 3
+              ? "open-coupon-popup"
+              : ""
           }`}
         >
           <div className="rbt-offcanvas-card-inner">
@@ -369,6 +607,7 @@ function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
               </span>
               Select or input Coupon
             </h6>
+
             <div className="rbt-coupon-wrapper rbt-bg-color-white">
               <div className="rbt-coupon">
                 <div className="inner rbt-text-copy-activation">
@@ -380,26 +619,35 @@ function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
                       className="rbt-coupon-code-text rbt-has-right-shepe-border rbt-copy-value-field"
                     />
                   </div>
+
                   <div className="coupon-details">
                     <h2 className="rbt-coupon-info-title b1">
                       UP TO 30% OFF
                     </h2>
+
                     <p className="rbt-coupon-info-sub-title b3 mt--4">
                       For orders over $9.90
                     </p>
+
                     <ul className="rbt-coupon-info-list mt--12">
                       <li>
-                        <span>Valid through end of year</span>
+                        <span>
+                          Valid through end of year
+                        </span>
                       </li>
+
                       <li>
                         <span>
-                          The minimum spend for this coupon
+                          The minimum spend for this
+                          coupon{" "}
                           <strong>$200.00</strong>
                         </span>
                       </li>
                     </ul>
                   </div>
+
                   <button
+                    type="button"
                     className="copy-icon rbt-round-btn rbt-bg-primary rbt-copy-btn"
                     data-tooltip="Copy"
                   >
@@ -408,20 +656,39 @@ function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
                 </div>
               </div>
             </div>
-            <form onSubmit={(e) => e.preventDefault()}>
+
+            <form
+              onSubmit={(event) =>
+                event.preventDefault()
+              }
+            >
               <div className="rbt-input-field-grp mt--24">
                 <p className="b1 mb--12 rbt-text-color-gray-600">
-                  If you have coupon code, please apply it below.
+                  If you have coupon code, please
+                  apply it below.
                 </p>
-                <Input type="text" placeholder="Coupon code" />
+
+                <Input
+                  type="text"
+                  placeholder="Coupon code"
+                />
               </div>
+
               <div className="rbt-btn-group mt--16">
-                <Button className="rbt-btn-primary d-block w-100" size="md">
+                <Button
+                  type="submit"
+                  className="rbt-btn-primary d-block w-100"
+                  size="md"
+                >
                   Apply
                 </Button>
+
                 <Button
+                  type="button"
                   className="d-block w-100 mt--8 mb--8 rbt-popup-close-btn"
-                  onClick={() => setOpenTool(-1)}
+                  onClick={() =>
+                    setOpenTool(-1)
+                  }
                   variant="naked"
                   size="md"
                 >
@@ -432,39 +699,74 @@ function CartModalContent({ openTool, setOpenTool, closeCartSidebar }: any) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default function CartModal({ variant = "sidebar" }: { variant?: "sidebar" | "modal" }) {
-  const [openTool, setOpenTool] = useState(-1);
-  const { cartSidebarOpen, closeCartSidebar } = useUiElement();
+/* =================================================================
+   CART MODAL
+================================================================= */
+
+export default function CartModal({
+  variant = "sidebar",
+}: {
+  variant?: "sidebar" | "modal";
+}) {
+  const [openTool, setOpenTool] =
+    useState<number>(-1);
+
+  const {
+    cartSidebarOpen,
+    closeCartSidebar,
+  } = useUiElement();
 
   useEffect(() => {
     if (variant === "modal") return;
-    
+
     const handleClick = (event: MouseEvent) => {
-      const target = event.target as Element | null;
-      const isInsideCart = target?.closest(".rbt-cart-side-menu");
+      const target =
+        event.target as Element | null;
 
-      const isInsideQuickAccess = target?.closest(
-        ".minicart-quick-access-area"
-      );
-      const isInsideQuickELement = target?.closest(
-        ".rbt-offcanvas-inner-popup"
-      );
+      const isInsideCart =
+        target?.closest(
+          ".rbt-cart-side-menu"
+        );
 
-      if (!isInsideQuickAccess && !isInsideQuickELement && isInsideCart) {
+      const isInsideQuickAccess =
+        target?.closest(
+          ".minicart-quick-access-area"
+        );
+
+      const isInsideQuickElement =
+        target?.closest(
+          ".rbt-offcanvas-inner-popup"
+        );
+
+      if (
+        !isInsideQuickAccess &&
+        !isInsideQuickElement &&
+        isInsideCart
+      ) {
         setOpenTool(-1);
       }
     };
 
-    document.addEventListener("click", handleClick);
+    document.addEventListener(
+      "click",
+      handleClick
+    );
 
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener(
+        "click",
+        handleClick
+      );
     };
   }, [variant]);
+
+  /* ===============================================================
+     MODAL VARIANT
+  =============================================================== */
 
   if (variant === "modal") {
     return (
@@ -491,17 +793,22 @@ export default function CartModal({ variant = "sidebar" }: { variant?: "sidebar"
                 />
               </svg>
             </div>
+
             <ModalHeader>
               <ModalCloseButton
                 type="button"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></ModalCloseButton>
+              />
             </ModalHeader>
+
             <div className="rbt-modal-cart rbt-top-folder-shape-wrapper rbt-sidebar-cart">
               <div className="overflow-hidden position-relative rbt-content-trs-portion">
-                <div style={{ height: "80vh" }}>
-                  <CartModalContent openTool={openTool} setOpenTool={setOpenTool} />
+                <div className="h-[80vh] min-h-0 overflow-hidden">
+                  <CartModalContent
+                    openTool={openTool}
+                    setOpenTool={setOpenTool}
+                  />
                 </div>
               </div>
             </div>
@@ -511,15 +818,31 @@ export default function CartModal({ variant = "sidebar" }: { variant?: "sidebar"
     );
   }
 
+  /* ===============================================================
+     SIDEBAR VARIANT
+  =============================================================== */
+
   return (
-    <>
-      <div
-        className={`rbt-cart-side-menu rbt-sidebar-cart${cartSidebarOpen ? " side-menu-active" : ""}${openTool !== -1 ? " open-popup-overlay" : ""}`}
-      >
-        <div style={{ height: "100vh" }}>
-          <CartModalContent openTool={openTool} setOpenTool={setOpenTool} closeCartSidebar={closeCartSidebar} />
-        </div>
+    <div
+      className={`rbt-cart-side-menu rbt-sidebar-cart h-screen overflow-hidden ${
+        cartSidebarOpen
+          ? "side-menu-active"
+          : ""
+      } ${
+        openTool !== -1
+          ? "open-popup-overlay"
+          : ""
+      }`}
+    >
+      <div className="h-full min-h-0 overflow-hidden">
+        <CartModalContent
+          openTool={openTool}
+          setOpenTool={setOpenTool}
+          closeCartSidebar={
+            closeCartSidebar
+          }
+        />
       </div>
-    </>
+    </div>
   );
 }
