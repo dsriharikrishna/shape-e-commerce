@@ -53,7 +53,7 @@ export default function BlogSlider({
                       {post.description}
                     </p>
                     <Link
-                      className={cn(buttonVariants({ size: "lg" }), "rounded-full px-8")}
+                      className={cn(buttonVariants({ size: "default" }), "rounded-full px-8")}
                       href={`/blog-single`}
                     >
                       Continue Reading
