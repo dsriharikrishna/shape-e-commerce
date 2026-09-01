@@ -10,10 +10,7 @@ const CartModal = dynamic(
   () => import("@/shared/components/modals/CartModal").then((m) => m.default),
   { ssr: false }
 );
-const CartModal2 = dynamic(
-  () => import("@/shared/components/modals/CartModal2").then((m) => m.default),
-  { ssr: false }
-);
+
 const Compare = dynamic(
   () => import("@/shared/components/modals/Compare").then((m) => m.default),
   { ssr: false }
@@ -73,7 +70,7 @@ export default function LayoutModals() {
       <QuickView />
       <CompareView />
       <WishList />
-      <CartModal2 />
+      <CartModal variant="modal" />
       <SocialShare />
       <NotifyModal />
       <Toasters />
