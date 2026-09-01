@@ -48,41 +48,22 @@ export default function CartModal() {
   return (
     <>
       <div
-        className={cn(
-          "fixed inset-0 z-[9999] transition-all duration-300 pointer-events-none",
-          cartSidebarOpen ? "pointer-events-auto" : ""
-        )}
+        className={`rbt-cart-side-menu rbt-sidebar-cart${cartSidebarOpen ? " side-menu-active" : ""}${openTool !== -1 ? " open-popup-overlay" : ""}`}
       >
-        {/* Backdrop */}
-        <div
-          className={cn(
-            "absolute inset-0 bg-black/60 transition-opacity duration-300",
-            cartSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none",
-            openTool !== -1 ? "bg-black/80" : ""
-          )}
-          onClick={closeCartSidebar}
-        />
-
-        {/* Drawer Content */}
-        <div
-          className={cn(
-            "absolute top-0 right-0 h-full w-full max-w-[400px] bg-white shadow-2xl transition-transform duration-300 ease-in-out flex flex-col pointer-events-auto",
-            cartSidebarOpen ? "translate-x-0" : "translate-x-full"
-          )}
-        >
-          <div className="px-6 py-4 border-b border-gray-100 flex flex-col gap-2 shrink-0">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xl font-bold text-gray-900">
-                <i className="fa-sharp fa-regular fa-cart-shopping" />
-                <span className="m-0 flex items-center">
+        <div className="inner-wrapper">
+          <div className="inner-top">
+            <div className="rbt-cart-header">
+              <div className="title-section">
+                <h6 className="title mb--0">
+                  <i className="fa-sharp fa-regular fa-cart-shopping mr--12" />{" "}
                   Your cart
-                </span>
+                </h6>
               </div>
-              <div className="flex items-center gap-2 text-sm text-orange-500 bg-orange-50 px-3 py-1.5 rounded-full mt-2 self-start animate-pulse">
+              <div className="rbt-quick-info-tag d-flex mt--16 rbt-flash-animation">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width={16}
-                  height={16}
+                  width={24}
+                  height={24}
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -118,66 +99,65 @@ export default function CartModal() {
                     </linearGradient>
                   </defs>
                 </svg>
-                <p className="m-0 text-xs font-medium">
+                <p>
                   Limited Item,{" "}
                   <strong>
                     checkout within{" "}
-                    <span className="text-red-500 ml-1">10m 00s</span>
+                    <span className="rbt-countdown-cart">10m 00s</span>
                   </strong>
                 </p>
               </div>
-              <div className="absolute top-4 right-4">
+              <div className="rbt-btn-close" id="btn_sideNavClose">
                 <button
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-500 shadow-sm hover:bg-black hover:text-white transition-all"
+                  className="minicart-close-button rbt-round-btn"
                   onClick={(e) => {
                     e.preventDefault();
                     closeCartSidebar();
                   }}
                 >
-                  <i className="fa-solid fa-xmark text-lg" />
+                  <i className="fa-solid fa-xmark" />
                 </button>
               </div>
             </div>
-            <div className="flex-1 overflow-y-auto w-full">
-              <ul className="flex flex-col gap-6 p-6">
+            <nav className="side-nav w-100">
+              <ul className="rbt-minicart-wrapper">
                 {cartProducts.map((product, i) => (
-                  <li key={i} className="flex gap-4 group relative">
-                    <div className="w-[90px] shrink-0">
-                      <Link href={`/product-single-default/${product.id}`} className="block rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
+                  <li key={i} className="minicart-item">
+                    <div className="thumbnail">
+                      <Link href={`/product-single-default/${product.id}`}>
                         <Image
                           alt="Product Image"
                           src={product.imgSrc || ""}
                           width={1246}
                           height={976}
-                          className="w-full h-auto object-cover"
                         />
                       </Link>
                     </div>
-                    <div className="flex flex-col flex-1 min-w-0">
-                      <h6 className="text-sm font-medium text-gray-900 leading-tight mb-1 truncate">
-                        <Link href={`/product-single-default/${product.id}`} className="hover:text-primary transition-colors">
+                    <div className="product-content">
+                      <h6 className="title">
+                        <Link href={`/product-single-default/${product.id}`}>
                           {product.title}
                         </Link>
                       </h6>
-                      <span className="text-sm text-gray-500 mb-3">
+                      <span className="quantity">
                         {product.quantity}x{" "}
-                        <span className="font-semibold text-gray-900">
+                        <span className="price">
                           ${product.price.toFixed(2)}
                         </span>
                       </span>
-                      <div className="flex items-center justify-between mt-auto">
-                        <div className="flex items-center bg-gray-50 rounded-full border border-gray-200">
+                      <div className="bottom-part">
+                        <div className="rbt-qty-area">
                           <button
-                            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors"
+                            className="qty-item-btn qty-item-btn-decr"
                             onClick={() =>
                               updateQuantity(product.id, product.quantity - 1)
                             }
                           >
-                            <i className="fa-solid fa-minus text-[10px]" />
+                            <i className="fa-solid fa-minus" />
                           </button>
                           <Input
                             type="number"
-                            className="w-10 h-8 p-0 text-center text-sm font-medium bg-transparent border-0 focus-visible:ring-0"
+                            className="items-qty-input"
                             onChange={(e) =>
                               updateQuantity(product.id, Number(e.target.value))
                             }
@@ -185,73 +165,64 @@ export default function CartModal() {
                             value={product.quantity}
                           />
                           <button
-                            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors"
+                            className="qty-item-btn qty-item-btn-incr"
                             onClick={() =>
                               updateQuantity(product.id, product.quantity + 1)
                             }
                           >
-                            <i className="fa-solid fa-plus text-[10px]" />
+                            <i className="fa-solid fa-plus" />
                           </button>
                         </div>
                         <button
-                          className="text-xs text-gray-500 hover:text-primary transition-colors underline underline-offset-2"
+                          className="edit-btn"
                           type="button"
                           data-bs-toggle="modal"
                           data-bs-target="#quickviewEditCartModal"
                         >
-                          <i className="fa-regular fa-pen mr-1" /> Edit
+                          <i className="fa-regular fa-pen" /> Edit
                         </button>
                       </div>
                     </div>
-                    <div className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="close-btn">
                       <button
-                        className="flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                        className="rbt-round-btn"
                         onClick={() => removeItem(product.id)}
                       >
-                        <i className="fa-solid fa-xmark text-xs" />
+                        <i className="fa-solid fa-xmark" />
                       </button>
                     </div>
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center justify-between border-t border-b border-gray-100 py-4 px-6 bg-gray-50/50">
+              <div className="minicart-quick-access-area mt--24">
                 <a
                   href="#"
-                  className={cn(
-                    "flex flex-col items-center gap-1 text-xs font-medium transition-colors hover:text-primary",
-                    openTool === 1 ? "text-primary" : "text-gray-500"
-                  )}
+                  className="single-quick-access rbt-note-btn"
                   onClick={() => setOpenTool((pre) => (pre == 1 ? -1 : 1))}
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm">
+                  <span className="icon">
                     <i className="fa-regular fa-pen" />
                   </span>
                   <span className="text">Note</span>
                 </a>
-                <span className="h-8 w-px bg-gray-200" />
+                <span className="hr-sepator" />
                 <a
                   href="#"
-                  className={cn(
-                    "flex flex-col items-center gap-1 text-xs font-medium transition-colors hover:text-primary",
-                    openTool === 2 ? "text-primary" : "text-gray-500"
-                  )}
+                  className="single-quick-access rbt-shipping-btn"
                   onClick={() => setOpenTool((pre) => (pre == 2 ? -1 : 2))}
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm">
+                  <span className="icon">
                     <i className="fa-regular fa-truck-fast" />
                   </span>
                   <span className="text">Shipping</span>
                 </a>
-                <span className="h-8 w-px bg-gray-200" />
+                <span className="hr-sepator" />
                 <a
                   href="#"
-                  className={cn(
-                    "flex flex-col items-center gap-1 text-xs font-medium transition-colors hover:text-primary",
-                    openTool === 3 ? "text-primary" : "text-gray-500"
-                  )}
+                  className="single-quick-access rbt-coupon-btn"
                   onClick={() => setOpenTool((pre) => (pre == 3 ? -1 : 3))}
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm">
+                  <span className="icon">
                     <i className="fa-regular fa-ticket" />
                   </span>
                   <span className="text">Coupon</span>
@@ -337,59 +308,66 @@ export default function CartModal() {
               </div>
             </nav>
           </div>
-              <div className="flex flex-col p-6 bg-white shrink-0 shadow-[0_-4px_20px_-10px_rgba(0,0,0,0.1)] relative z-10">
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <p className="m-0">Subtotal</p>
-                    <p className="m-0 font-medium text-gray-900">${totalPrice.toFixed(2)}</p>
-                  </div>
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <p className="m-0">Shipping</p>
-                    <p className="m-0 font-medium text-gray-900">{totalPrice ? "$10.00" : "$0.00"}</p>
-                  </div>
-                  <div className="h-px w-full bg-gray-100 my-1" />
-                  <div className="flex items-center justify-between">
-                    <p className="m-0 text-lg font-bold text-gray-900">Total</p>
-                    <p className="m-0 text-lg font-bold text-primary">
-                      ${totalPrice > 10 ? (totalPrice + 10).toFixed(2) : "0.00"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-4 p-4 rounded-xl border border-primary/20 bg-primary/5">
-                  <p className="text-sm text-gray-700 text-center mb-2">
-                    Add <strong className="text-primary font-bold">$248.00</strong> More To Get
-                    <strong className="text-primary font-bold ml-1">Free Shipping</strong>
-                  </p>
-                  <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-500 w-[75%]" />
-                  </div>
-                </div>
-
-                <div className="mt-6 flex flex-col gap-3">
-                  <Link
-                    className={cn(buttonVariants({ size: "lg", className: "w-full rounded-full font-bold shadow-md hover:shadow-lg transition-all" }))}
-                    href="/checkout-delivery-step-one"
-                  >
-                    Checkout
-                  </Link>
-                  <div className="flex items-center justify-center gap-4 text-sm font-medium text-gray-500">
-                    <Link href={`/cart`} className="hover:text-primary transition-colors flex items-center gap-1.5">
-                      <i className="fa-regular fa-pen" /> View Cart
-                    </Link>
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#socialShareModal"
-                      type="button"
-                      className="hover:text-primary transition-colors flex items-center gap-1.5"
-                    >
-                      <i className="fa-sharp fa-solid fa-link" /> Share Cart
-                    </button>
-                  </div>
-                </div>
+          <div className="rbt-minicart-footer">
+            <hr className="mb--0 mt--16" />
+            <div className="rbt-cart-subttotal">
+              <p>Subtotal (2 items)</p>
+              <p className="price">${totalPrice.toFixed(2)}</p>
+            </div>
+            <div className="rbt-cart-subttotal">
+              <p>Shipping</p>
+              <p className="price">{totalPrice ? "$10.00" : "0.00"}</p>
+            </div>
+            <hr className="mb--0" />
+            <div className="rbt-cart-subttotal">
+              <p className="subtotal">
+                <strong>Total</strong>
+              </p>
+              <p className="price">
+                ${totalPrice > 10 ? (totalPrice + 10).toFixed(2) : "0.00"}
+              </p>
+            </div>
+            <div className="offer-progress-area">
+              <p className="offer-text">
+                Add <strong>$248.00</strong> More To Get
+                <strong>Free Shipping</strong>
+              </p>
+              <div
+                className="progress"
+                role="progressbar"
+                aria-label="Shipping-progress"
+                aria-valuenow={75}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              >
+                <div className="progress-bar w-75" />
               </div>
             </div>
+            <div className="rbt-minicart-bottom mt--24">
+              <div className="checkout-btn mt--20">
+                <Link
+                  className={buttonVariants({ className: "w-100 text-center" })}
+                  href="/checkout-delivery-step-one"
+                >
+                  <span className="btn-text">Checkout</span>
+                </Link>
+              </div>
+              <div className="share-btn-grp rbt-link-hover">
+                <Link href={`/cart`} className="share-btn">
+                  <i className="fa-regular fa-pen mr--4" /> View Cart
+                </Link>
+                <button
+                  data-bs-toggle="modal"
+                  data-bs-target="#socialShareModal"
+                  type="button"
+                  className="share-btn"
+                >
+                  <i className="fa-sharp fa-solid fa-link mr--4" /> Share Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="#!" className="rbt-close-inner-popup rbt-popup-close-btn" />
         <div className="rbt-offcanvas-inner-popup">
           <div
