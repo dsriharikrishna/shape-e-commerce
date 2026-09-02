@@ -1,6 +1,6 @@
-import { Input } from "@/shared/components/ui/input";
+"use client";
 
-("use client");
+import { Input } from "@/shared/components/ui/input";
 export default function QuantitySelect({
   quantity = 1,
   setQuantity = () => {},

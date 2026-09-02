@@ -14,7 +14,7 @@ function srgb_to_oklch(r, g, b) {
     const C = Math.sqrt(M*M + S*S);
     let h = Math.atan2(S, M) * 180 / Math.PI;
     if (h < 0) h += 360;
-    return \oklch(\ \ \)\;
+    return `oklch(${L} ${C} ${h})`;
 }
 
 console.log('Navy:', srgb_to_oklch(16, 46, 80));
