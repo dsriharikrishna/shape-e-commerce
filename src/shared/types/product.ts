@@ -15,6 +15,7 @@ export interface ProductVariant {
   active?: boolean;
   imgSrc?: string;
   classNameSuffix?: string;
+  badges?: ProductBadge[];
 }
 
 export interface ColorVariant {

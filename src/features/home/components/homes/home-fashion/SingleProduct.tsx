@@ -88,7 +88,7 @@ export default function SingleProduct() {
                 768: { slidesPerView: 2 },
               }}
             >
-              {product?.frameSlides?.map((slide, index) => (
+              {(product?.frameSlides || product?.variants || []).map((slide, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-gray-100">
                     {slide.src && (
